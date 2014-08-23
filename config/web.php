@@ -15,7 +15,9 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\modules\users\models\User',
+            'loginUrl' => ['/user/default/login'],
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -23,6 +25,7 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
+            // TODO настроить отправку почты
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
@@ -37,7 +40,24 @@ $config = [
                 ],
             ],
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => false,
+            'showScriptName' => false,
+            'suffix' => '/',
+
+            'rules' => [
+            // Модуль [[Users]]
+                '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
+            ],
+        ],
         'db' => require(__DIR__ . '/db.php'),
+    ],
+    'modules' => [
+        'gii' => 'yii\gii\Module',
+        'users' => [
+            'class' => 'app\modules\users\Users'
+        ],
     ],
     'params' => $params,
 ];
