@@ -31,7 +31,7 @@ class DefaultController extends Controller
         return $this->render('index');
     }
 
-    	/**
+    /**
 	 * Создаём новую запись.
 	 * В случае успеха, пользователь будет перенаправлен на view метод.
 	 */
@@ -44,16 +44,10 @@ class DefaultController extends Controller
 		}
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			// Если после регистрации нужно подтвердить почтовый адрес, вызываем функцию отправки кода активации на почту.
-			if ($this->module->activeAfterRegistration === false) {
-				// Сообщаем пользователю что регистрация прошла успешно, и что на его e-mail был отправлен ключ активации аккаунта.
-				Yii::$app->session->setFlash('success', Yii::t('users', 'Учётная запись была успешно создана. Через несколько секунд вам на почту будет отправлен код для активации аккаунта. В случае если письмо не пришло в течении 15 минут, вы можете заново запросить отправку ключа по данной <a href="{url}">ссылке</a>. Спасибо!', ['url' => Url::toRoute('resend')]));
-			} else {
-				// Авторизуем сразу пользователя.
-				Yii::$app->getUser()->login($model);
-				// Сообщаем пользователю что регистрация прошла успешно.
-				Yii::$app->session->setFlash('success', Yii::t('users', 'Учётная запись была успешно создана!'));
-			}
+			// Сообщаем пользователю что регистрация прошла успешно.
+			Yii::$app->session->setFlash('success', 'users', 'Учётная запись была успешно создана! Вам выслано письмо для подтверждения регистрации. Пока вы не подтвердите регистрацию, некоторые функции сайта будут недоступны');
+			// Авторизуем сразу пользователя.
+			Yii::$app->getUser()->login($model);
 			// Возвращаем пользователя на главную.
 			return $this->goHome();
 		}
@@ -61,5 +55,36 @@ class DefaultController extends Controller
 		return $this->render('signup', [
 			'model' => $model
 		]);
+	}
+
+	/**
+	 * Авторизуем пользователя.
+	 */
+	public function actionLogin()
+	{
+		// В случае если пользователь не гость, то мы перенаправляем его на главную страницу. В противном случае он бы увидел 403-ю ошибку.
+		if (!Yii::$app->user->isGuest) {
+			$this->goHome();
+		}
+		$model = new User(['scenario' => 'login']);
+		if ($model->load(Yii::$app->request->post())) {
+			$user = $this->findByUsername($model->login);
+			$user->validatePassword($model->password);
+		}
+		/*$model = new LoginForm;
+		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+			// В случае успешной авторизации, перенаправляем пользователя обратно на предыдущию страницу.
+			return $this->goBack();
+		}*/
+		// Рендерим представление.
+		$model->addError('login', 'very bad login');
+		return $this->render('login', [
+			'model' => $model
+		]);
+	}
+
+	public function acttionLogout(){
+		Yii::$app->getUser()->logout();
+		return $this->goHome();
 	}
 }

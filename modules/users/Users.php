@@ -26,8 +26,8 @@ class Users extends \yii\base\Module
 	 */
 	public function onSignup($event)
 	{
-		$model = $event->sender;
-		$cr = new ConsoleRunner();
-		return $cr->run('users/signup ' . $model['email'] . ' ' . $model['auth_key']);
+		// $model = $event->sender;
+		// $cr = new ConsoleRunner();
+		// return $cr->run('users/signup ' . $model['email'] . ' ' . $model['auth_key']);
 	}
 }
