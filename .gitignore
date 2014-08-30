@@ -32,3 +32,5 @@ phpunit.phar
 /phpunit.xml
 
 /runtime
+
+/config/db.php
