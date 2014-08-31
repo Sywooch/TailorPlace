@@ -9,6 +9,20 @@ use app\modules\users\models\User;
 
 class DefaultController extends Controller
 {
+	public function init()
+    {
+        $this->on('beforeAction', function ($event) {
+            // запоминаем страницу неавторизованного пользователя, чтобы потом отредиректить его обратно с помощью  goBack()
+            if (Yii::$app->getUser()->isGuest) {
+                $request = Yii::$app->getRequest();
+                // исключаем страницу авторизации или ajax-запросы
+                if (!($request->getIsAjax() || strpos($request->getUrl(), 'login') !== false)) {
+                   Yii::$app->getUser()->setReturnUrl($request->getUrl());
+                }
+            }
+        });
+    }
+
 	public function behaviors()
 	{
 		return [
@@ -20,6 +34,11 @@ class DefaultController extends Controller
 						'allow' => true,
 						'actions' => ['login', 'signup', 'activation', 'recovery'],
 						'roles' => ['?']
+					],
+					[
+						'allow' => true,
+						'actions' => ['logout', 'request-email-change', 'password', 'update'],
+						'roles' => ['@']
 					],
 				]
 			]
@@ -68,8 +87,18 @@ class DefaultController extends Controller
 		}
 		$model = new User(['scenario' => 'login']);
 		if ($model->load(Yii::$app->request->post())) {
-			$user = $this->findByUsername($model->login);
-			$user->validatePassword($model->password);
+			$user = User::findByUsername($model->login);
+			if($user && $user->validatePassword($model->password)){
+				var_dump(Yii::$app->getUser()->getReturnUrl());
+			} else {
+				Yii::$app->session->setFlash('error', 'users', 'Неверно введен логин или пароль');
+				$model->addError('password', 'Неверно введен логин или пароль');
+				return $this->render('login', [
+					'model' => $model
+				]);
+			}
+			
+
 		}
 		/*$model = new LoginForm;
 		if ($model->load(Yii::$app->request->post()) && $model->login()) {
@@ -77,13 +106,12 @@ class DefaultController extends Controller
 			return $this->goBack();
 		}*/
 		// Рендерим представление.
-		$model->addError('login', 'very bad login');
 		return $this->render('login', [
 			'model' => $model
 		]);
 	}
 
-	public function acttionLogout(){
+	public function actionLogout(){
 		Yii::$app->getUser()->logout();
 		return $this->goHome();
 	}

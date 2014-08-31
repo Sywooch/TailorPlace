@@ -55,9 +55,9 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      * Выбор пользователя по [[username]]
      * @param string $username
      */
-    public static function findByUsername($username)
+    public static function findByUsername($login)
     {
-        return static::find()->where('username = :username', [':username' => $username])->one();
+        return static::find()->where('login = :login', [':login' => $login])->one();
     }
 
     /**
@@ -93,7 +93,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return Yii::$app->getSecurity()->validatePassword($password, $this->password_hash);
+        return Yii::$app->getSecurity()->validatePassword($password, $this->password);
     }
 
     /**
@@ -132,6 +132,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             // Frontend scenarios
             'signup' => ['login', 'email', 'password', 'repassword', 'acceptAgreement'],
             'login' => ['login', 'password'],
+            'logout' => [],
         ];
     }
 
@@ -184,5 +185,56 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             'repassword' => 'Повторите пароль',
             'email' => 'E-mail',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Проверяем если это новая запись
+            if ($this->isNewRecord) {
+                // Хэшируем пароль
+                if (!empty($this->password)) {
+                    $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                }
+                // Генерируем уникальный ключ
+                $this->auth_key = Yii::$app->getSecurity()->generateRandomKey();
+            } else {
+                // Активируем пользователя если был отправлен запрос активации
+                if ($this->scenario === 'activation') {
+                    $this->status_id = self::STATUS_ACTIVE;
+                    $this->auth_key = Yii::$app->getSecurity()->generateRandomKey();
+                }
+                // Обновляем пароль и ключ если был отправлен запрос восстановления пароля
+                if ($this->scenario === 'recovery') {
+                    $this->password = Yii::$app->getSecurity()->generateRandomKey(8);
+                    $this->auth_key = Yii::$app->getSecurity()->generateRandomKey();
+                    $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                }
+                // Обновляем пароль если был отправлен запрос для его смены
+                if ($this->scenario === 'password') {
+                    $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                }
+                // При редактировании пароля пользователя в админке, генерируем password_hash
+                if ($this->scenario === 'admin-update' && !empty($this->password)) {
+                    $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                }
+                // Удаляем аватар
+                if ($this->scenario === 'delete-avatar') {
+                    $avatar = Yii::$app->getModule('users')->avatarPath($this->avatar_url);
+                    if (is_file($avatar) && unlink($avatar)) {
+                        $this->avatar_url = '';
+                    }
+                }
+                // Удаляем пользователя
+                if ($this->scenario === 'delete') {
+                    $this->status_id = self::STATUS_DELETED;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }
