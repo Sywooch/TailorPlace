@@ -3,25 +3,12 @@
 namespace app\modules\users\controllers;
 
 use Yii;
-use yii\web\Controller;
+use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use app\modules\users\models\User;
 
-class DefaultController extends Controller
+class DefaultController extends CommonController
 {
-	public function init()
-    {
-        $this->on('beforeAction', function ($event) {
-            // запоминаем страницу неавторизованного пользователя, чтобы потом отредиректить его обратно с помощью  goBack()
-            if (Yii::$app->getUser()->isGuest) {
-                $request = Yii::$app->getRequest();
-                // исключаем страницу авторизации или ajax-запросы
-                if (!($request->getIsAjax() || strpos($request->getUrl(), 'login') !== false)) {
-                   Yii::$app->getUser()->setReturnUrl($request->getUrl());
-                }
-            }
-        });
-    }
 
 	public function behaviors()
 	{
@@ -89,7 +76,7 @@ class DefaultController extends Controller
 		if ($model->load(Yii::$app->request->post())) {
 			$user = User::findByUsername($model->login);
 			if($user && $user->validatePassword($model->password)){
-				var_dump(Yii::$app->getUser()->getReturnUrl());
+
 			} else {
 				Yii::$app->session->setFlash('error', 'users', 'Неверно введен логин или пароль');
 				$model->addError('password', 'Неверно введен логин или пароль');
@@ -97,14 +84,13 @@ class DefaultController extends Controller
 					'model' => $model
 				]);
 			}
-			
-
 		}
 		/*$model = new LoginForm;
 		if ($model->load(Yii::$app->request->post()) && $model->login()) {
 			// В случае успешной авторизации, перенаправляем пользователя обратно на предыдущию страницу.
 			return $this->goBack();
 		}*/
+        var_dump(Yii::$app->getUser()->getReturnUrl());
 		// Рендерим представление.
 		return $this->render('login', [
 			'model' => $model
