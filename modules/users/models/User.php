@@ -123,6 +123,13 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return $value;
     }
 
+    public function validateAcceptAgreement($attribute, $params)
+    {
+        if($this->$attribute == '0'){
+            $this->addError($attribute, "Вы не подтвердили согласие.");
+        }
+    }
+
     /**
      * @inheritdoc
      */
@@ -170,6 +177,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
             // Подтверждение соглашения [[acceptAgreement]]
             ['acceptAgreement', 'boolean', 'on' => ['signup']],
+            ['acceptAgreement', 'validateAcceptAgreement', 'on' => ['signup']],
         ];
     }
 
