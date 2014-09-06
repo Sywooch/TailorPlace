@@ -25,7 +25,7 @@ class CommonController extends Controller
     {
         return [
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => 'app\components\captcha\CaptchaAction',
             ],
         ];
     }
