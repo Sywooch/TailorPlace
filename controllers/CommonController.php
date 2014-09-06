@@ -20,4 +20,13 @@ class CommonController extends Controller
             }
         });
     }
+
+    public function actions()
+    {
+        return [
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+            ],
+        ];
+    }
 }

@@ -53,6 +53,7 @@ $config = [
             'rules' => [
             // Модуль [[Users]]
                 '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
+                'captcha' => 'common/captcha',
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),

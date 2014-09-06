@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
@@ -26,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'username') ?>
 
     <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
 
     <?= $form->field($model, 'rememberMe', [
         'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",

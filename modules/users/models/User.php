@@ -4,6 +4,7 @@ namespace app\modules\users\models;
 
 use \Yii;
 use \yii\db\ActiveRecord;
+use yii\helpers\Url;
 use app\modules\users\models\query\UserQuery;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
@@ -21,6 +22,15 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public $acceptAgreement;
 
+    /**
+     * Капча
+     * @var string
+     */
+    public $captcha;
+
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return '{{%users}}';
@@ -137,7 +147,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             // Frontend scenarios
-            'signup' => ['login', 'email', 'password', 'repassword', 'acceptAgreement'],
+            'signup' => ['login', 'email', 'password', 'repassword', 'acceptAgreement', 'captcha'],
             'login' => ['login', 'password'],
             'logout' => [],
         ];
@@ -158,10 +168,10 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             ['login', 'unique', 'on' => ['signup']],
 
             // E-mail [[email]]
-            ['email', 'filter', 'filter' => 'trim', 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
-            ['email', 'required', 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
-            ['email', 'email', 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
-            ['email', 'string', 'max' => 100, 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'filter', 'filter' => 'trim', 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'required', 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'email', 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'string', 'max' => 100, 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
             ['email', 'unique', 'on' => ['signup', 'admin-update', 'admin-create']],
             ['email', 'exist', 'on' => ['resend', 'recovery'], 'message' => 'Пользователь с указанным адресом не существует.'],
 
@@ -178,6 +188,10 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             // Подтверждение соглашения [[acceptAgreement]]
             ['acceptAgreement', 'boolean', 'on' => ['signup']],
             ['acceptAgreement', 'validateAcceptAgreement', 'on' => ['signup']],
+
+            // Капча
+            ['captcha', 'required'],
+            ['captcha', 'captcha', 'captchaAction' => 'common/captcha'],
         ];
     }
 
