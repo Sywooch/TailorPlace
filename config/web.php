@@ -51,9 +51,12 @@ $config = [
             'suffix' => '/',
 
             'rules' => [
+            // Общее
+                'captcha' => 'common/captcha',
             // Модуль [[Users]]
                 '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
-                'captcha' => 'common/captcha',
+            // Личный кабинет
+                'cabinet' => 'cabinet/statictic/',
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),

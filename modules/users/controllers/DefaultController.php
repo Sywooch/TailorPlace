@@ -32,15 +32,6 @@ class DefaultController extends CommonController
 	// 	];
 	// }
 
-	// public function actions()
- //    {
- //        return [
- //            'captcha' => [
- //                'class' => 'yii\captcha\CaptchaAction',
- //            ],
- //        ];
- //    }
-
     public function actionIndex()
     {
         return $this->render('index');
