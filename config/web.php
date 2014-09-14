@@ -44,6 +44,13 @@ $config = [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+            'defaultRoles' => ['guest', 'user', 'storeOwner', 'atelierOwner', 'admin'],
+            'itemFile' => '@root/modules/rbac/data/items.php',
+            'assignmentFile' => '@root/modules/rbac/data/assignments.php',
+            'ruleFile' => '@root/modules/rbac/data/rules.php',
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
@@ -57,6 +64,7 @@ $config = [
                 '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
             // Личный кабинет
                 'cabinet' => 'cabinet/statictic/',
+                'roles' => 'rbac/rbac/init/',
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
@@ -65,6 +73,9 @@ $config = [
         'gii' => 'yii\gii\Module',
         'users' => [
             'class' => 'app\modules\users\Users'
+        ],
+        'rbac' => [
+            'class' => 'app\modules\rbac\Rbac'
         ],
     ],
     'params' => $params,
