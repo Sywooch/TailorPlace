@@ -2,9 +2,11 @@
 
 namespace app\modules\users\models;
 
-use \Yii;
-use \yii\db\ActiveRecord;
+use Yii;
+use yii\base\UserException;
+use yii\db\ActiveRecord;
 use yii\helpers\Url;
+use yii\rbac\Role;
 use app\modules\users\models\query\UserQuery;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
@@ -133,6 +135,27 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return $value;
     }
 
+    /**
+     * Назначить роль пользователю
+     * @param  Role   $role Объект конкретной роли
+     * @return null
+     */
+    public function assignRole($role)
+    {
+        $auth = Yii::$app->authManager;
+        $Role = $auth->getRole($role);
+        if (!($Role instanceof Role)) {
+            throw new UserException("Роль \"" . $role . "\" не зарегистрирована.");
+        }
+        if ($this->getId()) {
+            $auth->revokeAll($userId);
+            $auth->assign($Role, $this->getId());
+            $this->role = $Role->name;
+        } else {
+            throw new UserException("Попытка назначить права пользователю, не зарегистрированному в базе.");
+        }
+    }
+
     public function validateAcceptAgreement($attribute, $params)
     {
         if($this->$attribute == '0'){
@@ -258,5 +281,16 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             return true;
         }
         return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($this->scenario === 'signup') {
+            $this->assignRole('user');
+        }
+        parent::afterSave($insert, $changedAttributes);
     }
 }

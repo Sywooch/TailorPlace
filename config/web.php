@@ -45,11 +45,8 @@ $config = [
             ],
         ],
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager',
-            'defaultRoles' => ['guest', 'user', 'storeOwner', 'atelierOwner', 'admin'],
-            'itemFile' => '@root/modules/rbac/data/items.php',
-            'assignmentFile' => '@root/modules/rbac/data/assignments.php',
-            'ruleFile' => '@root/modules/rbac/data/rules.php',
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

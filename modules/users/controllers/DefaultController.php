@@ -58,9 +58,6 @@ class DefaultController extends CommonController
 			return $this->goHome();
 		}
 
-		$auth = Yii::$app->getAuthManager();
-		var_dump($auth->getPermissionsByRole('admin'));
-		//var_dump(Yii::$app->getUser()->identity->role);
 		// Рендерим представление.
 		return $this->render('signup', [
 			'model' => $model
