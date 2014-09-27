@@ -60,7 +60,7 @@ $config = [
             // Модуль [[Users]]
                 '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
             // Личный кабинет
-                'cabinet' => 'cabinet/statictic/',
+                'cabinet' => 'cabinet/default/index/',
                 'roles' => 'rbac/rbac/init/',
             ],
         ],
@@ -73,6 +73,9 @@ $config = [
         ],
         'rbac' => [
             'class' => 'app\modules\rbac\Rbac'
+        ],
+        'cabinet' => [
+            'class' => 'app\modules\cabinet\Cabinet'
         ],
     ],
     'params' => $params,

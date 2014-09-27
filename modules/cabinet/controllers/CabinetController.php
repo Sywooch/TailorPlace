@@ -28,7 +28,7 @@ class CabinetController extends CommonController
 			]
 		];
 	}
-	public function actionStatistic()
+	public function actionIndex()
 	{
 		return $this->render('statistic');
 	}

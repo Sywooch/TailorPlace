@@ -7,6 +7,16 @@ use yii\web\Controller;
 
 class CommonController extends Controller
 {
+    /**
+     * Массив экшэнов, которые запрещено сохранять для возврата на предыдущую страницу
+     * @var array
+     */
+    protected $disableReturnToActions = [
+        'login',
+        'captcha',
+    ];
+    // TODO заполнить $disableReturnToActions
+
     public function init()
     {
         $this->on('beforeAction', function ($event) {
@@ -14,7 +24,7 @@ class CommonController extends Controller
             if (Yii::$app->getUser()->isGuest) {
                 $request = Yii::$app->getRequest();
                 // исключаем страницу авторизации или ajax-запросы
-                if (!($request->getIsAjax() || strpos($request->getUrl(), 'login') !== false)) {
+                if (!($request->getIsAjax() || in_array($event->action->id, $this->disableReturnToActions) !== false)) {
                     Yii::$app->getUser()->setReturnUrl($request->getUrl());
                 }
             }
@@ -28,5 +38,14 @@ class CommonController extends Controller
                 'class' => 'app\components\captcha\CaptchaAction',
             ],
         ];
+    }
+
+    /**
+     * Добавить элемент в виджет Breadcrumbs
+     * @param array|string $item
+     */
+    public function addBreadcrumbsItem($item)
+    {
+        Yii::$app->view->params['breadcrumbs'][] = $item;
     }
 }

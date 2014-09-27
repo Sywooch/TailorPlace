@@ -65,6 +65,9 @@ AppAsset::register($this);
         ?>
 
         <div class="container">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
             <div class="row">
                 <div class="col-sm-3">
                     <ul class="nav nav-pills nav-stacked">
@@ -77,9 +80,6 @@ AppAsset::register($this);
                     </ul>
                 </div>
                 <div class="col-sm-8">
-                    <?= Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
                     <?= $content ?>
                 </div>
             </div>
