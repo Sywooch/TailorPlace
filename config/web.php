@@ -44,6 +44,18 @@ $config = [
                 ],
             ],
         ],
+        'view' => [
+            'class' => 'yii\web\View',
+            'renderers' => [
+                'twig' => [
+                    'class' => 'yii\twig\ViewRenderer',
+                    //'cachePath' => '@runtime/Twig/cache',
+                    //'options' => [], /*  Array of twig options */
+                    'globals' => ['html' => '\yii\helpers\Html'],
+                    'uses' => ['yii\bootstrap'],
+                ],
+            ],
+        ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest'],

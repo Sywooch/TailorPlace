@@ -8,6 +8,8 @@ use yii\db\ActiveRecord;
 use yii\helpers\Url;
 use yii\rbac\Role;
 use app\modules\users\models\query\UserQuery;
+use app\models\Country;
+use app\models\City;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -133,6 +135,34 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             Yii::$app->cache->set($key, $value);
         }
         return $value;
+    }
+
+    /**
+     * Получить страну пользователя
+     * @return Country
+     */
+    public function getCountry()
+    {
+        if ($this->country_id) {
+            return $this->hasOne(Country::className(), ['id' => 'country_id']);
+        } else {
+            return new Country();
+        }
+        
+    }
+
+    /**
+     * Получить город пользователя
+     * @return City
+     */
+    public function getCity()
+    {
+        if ($this->city_id) {
+            return $this->hasOne(City::className(), ['id' => 'city_id']);
+        } else {
+            return new City();
+        }
+        
     }
 
     /**
