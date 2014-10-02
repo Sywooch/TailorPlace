@@ -32,5 +32,6 @@ phpunit.phar
 /phpunit.xml
 
 /runtime
-
+/tests
 /config/db.php
+/.bowerrc
