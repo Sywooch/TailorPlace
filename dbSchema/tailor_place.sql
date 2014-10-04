@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.8
+-- version 4.0.10
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Окт 04 2014 г., 15:06
--- Версия сервера: 5.5.37-0ubuntu0.13.10.1
--- Версия PHP: 5.5.3-1ubuntu2.6
+-- Хост: 127.0.0.1:3306
+-- Время создания: Окт 04 2014 г., 21:45
+-- Версия сервера: 5.5.38-log
+-- Версия PHP: 5.5.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,18 +26,13 @@ SET time_zone = "+00:00";
 -- Структура таблицы `auth_assignment`
 --
 
-DROP TABLE IF EXISTS `auth_assignment`;
 CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `item_name` varchar(64) NOT NULL,
   `user_id` varchar(64) NOT NULL,
-  `created_at` int(11) DEFAULT NULL
+  `created_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`item_name`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Очистить таблицу перед добавлением данных `auth_assignment`
---
-
-TRUNCATE TABLE `auth_assignment`;
 --
 -- Дамп данных таблицы `auth_assignment`
 --
@@ -51,7 +46,6 @@ INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 -- Структура таблицы `auth_item`
 --
 
-DROP TABLE IF EXISTS `auth_item`;
 CREATE TABLE IF NOT EXISTS `auth_item` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
@@ -59,14 +53,12 @@ CREATE TABLE IF NOT EXISTS `auth_item` (
   `rule_name` varchar(64) DEFAULT NULL,
   `data` text,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`),
+  KEY `rule_name` (`rule_name`),
+  KEY `idx-auth_item-type` (`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Очистить таблицу перед добавлением данных `auth_item`
---
-
-TRUNCATE TABLE `auth_item`;
 --
 -- Дамп данных таблицы `auth_item`
 --
@@ -86,17 +78,13 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 -- Структура таблицы `auth_item_child`
 --
 
-DROP TABLE IF EXISTS `auth_item_child`;
 CREATE TABLE IF NOT EXISTS `auth_item_child` (
   `parent` varchar(64) NOT NULL,
-  `child` varchar(64) NOT NULL
+  `child` varchar(64) NOT NULL,
+  PRIMARY KEY (`parent`,`child`),
+  KEY `child` (`child`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Очистить таблицу перед добавлением данных `auth_item_child`
---
-
-TRUNCATE TABLE `auth_item_child`;
 --
 -- Дамп данных таблицы `auth_item_child`
 --
@@ -115,38 +103,31 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 -- Структура таблицы `auth_rule`
 --
 
-DROP TABLE IF EXISTS `auth_rule`;
 CREATE TABLE IF NOT EXISTS `auth_rule` (
   `name` varchar(64) NOT NULL,
   `data` text,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Очистить таблицу перед добавлением данных `auth_rule`
---
-
-TRUNCATE TABLE `auth_rule`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `city`
 --
 
-DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `country_id` int(11) unsigned DEFAULT NULL,
   `name_ru` varchar(100) DEFAULT NULL,
-  `name_en` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=438354 DEFAULT CHARSET=utf8;
+  `name_en` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name_ru` (`name_ru`),
+  KEY `name_en` (`name_en`),
+  KEY `country_id` (`country_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=438354 ;
 
---
--- Очистить таблицу перед добавлением данных `city`
---
-
-TRUNCATE TABLE `city`;
 --
 -- Дамп данных таблицы `city`
 --
@@ -1315,7 +1296,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (2554, 23, 'Шиллер Парк', 'Schiller Park'),
 (2555, 23, 'Конкорд', 'Concord'),
 (2556, 23, 'Стрингтаун', 'Stringtown'),
-(2558, 23, 'Систерс', 'Sisters'),
+(2558, 23, 'Систерс', 'Sisters');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (2560, 23, 'Уэстлейк', 'Westlake'),
 (2561, 23, 'Черри Хилл', 'Cherry Hill'),
 (2562, 23, 'Эгг Харбор Тауншип', 'Egg Harbor Township'),
@@ -2470,7 +2452,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (5082, 23, 'Касс Сити', 'Cass City'),
 (5084, 23, 'Рочестер', 'Rochester'),
 (5086, 23, 'Понтиак', 'Pontiac'),
-(5088, 23, 'Нью Балтимор', 'New Baltimore'),
+(5088, 23, 'Нью Балтимор', 'New Baltimore');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (5089, 23, 'Алпайн', 'Alpine'),
 (5090, 23, 'Минден Сити', 'Minden City'),
 (5093, 23, 'Блумфилд Хилс', 'Bloomfield Hills'),
@@ -3620,7 +3603,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (8063, 23, 'Мариетта', 'Marietta'),
 (8081, 23, 'Терривилл', 'Terryville'),
 (8083, 23, 'Мартинсвилл', 'Martinsville'),
-(8084, 23, 'Алпайн', 'Alpine'),
+(8084, 23, 'Алпайн', 'Alpine');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (8085, 23, 'Франкфорт', 'Frankfort'),
 (8086, 23, 'Буффало Гэп', 'Buffalo Gap'),
 (8088, 23, 'Буффало Джанкшен', 'Buffalo Junction'),
@@ -4785,7 +4769,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (11366, 24, 'Торонто', 'Toronto'),
 (11376, 24, 'Парксвилл', 'Parksville'),
 (11386, 24, 'Эдмонтон', 'Edmonton'),
-(11390, 23, 'Посдем', 'Potsdam'),
+(11390, 23, 'Посдем', 'Potsdam');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (11404, 24, 'Ванкувер', 'Vancouver'),
 (11421, 24, 'Саскатун', 'Saskatoon'),
 (11428, 23, 'Далгрен', 'Dahlgren'),
@@ -5923,7 +5908,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (17622, 24, 'Сен-Марк-Сюр-Ришелье', 'Saint Marc sur Richelieu'),
 (17624, 24, 'Маниваки', 'Maniwaki'),
 (17642, 23, 'Холидей ', 'Holiday'),
-(17651, 24, 'Ла Мальбе', 'La Malbaie'),
+(17651, 24, 'Ла Мальбе', 'La Malbaie');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (17653, 23, 'Гейтуэй', 'Gateway'),
 (17663, 23, 'Крейг', 'Craig'),
 (17664, 23, 'Карбондейл', 'Carbondale'),
@@ -7070,7 +7056,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (26793, 23, 'Марлоу', 'Marlow'),
 (26800, 23, 'Уэймут', 'Weymouth'),
 (26803, 23, 'Саут Парис', 'South Paris'),
-(26804, 23, 'Форт Эдуард', 'Fort Edward'),
+(26804, 23, 'Форт Эдуард', 'Fort Edward');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (26805, 23, 'Манор', 'Manor'),
 (26808, 23, 'Хаддэм', 'Haddam'),
 (26809, 24, 'Саттон', 'Sutton'),
@@ -8226,7 +8213,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (34334, 23, 'Гейвилл', 'Gayville'),
 (34335, 23, 'Сентервилл', 'Centerville'),
 (34337, 23, 'Луверн', 'Luverne'),
-(34340, 23, 'Херли', 'Hurley'),
+(34340, 23, 'Херли', 'Hurley');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (34341, 23, 'Уортинг', 'Worthing'),
 (34378, 23, 'Элк Пойнт', 'Elk Point'),
 (34380, 23, 'Выборг', 'Viborg'),
@@ -9382,7 +9370,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (41134, 23, 'Кропуэлл', 'Cropwell'),
 (41135, 23, 'Беллами', 'Bellamy'),
 (41143, 23, 'Петал', 'Petal'),
-(41144, 24, 'Апсли', 'Apsley'),
+(41144, 24, 'Апсли', 'Apsley');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (41146, 23, 'Бакленд', 'Buckland'),
 (41147, 24, 'Кин', 'Keene'),
 (41148, 23, 'Эдвардс', 'Edwards'),
@@ -10524,7 +10513,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (49290, 38, 'Копиапо', 'Copiapo'),
 (49291, 163, 'Ибаге', 'Ibagué'),
 (49292, 163, 'Дуитама', 'Duitama'),
-(49293, 163, 'Барранкабермеха', 'Barrancabermeja'),
+(49293, 163, 'Барранкабермеха', 'Barrancabermeja');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (49294, 163, 'Кукута', 'Cucuta'),
 (49299, 40, 'Кампана', 'Campana'),
 (49300, 40, 'Висенте-Лопес', 'Vicente Lopez'),
@@ -11669,7 +11659,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (51216, 29, 'Битигхайм', 'Bietigheim'),
 (51218, 29, 'Гёппинген', 'Goppingen'),
 (51219, 127, 'Терниц', 'Ternitz'),
-(51222, 29, 'Лихтенау ', 'Lichtenau'),
+(51222, 29, 'Лихтенау ', 'Lichtenau');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (51223, 12, 'Ландерно', 'Landerneau'),
 (51228, 29, 'Линген', 'Lingen'),
 (51229, 21, 'Улверстон', 'Ulverston'),
@@ -11690,8 +11681,7 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (51250, 127, 'Хард', 'Hard'),
 (51251, 29, 'Райнау', 'Rheinau'),
 (51254, 29, 'Марклеберг ', 'Markkleeberg'),
-(51255, 29, 'Мильтенберг ', 'Miltenberg');
-INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
+(51255, 29, 'Мильтенберг ', 'Miltenberg'),
 (51256, 29, 'Бад-Швальбах', 'Schwalbach'),
 (51257, 21, 'Оттершо', 'Ottershaw'),
 (51258, 21, 'Лимингтон-Спа', 'Leamington Spa'),
@@ -12805,7 +12795,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (53212, 13, 'Торреглия', 'Torreglia'),
 (53213, 12, 'Гонесс', 'Gonesse'),
 (53214, 21, 'Льюс ', 'Lewes'),
-(53215, 56, 'Лохристи', 'Lochristi'),
+(53215, 56, 'Лохристи', 'Lochristi');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (53218, 13, 'Марьяно-Коменсе', 'Mariano Comense'),
 (53219, 21, 'Рочфорд', 'Rochford'),
 (53220, 13, 'Джуссано', 'Giussano'),
@@ -13952,7 +13943,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (55850, 21, 'Каслфорд', 'Castleford'),
 (55851, 120, 'Зренянин', 'Zrenjanin'),
 (55857, 13, 'Кава-Манара', 'Cava Manara'),
-(55858, 13, 'Кампозампьеро', 'Camposampiero'),
+(55858, 13, 'Кампозампьеро', 'Camposampiero');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (55859, 21, 'Шептон-Маллет', 'Shepton Mallet'),
 (55860, 202, 'Карловац', 'Karlovac'),
 (55862, 56, 'Вестерло', 'Westerlo'),
@@ -15101,7 +15093,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (58428, 29, 'Тутцинг', 'Tutzing'),
 (58429, 141, 'Мостар', 'Mostar'),
 (58430, 33, 'Ден-Дюнген', 'Den Dungen'),
-(58433, 21, 'Брекон', 'Brecon'),
+(58433, 21, 'Брекон', 'Brecon');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (58434, 12, 'Шам-Сюр-Марн', 'Champs-sur-Marne'),
 (58438, 21, 'Ибсток', 'Ibstock'),
 (58439, 21, 'Сомертон', 'Somerton'),
@@ -16229,7 +16222,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (61435, 12, 'Серьер', 'Serrières'),
 (61437, 18, 'Кастория', 'Kastoria'),
 (61439, 12, 'Ане', 'Anet'),
-(61441, 33, 'Куворден', 'Coevorden'),
+(61441, 33, 'Куворден', 'Coevorden');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (61442, 12, 'Ла Фарлед', 'La Farlède'),
 (61445, 12, 'Плерен', 'Plerin'),
 (61447, 33, 'Мейел', 'Meijel'),
@@ -17342,7 +17336,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (64559, 12, 'Рилльё-ла-Пап', 'Genay'),
 (64560, 13, 'Спольторе', 'Spoltore'),
 (64563, 110, 'Прущ-Гданьский', 'Pruszcz Gdanski'),
-(64564, 110, 'Румя ', 'Rumia'),
+(64564, 110, 'Румя ', 'Rumia');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (64565, 110, 'Картузы', 'Kartuzy'),
 (64566, 2, 'Джорджтаун', 'Georgetown'),
 (64568, 110, 'Мальборк', 'Malbork'),
@@ -18453,7 +18448,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (68032, 13, 'Фольяно-Редипулья', 'Fogliano Redipuglia'),
 (68033, 110, 'Пущиково ', 'Puszczykowo'),
 (68036, 110, 'Бяле-Блота', 'Biale Blota'),
-(68041, 17, 'Понте', 'Ponte'),
+(68041, 17, 'Понте', 'Ponte');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (68043, 12, 'Куршевель', 'Courchevel'),
 (68048, 29, 'Ордруф', 'Ohrdruf'),
 (68049, 13, 'Русси', 'Russi'),
@@ -19578,7 +19574,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (72047, 127, 'Земриах', 'Semriach'),
 (72050, 127, 'Зёлль', 'Soll'),
 (72051, 29, 'Мендиг ', 'Mendig'),
-(72052, 127, 'Бургау', 'Burgau'),
+(72052, 127, 'Бургау', 'Burgau');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (72054, 13, 'Валлетта', 'Valletta'),
 (72059, 29, 'Зексау ', 'Sexau'),
 (72065, 110, 'Клодава', 'Klodawa'),
@@ -20707,7 +20704,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (76322, 13, 'Серино', 'Serino'),
 (76323, 29, 'Браунлаге ', 'Braunlage'),
 (76327, 12, 'Тенкё', 'Tinqueux'),
-(76343, 29, 'Цвизель ', 'Zwiesel'),
+(76343, 29, 'Цвизель ', 'Zwiesel');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (76344, 21, 'Киркинтиллох', 'Kirkintilloch'),
 (76345, 127, 'Бибервир', 'Biberwier'),
 (76351, 127, 'Хинтерстодер', 'Hinterstoder'),
@@ -21815,7 +21813,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (80480, 21, 'Форт-Уильям', 'Fort William'),
 (80481, 13, 'Соверцене', 'Soverzene'),
 (80484, 29, 'Видемар ', 'Wiedemar'),
-(80488, 12, 'Люзарш', 'Luzarches'),
+(80488, 12, 'Люзарш', 'Luzarches');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (80491, 13, 'Граммикеле', 'Grammichele'),
 (80497, 12, 'Гин', 'Guines'),
 (80505, 29, 'Бармштедт ', 'Barmstedt'),
@@ -22944,7 +22943,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (85811, 12, 'Сее', 'Séez'),
 (85813, 21, 'Кимберли', 'Kimberley'),
 (85814, 29, 'Бад-Франкенхаузен', 'Bad Frankenhausen'),
-(85820, 35, 'Иерро', 'El Hierro'),
+(85820, 35, 'Иерро', 'El Hierro');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (85821, 202, 'Велика-Горица', 'Velika Gorica'),
 (85823, 13, 'Капрезе-Микеланджело', 'Caprese Michelangelo'),
 (85824, 21, 'Солтберн-бай-те-Си', 'Saltburn-by-the-Sea'),
@@ -22985,8 +22985,7 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (85998, 12, 'Сантени', 'Santeny'),
 (86000, 33, 'Аннен', 'Annen'),
 (86025, 12, 'Леперон', 'Lespéron'),
-(86028, 33, 'Хелсум', 'Heelsum');
-INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
+(86028, 33, 'Хелсум', 'Heelsum'),
 (86030, 112, 'Калиновка', 'Kalinovka'),
 (86031, 112, 'Шаргород', 'Shargorod'),
 (86037, 114, 'Владислав', 'Vladislav'),
@@ -24071,7 +24070,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (92568, 202, 'Омиш', 'Omis'),
 (92570, 35, 'Тотана', 'Totana'),
 (92571, 13, 'Боза', 'Bosa'),
-(92572, 13, 'Аккуаланья', 'Acqualagna'),
+(92572, 13, 'Аккуаланья', 'Acqualagna');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (92573, 13, 'Сельчи', 'Selci'),
 (92576, 35, 'Форкарей', 'Forcarei'),
 (92579, 29, 'Рантум ', 'Rantum'),
@@ -25195,7 +25195,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (101796, 35, 'Айора', 'Ayora'),
 (101801, 35, 'Форнельс-де-ла-Сельва', 'Fornells de la Selva'),
 (101804, 35, 'Санто-Томе-дель-Пуэрто', 'Santo Tome del Puerto'),
-(101805, 35, 'Руэсга', 'Ruesga'),
+(101805, 35, 'Руэсга', 'Ruesga');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (101814, 125, 'Офьорд', 'Åfjord'),
 (101825, 59, 'Менцинген', 'Menzingen'),
 (101835, 34, 'Маале-Хахамиша', 'Ma''ale Hahamisha'),
@@ -26385,7 +26386,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (107470, 44, 'Комильяс', 'Comillas'),
 (107479, 44, 'Баколод', 'Bacolod'),
 (107489, 44, 'Консепсьон', 'Concepcion'),
-(107499, 44, 'Долорес', 'Dolores'),
+(107499, 44, 'Долорес', 'Dolores');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (107506, 44, 'Сан Пабло', 'San Pablo (Laguna)'),
 (107508, 44, 'Клара', 'Clara'),
 (107511, 44, 'Пуэрто-Принсеса', 'Puerto Princesa City'),
@@ -27632,7 +27634,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (114830, 6, 'Мумбаи', 'Mumbai'),
 (114831, 44, 'Кесон-Сити', 'Quezon City'),
 (114843, 23, 'Пейцинс', 'Paicines'),
-(114845, 23, 'Нотт', 'Knott'),
+(114845, 23, 'Нотт', 'Knott');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (114847, 23, 'Каталдо', 'Cataldo'),
 (114850, 59, 'Ко', 'Caux'),
 (114854, 23, 'Хаммондспорт', 'Hammondsport'),
@@ -28776,7 +28779,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (123660, 23, 'Дак Хилл', 'Duck Hill'),
 (123662, 23, 'Ист Вэрхэм', 'East Wareham'),
 (123683, 23, 'Попак', 'Paupack'),
-(123688, 23, 'Норт Аполло', 'North Apollo'),
+(123688, 23, 'Норт Аполло', 'North Apollo');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (123703, 23, 'Коннеотвилл', 'Conneautville'),
 (123707, 23, 'Смитборо', 'Smithboro'),
 (123708, 23, 'Каназерага', 'Canaseraga'),
@@ -29862,7 +29866,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (128492, 23, 'Канаха Фолс', 'Kanawha Falls'),
 (128494, 23, 'Нормантаун', 'Normantown'),
 (128495, 23, 'Джоди', 'Jodie'),
-(128501, 23, 'Уайтсвилл', 'Whitesville'),
+(128501, 23, 'Уайтсвилл', 'Whitesville');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (128507, 23, 'Вудхалл', 'Woodhull'),
 (128508, 23, 'Траупсберг', 'Troupsburg'),
 (128509, 23, 'Уайтсвилл', 'Whitesville'),
@@ -31025,7 +31030,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (133882, 23, 'Браунвилл', 'Brownville'),
 (133892, 23, 'Баскин', 'Baskin'),
 (133893, 23, 'Квинтон', 'Quinton'),
-(133895, 23, 'Грин Понд', 'Green Pond'),
+(133895, 23, 'Грин Понд', 'Green Pond');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (133899, 23, 'Спринг Глен', 'Spring Glen'),
 (133900, 23, 'Гленфорд', 'Glenford'),
 (133903, 23, 'Топонас', 'Toponas'),
@@ -32169,7 +32175,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (138535, 12, 'Бюси-Сен-Жорж', 'Bussy-Saint-Georges'),
 (138538, 12, 'Лаграс', 'Lagrasse'),
 (138539, 12, 'Пор-де-Бук', 'Port-de-Bouc'),
-(138546, 12, 'Монтиньяк', 'Montignac'),
+(138546, 12, 'Монтиньяк', 'Montignac');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (138554, 12, 'Гжан-Местра', 'Gujan-Mestras'),
 (138555, 12, 'Каллен', 'Callen'),
 (138557, 12, 'Узель', 'Uzel'),
@@ -33140,7 +33147,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (143543, 20, 'Шадринск', 'Shadrinsk'),
 (143545, 13, 'Кастильон-Фьорентино', 'Castiglion Fiorentino'),
 (143546, 55, 'Скеррис', 'Skerries'),
-(143547, 55, 'Донабейт', 'Donabate'),
+(143547, 55, 'Донабейт', 'Donabate');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (143554, 15, 'Юккасъярви', 'Jukkasjärvi'),
 (143558, 15, 'Терендё', 'Tärendö'),
 (143577, 12, 'Пюимироль', 'Puymirol'),
@@ -34168,7 +34176,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (150820, 12, 'Конде-Нортан', 'Conde-Northen'),
 (150863, 12, 'Аржелес-Сюр-Мер', 'Argeles-sur-Mer'),
 (150864, 12, 'Сен-Максимен', 'Saint-Maximin'),
-(150877, 12, 'Пети-Берсак', 'Petit-bersac'),
+(150877, 12, 'Пети-Берсак', 'Petit-bersac');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (150920, 12, 'Орибо-Сюр-Сиань', 'Auribeau-sur-Siagne'),
 (150940, 12, 'Пьерфё-дю-Вар ', 'Pierrefeu-du-var'),
 (150942, 12, 'Орон', 'Auron'),
@@ -34221,8 +34230,7 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (151410, 141, 'Жепче', 'Zepce'),
 (151416, 29, 'Дайлинген', 'Deilingen'),
 (151423, 29, 'Дайзендорф ', 'Daisendorf'),
-(151428, 29, 'Изенбюттель', 'Isenbuttel');
-INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
+(151428, 29, 'Изенбюттель', 'Isenbuttel'),
 (151432, 29, 'Штадтольдендорф ', 'Stadtoldendorf'),
 (151463, 29, 'Вайербуш ', 'Weyerbusch'),
 (151465, 29, 'Пудербах', 'Puderbach'),
@@ -35274,7 +35282,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (155879, 12, 'Баларюк-ле-Вьё', 'Balaruc-le-vieux'),
 (155887, 12, 'Фонтаний-Корнийон', 'Fontanil-cornillon'),
 (155894, 21, 'Померой', 'Pomeroy'),
-(155895, 21, 'Галбалли', 'Galbally'),
+(155895, 21, 'Галбалли', 'Galbally');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (155901, 59, 'Шексбр', 'Chexbres'),
 (155918, 18, 'Эретрия', 'Eretria'),
 (155922, 121, 'Крумовград', 'Krumovgrad'),
@@ -36382,7 +36391,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (160605, 23, 'Каролина', 'Carolina'),
 (160609, 23, 'Патон', 'Paton'),
 (160616, 23, 'Шенвус', 'Schenevus'),
-(160620, 23, 'Лантри', 'Lantry'),
+(160620, 23, 'Лантри', 'Lantry');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (160621, 23, 'Риджуэй', 'Ridgeway'),
 (160624, 23, 'Матадор', 'Matador'),
 (160625, 24, 'Флешертон', 'Flesherton'),
@@ -37504,7 +37514,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (167088, 12, 'Каркан', 'Carcans'),
 (167092, 12, 'Триганс', 'Trigance'),
 (167097, 12, 'Форж-Лез-О', 'Forges-les-Eaux'),
-(167104, 109, 'Альва', 'Alva'),
+(167104, 109, 'Альва', 'Alva');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (167110, 109, 'Хопа', 'Hopa'),
 (167114, 109, 'Урла', 'Urla'),
 (167136, 35, 'Кастрильон', 'Castrillon'),
@@ -38608,7 +38619,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (173965, 29, 'Мюленбек', 'Muhlenbeck'),
 (173980, 29, 'Куппенхайм', 'Kuppenheim'),
 (173985, 29, 'Нойзорг ', 'Neusorg'),
-(173987, 29, 'Шайнфельд', 'Scheinfeld'),
+(173987, 29, 'Шайнфельд', 'Scheinfeld');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (174006, 12, 'Мурмелон-ле-Гран', 'Mourmelon-le-grand'),
 (174015, 12, 'Мажк', 'Magescq'),
 (174031, 12, 'Эпрето', 'Épretot'),
@@ -39681,7 +39693,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (182538, 114, 'Рокитнице-над-Йизероу', 'Rokytnice nad Jizerou'),
 (182542, 35, 'Симанкас', 'Simancas'),
 (182544, 12, 'Эрге-Габерик', 'Ergué-Gabéric'),
-(182546, 13, 'Сант''Эджидио-алла-Вибрата', 'Sant''Egidio alla Vibrata'),
+(182546, 13, 'Сант''Эджидио-алла-Вибрата', 'Sant''Egidio alla Vibrata');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (182547, 12, 'Сенон', 'Senones'),
 (182550, 12, 'Бретиньоль-Сюр-Мер', 'Bretignolles-sur-Mer'),
 (182555, 12, 'Рюпт-Сюр-Мозель', 'Rupt-sur-Moselle'),
@@ -40705,7 +40718,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (189089, 54, 'Динаджпур', 'Dinajpur'),
 (189095, 44, 'Толоса', 'Tolosa'),
 (189099, 6, 'Раджула', 'Rajula'),
-(189103, 52, 'Ноону Атолл', 'Manadhoo'),
+(189103, 52, 'Ноону Атолл', 'Manadhoo');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (189124, 23, 'Маунт Мейс', 'Mount Meigs'),
 (189143, 23, 'Си Айленд', 'Sea Island'),
 (189238, 23, 'Фрайарс Пойнт', 'Friars Point'),
@@ -41756,7 +41770,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (196025, 23, 'Иглс Мир', 'Eagles Mere'),
 (196028, 40, 'Камаронес', 'Camarones'),
 (196034, 58, 'Трайри', 'Trairi'),
-(196041, 163, 'Мурильо', 'Murillo'),
+(196041, 163, 'Мурильо', 'Murillo');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (196051, 58, 'Жижока-ди-Жерикоакоара', 'Jericoacoara'),
 (196052, 58, 'Пираньяс', 'Piranhas'),
 (196056, 40, 'Перико', 'Perico'),
@@ -42825,7 +42840,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (203090, 29, 'Тешо', 'Teschow'),
 (203123, 110, 'Загоже-Сласке', 'Zagorze Slaskie'),
 (203126, 110, 'Помлево ', 'Pomlewo'),
-(203184, 110, 'Корбелюв', 'Korbielow'),
+(203184, 110, 'Корбелюв', 'Korbielow');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (203188, 110, 'Любово', 'Lubowo'),
 (203241, 110, 'Мезово', 'Mezowo'),
 (203269, 110, 'Ярнолтувек', 'Jarnoltówek'),
@@ -43895,7 +43911,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (210542, 18, 'Аполлония', 'Apollonía'),
 (210543, 18, 'Неос Мармарас', 'Neos Marmaras'),
 (210545, 21, 'Страдброк', 'Stradbroke'),
-(210547, 17, 'Вале-де-Аморейра ', 'Vale De Amoreira'),
+(210547, 17, 'Вале-де-Аморейра ', 'Vale De Amoreira');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (210553, 140, 'Керну', 'Kernu'),
 (210558, 12, 'Вьё-Буко-Ле-Бэн', 'Vieux-Boucau-les-Bains'),
 (210559, 12, 'Кардан', 'Cardan'),
@@ -44981,7 +44998,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (216638, 35, 'Канделарио', 'Candelario'),
 (216649, 29, 'Эрда', 'Erda'),
 (216661, 29, 'Гарц', 'Garz'),
-(216671, 29, 'Иоахимсталь', 'Joachimsthal'),
+(216671, 29, 'Иоахимсталь', 'Joachimsthal');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (216686, 15, 'Еддеде ', 'Gäddede'),
 (216691, 13, 'Монтерони-д''Арбия', 'Monteroni d''Arbia'),
 (216696, 13, 'Арсита', 'Arsita'),
@@ -45051,8 +45069,7 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (217284, 1, 'Пинграп', 'Pingrup'),
 (217285, 1, 'Помонал', 'Pomonal'),
 (217293, 1, 'Левендейл', 'Levendale'),
-(217298, 1, 'Дамбак', 'Dumbalk');
-INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
+(217298, 1, 'Дамбак', 'Dumbalk'),
 (217299, 6, 'Колва', 'Colva'),
 (217304, 1, 'Крабес Крик', 'Crabbes Creek'),
 (217305, 1, 'Таллаванг', 'Tallawang'),
@@ -46028,7 +46045,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (224653, 12, 'Сен-Сир-Ле-Винь', 'Saint-cyr-les-vignes'),
 (224656, 12, 'Сент-Андре-де-ла-Марше', 'Saint-andré-de-la-marche'),
 (224669, 29, 'Бреттин ', 'Brettin'),
-(224688, 12, 'Аспр-Сюр-Бюеш', 'Aspres-sur-Buech'),
+(224688, 12, 'Аспр-Сюр-Бюеш', 'Aspres-sur-Buech');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (224689, 12, 'Пимбо', 'Pimbo'),
 (224696, 12, 'Эванс', 'Évans'),
 (224720, 12, 'Мье', 'Miers'),
@@ -47094,7 +47112,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (234770, 23, 'Элка Парк', 'Elka Park'),
 (234777, 1, 'Риана', 'Riana'),
 (234780, 1, 'Бинак', 'Beenak'),
-(234781, 2, 'Ленггонг', 'Lenggong'),
+(234781, 2, 'Ленггонг', 'Lenggong');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (234795, 24, 'Роуз Прейри', 'Rose Prairie'),
 (234796, 24, 'Робсарт', 'Robsart'),
 (234797, 24, 'Кандо', 'Cando'),
@@ -48149,7 +48168,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (245461, 1, 'Стрцелеки', 'Strzelecki'),
 (245463, 48, 'Бленхейм', 'Blenheim'),
 (245465, 1, 'Кингауэр', 'Kingower'),
-(245471, 1, 'Ниетта', 'Nietta'),
+(245471, 1, 'Ниетта', 'Nietta');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (245473, 1, 'Джэкис Марш', 'Jackeys Marsh'),
 (245479, 49, 'Баттамбанг ', 'Battambang'),
 (245482, 44, 'Канделария', 'Candelaria'),
@@ -49204,7 +49224,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (257945, 4, 'Липу', 'Lipu'),
 (257947, 1, 'Маунт Осса', 'Mount Ossa'),
 (257951, 5, 'Ино', 'Ino'),
-(257957, 24, 'Маква', 'Makwa'),
+(257957, 24, 'Маква', 'Makwa');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (257960, 24, 'Сенлак', 'Senlac'),
 (257961, 24, 'Гаррик', 'Garrick'),
 (257970, 13, 'Вальтурнанш', 'Valtournenche'),
@@ -50275,7 +50296,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (273508, 20, 'Чернышевск', 'Chernyshevsk'),
 (273509, 13, 'Кастель-Сан-Пьетро-Романо', 'Castel San Pietro Romano'),
 (273517, 29, 'Лаймен', 'Leimen'),
-(273527, 217, 'Роцел', 'Rozel'),
+(273527, 217, 'Роцел', 'Rozel');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (273545, 145, 'Померлош', 'Pommerloch'),
 (273603, 12, 'Безанкур', 'Bezancourt'),
 (273628, 12, 'Пюиморен', 'Puymaurin'),
@@ -51365,7 +51387,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (296041, 5, 'Такада', 'Takada'),
 (296048, 6, 'Бадди', 'Kohra'),
 (296053, 9, 'Донсак', 'Don Sak'),
-(296137, 40, 'Виллар', 'Villars'),
+(296137, 40, 'Виллар', 'Villars');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (296176, 163, 'Назарет', 'Nazareth'),
 (296183, 175, 'Санта Елена', 'Santa Elena'),
 (296255, 58, 'Альтамира', 'Altamira'),
@@ -52427,7 +52450,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (327626, 110, 'Брок', 'Brok'),
 (327671, 13, 'Ентраккуе', 'Entracque'),
 (327722, 6, 'Натхдвара', 'Nathdwara'),
-(327727, 4, 'Ньингчи', 'Nyingchi'),
+(327727, 4, 'Ньингчи', 'Nyingchi');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (327743, 18, 'Агия Анна', 'Kírinthos'),
 (327812, 160, 'Гуачапала', 'Guachapala'),
 (327813, 187, 'Артигас', 'Artigas'),
@@ -53512,7 +53536,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (377278, 44, 'Лапу-Лапу Сити', 'Lapu-Lapu City'),
 (377280, 44, 'Котабато', 'Cotabato City'),
 (377281, 44, 'Тагбиларан', 'Tagbilaran City'),
-(377282, 44, 'Липа', 'Lipa City'),
+(377282, 44, 'Липа', 'Lipa City');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (377283, 44, 'Манила', 'Manila'),
 (377284, 44, 'Самбоанга', 'Zamboanga City'),
 (377298, 4, 'Луфын', 'Lufeng'),
@@ -54557,7 +54582,8 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (411720, 59, 'Блаттен', 'Blatten'),
 (411799, 109, 'Савсат', 'Savsat'),
 (411867, 12, 'Бонкур', 'Boncourt'),
-(411911, 12, 'Гаргас', 'Gargas'),
+(411911, 12, 'Гаргас', 'Gargas');
+INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 (411994, 12, 'Шомон', 'Chaumont'),
 (412024, 12, 'Сент-Обен', 'Saint-aubin'),
 (412031, 12, 'Пон-л ''Аббе ', 'Pont-l''Abbe'),
@@ -55075,19 +55101,16 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 -- Структура таблицы `country`
 --
 
-DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name_ru` varchar(100) DEFAULT NULL,
   `name_en` varchar(100) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8;
+  `code` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name_en` (`name_en`),
+  KEY `name_ru` (`name_ru`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=248 ;
 
---
--- Очистить таблицу перед добавлением данных `country`
---
-
-TRUNCATE TABLE `country`;
 --
 -- Дамп данных таблицы `country`
 --
@@ -55343,20 +55366,15 @@ INSERT INTO `country` (`id`, `name_ru`, `name_en`, `code`) VALUES
 -- Структура таблицы `currency`
 --
 
-DROP TABLE IF EXISTS `currency`;
 CREATE TABLE IF NOT EXISTS `currency` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(3) NOT NULL COMMENT 'Трехзначный код валюты',
   `symbol` varchar(10) NOT NULL COMMENT 'Символ',
   `name_ru` varchar(20) NOT NULL COMMENT 'Русское название',
-  `name_en` varchar(20) NOT NULL COMMENT 'Английское название'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `name_en` varchar(20) NOT NULL COMMENT 'Английское название',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
---
--- Очистить таблицу перед добавлением данных `currency`
---
-
-TRUNCATE TABLE `currency`;
 --
 -- Дамп данных таблицы `currency`
 --
@@ -55366,7 +55384,10 @@ INSERT INTO `currency` (`id`, `code`, `symbol`, `name_ru`, `name_en`) VALUES
 (2, 'USD', '$', 'Доллар США', 'US Dollar'),
 (4, 'EUR', '€', 'Евро', 'Euro'),
 (5, 'CNY', '¥', 'Юань', 'Yuan Renminbi'),
-(6, 'JPY', '¥', 'Иена', 'Yen');
+(6, 'JPY', '¥', 'Иена', 'Yen'),
+(7, 'UAH', '₴', 'Гривна', 'Hryvnia'),
+(8, 'KZT', '₸', 'Тенге', 'Tenge'),
+(9, 'MNT', '₮', 'Тугрик', 'Tugrik');
 
 -- --------------------------------------------------------
 
@@ -55374,17 +55395,12 @@ INSERT INTO `currency` (`id`, `code`, `symbol`, `name_ru`, `name_en`) VALUES
 -- Структура таблицы `migration`
 --
 
-DROP TABLE IF EXISTS `migration`;
 CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Очистить таблицу перед добавлением данных `migration`
---
-
-TRUNCATE TABLE `migration`;
 --
 -- Дамп данных таблицы `migration`
 --
@@ -55399,9 +55415,8 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- Структура таблицы `studio`
 --
 
-DROP TABLE IF EXISTS `studio`;
 CREATE TABLE IF NOT EXISTS `studio` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL COMMENT 'id пользователя - хозяина студии',
   `type` enum('atelier','store') NOT NULL COMMENT 'Тип студи (ателье или магазин)',
   `name` varchar(30) NOT NULL COMMENT 'Название студии',
@@ -55409,23 +55424,20 @@ CREATE TABLE IF NOT EXISTS `studio` (
   `description` text COMMENT 'Описание студии',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата создания',
   `update_time` timestamp NULL DEFAULT NULL COMMENT 'Дата обновления',
-  `avatar` varchar(100) DEFAULT NULL COMMENT 'Путь к аватарке студии'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `avatar` varchar(100) DEFAULT NULL COMMENT 'Путь к аватарке студии',
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Очистить таблицу перед добавлением данных `studio`
---
-
-TRUNCATE TABLE `studio`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(30) NOT NULL COMMENT 'Логин пользователя',
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL COMMENT 'Хэш пароля пользователя',
@@ -55438,14 +55450,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `country_id` int(10) unsigned DEFAULT NULL COMMENT 'id страны пользователя',
   `city_id` int(10) unsigned DEFAULT NULL COMMENT 'id города пользователя',
   `currency_code` enum('RUR','USD','EUR','CNY','TRY','JPY') NOT NULL DEFAULT 'RUR',
-  `address` varchar(500) DEFAULT NULL COMMENT 'Адрес доставки пользователя'
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `address` varchar(500) DEFAULT NULL COMMENT 'Адрес доставки пользователя',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `userscol_UNIQUE` (`login`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  KEY `country_id` (`country_id`),
+  KEY `city_id` (`city_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
---
--- Очистить таблицу перед добавлением данных `users`
---
-
-TRUNCATE TABLE `users`;
 --
 -- Дамп данных таблицы `users`
 --
@@ -55455,99 +55467,6 @@ INSERT INTO `users` (`id`, `login`, `email`, `password`, `auth_key`, `name`, `st
 (9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', 'user', '2014-09-20 11:57:40', NULL, NULL, NULL, 'RUR', NULL);
 
 --
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `auth_assignment`
---
-ALTER TABLE `auth_assignment`
- ADD PRIMARY KEY (`item_name`,`user_id`);
-
---
--- Индексы таблицы `auth_item`
---
-ALTER TABLE `auth_item`
- ADD PRIMARY KEY (`name`), ADD KEY `rule_name` (`rule_name`), ADD KEY `idx-auth_item-type` (`type`);
-
---
--- Индексы таблицы `auth_item_child`
---
-ALTER TABLE `auth_item_child`
- ADD PRIMARY KEY (`parent`,`child`), ADD KEY `child` (`child`);
-
---
--- Индексы таблицы `auth_rule`
---
-ALTER TABLE `auth_rule`
- ADD PRIMARY KEY (`name`);
-
---
--- Индексы таблицы `city`
---
-ALTER TABLE `city`
- ADD PRIMARY KEY (`id`), ADD KEY `name_ru` (`name_ru`), ADD KEY `name_en` (`name_en`), ADD KEY `country_id` (`country_id`);
-
---
--- Индексы таблицы `country`
---
-ALTER TABLE `country`
- ADD PRIMARY KEY (`id`), ADD KEY `name_en` (`name_en`), ADD KEY `name_ru` (`name_ru`);
-
---
--- Индексы таблицы `currency`
---
-ALTER TABLE `currency`
- ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `migration`
---
-ALTER TABLE `migration`
- ADD PRIMARY KEY (`version`);
-
---
--- Индексы таблицы `studio`
---
-ALTER TABLE `studio`
- ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`), ADD KEY `user_id` (`user_id`);
-
---
--- Индексы таблицы `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `userscol_UNIQUE` (`login`), ADD UNIQUE KEY `email_UNIQUE` (`email`), ADD KEY `country_id` (`country_id`), ADD KEY `city_id` (`city_id`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `city`
---
-ALTER TABLE `city`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=438354;
---
--- AUTO_INCREMENT для таблицы `country`
---
-ALTER TABLE `country`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=248;
---
--- AUTO_INCREMENT для таблицы `currency`
---
-ALTER TABLE `currency`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT для таблицы `studio`
---
-ALTER TABLE `studio`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
 -- Ограничения внешнего ключа сохраненных таблиц
 --
 
@@ -55555,33 +55474,33 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- Ограничения внешнего ключа таблицы `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `auth_item`
 --
 ALTER TABLE `auth_item`
-ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
-ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `studio`
 --
 ALTER TABLE `studio`
-ADD CONSTRAINT `studio_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `studio_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON UPDATE CASCADE,
-ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
