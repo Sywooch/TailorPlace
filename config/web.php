@@ -44,6 +44,22 @@ $config = [
                 ],
             ],
         ],
+        'view' => [
+            'class' => 'yii\web\View',
+            'renderers' => [
+                'twig' => [
+                    'class' => 'yii\twig\ViewRenderer',
+                    //'cachePath' => '@runtime/Twig/cache',
+                    //'options' => [], /*  Array of twig options */
+                    'globals' => ['html' => '\yii\helpers\Html'],
+                    'uses' => ['yii\bootstrap'],
+                ],
+            ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
@@ -51,8 +67,13 @@ $config = [
             'suffix' => '/',
 
             'rules' => [
+            // Общее
+                'captcha' => 'common/captcha',
             // Модуль [[Users]]
                 '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
+            // Личный кабинет
+                'cabinet' => 'cabinet/default/index/',
+                'roles' => 'rbac/rbac/init/',
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
@@ -62,9 +83,17 @@ $config = [
         'users' => [
             'class' => 'app\modules\users\Users'
         ],
+        'rbac' => [
+            'class' => 'app\modules\rbac\Rbac'
+        ],
+        'cabinet' => [
+            'class' => 'app\modules\cabinet\Cabinet'
+        ],
     ],
     'params' => $params,
 ];
+
+Yii::setAlias('@root', realpath(dirname(__FILE__).'/../'));
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

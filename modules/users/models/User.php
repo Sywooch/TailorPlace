@@ -2,9 +2,15 @@
 
 namespace app\modules\users\models;
 
-use \Yii;
-use \yii\db\ActiveRecord;
+use Yii;
+use yii\base\UserException;
+use yii\db\ActiveRecord;
+use yii\helpers\Url;
+use yii\rbac\Role;
 use app\modules\users\models\query\UserQuery;
+use app\modules\studio\models\Studio;
+use app\models\Country;
+use app\models\City;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -21,6 +27,15 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public $acceptAgreement;
 
+    /**
+     * Капча
+     * @var string
+     */
+    public $captcha;
+
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return '{{%users}}';
@@ -124,13 +139,72 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
+     * Получить страну пользователя
+     * @return Country
+     */
+    public function getCountry()
+    {
+        if ($this->country_id) {
+            return $this->hasOne(Country::className(), ['id' => 'country_id']);
+        } else {
+            return new Country();
+        }
+    }
+
+    /**
+     * Получить город пользователя
+     * @return City
+     */
+    public function getCity()
+    {
+        if ($this->city_id) {
+            return $this->hasOne(City::className(), ['id' => 'city_id']);
+        } else {
+            return new City();
+        }
+    }
+
+    public function getStudio()
+    {
+        return $this->hasOne(Studio::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * Назначить роль пользователю
+     * @param  Role   $role Объект конкретной роли
+     * @return null
+     */
+    public function assignRole($role)
+    {
+        $auth = Yii::$app->authManager;
+        $Role = $auth->getRole($role);
+        if (!($Role instanceof Role)) {
+            throw new UserException("Роль \"" . $role . "\" не зарегистрирована.");
+        }
+        if ($this->getId()) {
+            $auth->revokeAll($userId);
+            $auth->assign($Role, $this->getId());
+            $this->role = $Role->name;
+        } else {
+            throw new UserException("Попытка назначить права пользователю, не зарегистрированному в базе.");
+        }
+    }
+
+    public function validateAcceptAgreement($attribute, $params)
+    {
+        if($this->$attribute == '0'){
+            $this->addError($attribute, "Вы не подтвердили согласие.");
+        }
+    }
+
+    /**
      * @inheritdoc
      */
     public function scenarios()
     {
         return [
             // Frontend scenarios
-            'signup' => ['login', 'email', 'password', 'repassword', 'acceptAgreement'],
+            'signup' => ['login', 'email', 'password', 'repassword', 'acceptAgreement', 'captcha'],
             'login' => ['login', 'password'],
             'logout' => [],
         ];
@@ -151,10 +225,10 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             ['login', 'unique', 'on' => ['signup']],
 
             // E-mail [[email]]
-            ['email', 'filter', 'filter' => 'trim', 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
-            ['email', 'required', 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
-            ['email', 'email', 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
-            ['email', 'string', 'max' => 100, 'on' => ['signup', 'login', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'filter', 'filter' => 'trim', 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'required', 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'email', 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
+            ['email', 'string', 'max' => 100, 'on' => ['signup', 'recovery', 'admin-update', 'admin-create']],
             ['email', 'unique', 'on' => ['signup', 'admin-update', 'admin-create']],
             ['email', 'exist', 'on' => ['resend', 'recovery'], 'message' => 'Пользователь с указанным адресом не существует.'],
 
@@ -170,6 +244,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
             // Подтверждение соглашения [[acceptAgreement]]
             ['acceptAgreement', 'boolean', 'on' => ['signup']],
+            ['acceptAgreement', 'validateAcceptAgreement', 'on' => ['signup']],
+
+            // Капча
+            ['captcha', 'required'],
+            ['captcha', 'captcha', 'captchaAction' => 'common/captcha'],
         ];
     }
 
@@ -236,5 +315,16 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             return true;
         }
         return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ($this->scenario === 'signup') {
+            $this->assignRole('user');
+        }
+        parent::afterSave($insert, $changedAttributes);
     }
 }

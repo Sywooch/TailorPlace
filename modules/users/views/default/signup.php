@@ -9,6 +9,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use yii\captcha\Captcha;
 
 $this->title = 'Регистрация';
 $this->params['breadcrumbs'][] = $this->title;
@@ -25,6 +26,7 @@ $form->field($model, 'password')->passwordInput().
 $form->field($model, 'repassword')->passwordInput().
 $form->field($model, 'email').
 $form->field($model, 'acceptAgreement')->checkbox().
+$form->field($model, 'captcha')->widget(Captcha::className(), ['captchaAction' => '/captcha']).
 Html::submitButton('Зарегистрироватся', ['class' => 'btn btn-success btn-large pull-right']);
 
 ActiveForm::end();

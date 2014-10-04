@@ -32,12 +32,10 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-
-                $items = [
+            $items = [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
-
                 ];
             if (Yii::$app->user->isGuest) {
                 $items[] = [
@@ -52,6 +50,7 @@ AppAsset::register($this);
                 $items[] = [
                     'label' => 'Личный кабинет',
                     'url' => ['/cabinet'],
+                    'active' => true,
                 ];
                 $items[] = [
                     'label' => 'Выйти',
@@ -69,7 +68,21 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
-            <?= $content ?>
+            <div class="row">
+                <div class="col-sm-3">
+                    <ul class="nav nav-pills nav-stacked">
+                         <li><a href="#">Статистика</a></li>
+                         <li><a href="#">Моё ателье</a></li>
+                         <li><a href="#">Сообщения</a></li>
+                         <li><a href="#">Заказы</a></li>
+                         <li><a href="#">Персональные данные</a></li>
+                         <li><a href="#">Услуги сайта</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-8">
+                    <?= $content ?>
+                </div>
+            </div>
         </div>
     </div>
 

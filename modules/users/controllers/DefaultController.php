@@ -9,28 +9,28 @@ use app\modules\users\models\User;
 
 class DefaultController extends CommonController
 {
-
-	public function behaviors()
-	{
-		return [
-			'access' => [
-				'class' => AccessControl::className(),
-				'rules' => [
-				    // Разрешаем доступ нужным пользователям.
-					[
-						'allow' => true,
-						'actions' => ['login', 'signup', 'activation', 'recovery'],
-						'roles' => ['?']
-					],
-					[
-						'allow' => true,
-						'actions' => ['logout', 'request-email-change', 'password', 'update'],
-						'roles' => ['@']
-					],
-				]
-			]
-		];
-	}
+	// TODO определить поведения
+	// public function behaviors()
+	// {
+	// 	return [
+	// 		'access' => [
+	// 			'class' => AccessControl::className(),
+	// 			'rules' => [
+	// 			    // Разрешаем доступ нужным пользователям.
+	// 				// [
+	// 				// 	'allow' => true,
+	// 				// 	'actions' => ['login', 'signup', 'activation', 'recovery', 'captcha'],
+	// 				// 	'roles' => ['?']
+	// 				// ],
+	// 				// [
+	// 				// 	'allow' => true,
+	// 				// 	'actions' => ['logout', 'request-email-change', 'password', 'update'],
+	// 				// 	'roles' => ['@']
+	// 				// ],
+	// 			]
+	// 		]
+	// 	];
+	// }
 
     public function actionIndex()
     {
@@ -57,6 +57,7 @@ class DefaultController extends CommonController
 			// Возвращаем пользователя на главную.
 			return $this->goHome();
 		}
+
 		// Рендерим представление.
 		return $this->render('signup', [
 			'model' => $model
@@ -76,7 +77,8 @@ class DefaultController extends CommonController
 		if ($model->load(Yii::$app->request->post())) {
 			$user = User::findByUsername($model->login);
 			if($user && $user->validatePassword($model->password)){
-
+				Yii::$app->user->login($user, 3600*24*30);
+				return $this->goBack();
 			} else {
 				Yii::$app->session->setFlash('error', 'users', 'Неверно введен логин или пароль');
 				$model->addError('password', 'Неверно введен логин или пароль');
@@ -85,12 +87,6 @@ class DefaultController extends CommonController
 				]);
 			}
 		}
-		/*$model = new LoginForm;
-		if ($model->load(Yii::$app->request->post()) && $model->login()) {
-			// В случае успешной авторизации, перенаправляем пользователя обратно на предыдущию страницу.
-			return $this->goBack();
-		}*/
-        var_dump(Yii::$app->getUser()->getReturnUrl());
 		// Рендерим представление.
 		return $this->render('login', [
 			'model' => $model
