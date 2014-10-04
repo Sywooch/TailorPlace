@@ -20,9 +20,26 @@ class Cabinet extends \yii\base\Module
 	    	if (Yii::$app->getUser()->isGuest) {
 	    		throw new ForbiddenHttpException('У вас нет прав просматривать данную страницу.');
 	    	}
-	        if (isset($action->controller->breadcrumbItem)) {
-	        $action->controller->addBreadcrumbsItem(['label' => 'Личный кабинет', 'url' => ['/cabinet']]);
-	        	$action->controller->addBreadcrumbsItem($action->controller->breadcrumbItem);
+	        if (isset($action->controller->breadcrumbItems)) {
+	        	$action->controller->addBreadcrumbsItem(['label' => 'Личный кабинет', 'url' => ['/cabinet']]);
+
+				$items = $action->controller->breadcrumbItems[$action->id];
+	        	if (is_array($items)) {
+	        		foreach ($items as $item) {
+	        			if (isset($item['url'])) {
+	        				$action->controller->addBreadcrumbsItem([
+	        					'label' => $item['label'],
+	        					'url' => $item['url']
+        					]);
+	        			} else {
+	        				$action->controller->addBreadcrumbsItem([
+	        					'label' => $item['label']
+        					]);
+	        			}
+	        		}
+	        	} else {
+	        		$action->controller->addBreadcrumbsItem(['label' => $items]);
+	        	}
 	        } else {
 	        	$action->controller->addBreadcrumbsItem(['label' => 'Личный кабинет']);
 	        }

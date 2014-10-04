@@ -4,7 +4,6 @@ namespace app\modules\cabinet\controllers;
 
 use app\controllers\CommonController;
 use yii\filters\AccessControl;
-use app\modules\cabinet\models\User;
 
 class DefaultController extends CommonController
 {

@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\Url;
 use yii\rbac\Role;
 use app\modules\users\models\query\UserQuery;
+use app\modules\studio\models\Studio;
 use app\models\Country;
 use app\models\City;
 
@@ -148,7 +149,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         } else {
             return new Country();
         }
-        
     }
 
     /**
@@ -162,7 +162,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         } else {
             return new City();
         }
-        
+    }
+
+    public function getStudio()
+    {
+        return $this->hasOne(Studio::className(), ['user_id' => 'id']);
     }
 
     /**
