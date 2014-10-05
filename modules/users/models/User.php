@@ -23,7 +23,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     /**
      * Переменная используется для сбора пользовательской информации, но не сохраняется в базу.
-     * @var string $acceptAgreement Согласился ли пользователь с соглашением при регистрации
+     * @var boolean $acceptAgreement Согласился ли пользователь с соглашением при регистрации
      */
     public $acceptAgreement;
 
@@ -182,7 +182,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             throw new UserException("Роль \"" . $role . "\" не зарегистрирована.");
         }
         if ($this->getId()) {
-            $auth->revokeAll($userId);
+            $auth->revokeAll($this->getId());
             $auth->assign($Role, $this->getId());
             $this->role = $Role->name;
         } else {

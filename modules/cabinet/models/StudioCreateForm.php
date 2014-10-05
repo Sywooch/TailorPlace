@@ -3,6 +3,9 @@ namespace app\modules\cabinet\models;
 
 use Yii;
 use yii\base\Model;
+use yii\base\InvalidParamException;
+use yii\db\ActiveRecord;
+use app\models\Currency;
 
 /**
  * Class StidioCreateForm
@@ -13,30 +16,92 @@ use yii\base\Model;
  * @property string $password Пароль
  * @property boolean $rememberMe Запомнить меня
  */
-class StidioCreateForm extends Model
+class StudioCreateForm extends Model
 {
 	/**
-	 * Переменная используется для сбора пользовательской информации, но не сохраняются в базу данных.
-	 * @var string $username Логин
+	 * @var string $name Тип студии (ателье или магазин)
 	 */
-	public $username;
+	protected  $type;
 
 	/**
-	 * Переменная используется для сбора пользовательской информации, но не сохраняются в базу данных.
-	 * @var string $password Пароль
+	 * @var string $name Название студии
 	 */
-	public $password;
+	public $name;
 
 	/**
-	 * Переменная используется для сбора пользовательской информации, но не сохраняются в базу данных.
-	 * @var boolean rememberMe Запомнить меня
+	 * @var string $slogan Слоган студии
 	 */
-	public $rememberMe = true;
+	public $slogan;
 
 	/**
-	 * @var boolean|ActiveRecord Экземпляр пользователя
+	 * @var string $description Описание студии
 	 */
-	protected $_user = false;
+	public $description;
+
+	/**
+	 * @var string Экземпляр страны
+	 */
+	public $country;
+
+	/**
+	 * @var string Экземпляр города
+	 */
+	public $city;
+
+	/**
+	 * @var int|ActiveRecord Экземпляр валюты
+	 */
+	public $currency;
+
+	/**
+	 * @var int|ActiveRecord Экземпляр способа доставки
+	 */
+	public $delivery;
+
+	/**
+	 * @var string Собственный способ доставки
+	 */
+	public $custom_delivery;
+
+    /**
+     * @var int|ActiveRecord Экземпляр способа оплаты
+     */
+    public $payment;
+
+    /**
+     * @var string Собственный способ оплаты
+     */
+    public $custom_payment;
+
+    /**
+     * @var boolean $acceptAgreement Подтвердил ли пользователь соглашение владельца студии
+     */
+    public $acceptAgreement;
+
+    public function __construct($type)
+    {
+        $this->type = $type;
+        $this->validateType('type');
+        $this->getCurrency();
+        parent::__construct();
+    }
+
+    public function getType()
+    {
+        return ($this->type === 0 || $this->type === 'atelier') ? 'atelier' : 'store';
+    }
+
+    public function validateType($attribute)
+    {
+        if (!(
+            $this->$attribute === 0 ||
+            $this->$attribute === 1 ||
+            $this->$attribute === 'atelier' ||
+            $this->$attribute === 'store'
+        )) {
+            throw new InvalidParamException("Неверный тип студии (0, 1, 'atelier', 'store')");
+        }
+    }
 
 	/**
 	 * @inheritdoc
@@ -67,8 +132,11 @@ class StidioCreateForm extends Model
 		];
 	}
 
+    /**
+     * Заполняет поле валюты значениями из базы
+     */
 	protected function getCurrency()
 	{
-		
+		$this->currency = Currency::find()->asArray()->all();
 	}
 }

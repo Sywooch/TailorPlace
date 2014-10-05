@@ -7,6 +7,7 @@ use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
+use app\modules\cabinet\models\StudioCreateForm;
 
 class StudioController extends CommonController
 {
@@ -15,7 +16,8 @@ class StudioController extends CommonController
 	 * @var array
 	 */
 	public $breadcrumbItems = [
-		'what-create' => 'Регистрация ателье/магазина'
+		'what-create' => 'Регистрация ателье/магазина',
+		'create-atelier' => 'Регистрация ателье'
 	];
 
 	public function actionWhatCreate()
@@ -25,6 +27,13 @@ class StudioController extends CommonController
 
 	public function actionCreateAtelier()
 	{
-		return $this->render('createAtelier');
+        $Studio = new StudioCreateForm('atelier');
+        $User = Yii::$app->user->identity;
+        $Studio ->country = $User->country ? $User->country : null;
+        $Studio ->country = $User->city ? $User->city : null;
+
+		return $this->render('create', [
+            'studio' => $Studio
+        ]);
 	}
 }
