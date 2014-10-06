@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
+use app\models\Country;
 use app\models\Currency;
 
 /**
@@ -78,11 +79,20 @@ class StudioCreateForm extends Model
      */
     public $acceptAgreement;
 
+    /**
+     * @var array Список стран
+     */
+    public $countryList;
+
+    /**
+     * @var array Список валют
+     */
+    public $currencyyList;
+
     public function __construct($type)
     {
         $this->type = $type;
         $this->validateType('type');
-        $this->getCurrency();
         parent::__construct();
     }
 
@@ -106,19 +116,19 @@ class StudioCreateForm extends Model
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
-	{
-		return [
-			// Логин и пароль обязательны для заполнения.
-			[['username', 'password'], 'required'],
+	// public function rules()
+	// {
+	// 	// return [
+	// 	// 	// Логин и пароль обязательны для заполнения.
+	// 	// 	[['username', 'password'], 'required'],
 
-			// Пароль валидируется функцией validatePassword().
-			['password', 'validatePassword'],
+	// 	// 	// Пароль валидируется функцией validatePassword().
+	// 	// 	['password', 'validatePassword'],
 
-			// [[rememberMe]] должен быть булево значение.
-			['rememberMe', 'boolean']
-		];
-	}
+	// 	// 	// [[rememberMe]] должен быть булево значение.
+	// 	// 	['rememberMe', 'boolean']
+	// 	// ];
+	// }
 
 	/**
 	 * @inheritdoc
@@ -126,17 +136,30 @@ class StudioCreateForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'username' => Yii::t('users', 'Логин'),
-			'password' => Yii::t('users', 'Пароль'),
-			'rememberMe' => Yii::t('users', 'Запомнить меня')
+			'name' => 'Название'
 		];
 	}
 
     /**
      * Заполняет поле валюты значениями из базы
      */
-	protected function getCurrency()
+	protected function getCurrencyList()
 	{
-		$this->currency = Currency::find()->asArray()->all();
+		if (!$this->currencyList) {
+			$this->currencyList = Currency::find()->asArray()->all();
+		}
+		return $this->currencyList;
+	}
+
+    /**
+     * Заполняет поле валюты значениями из базы
+     */
+	public function getCountryList()
+	{
+		if (!$this->countryList) {
+			$this->countryList = Country::find()->asArray()->all();
+		}
+		var_dump($this->countryList);
+		return $this->countryList;
 	}
 }
