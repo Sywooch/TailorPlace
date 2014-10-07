@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use app\models\Country;
 use app\models\Currency;
 
@@ -157,9 +158,12 @@ class StudioCreateForm extends Model
 	public function getCountryList()
 	{
 		if (!$this->countryList) {
-			$this->countryList = Country::find()->asArray()->all();
+			$this->countryList = ArrayHelper::map(
+                Country::find()->asArray()->all(),
+                'id',
+                'name_ru'
+            );
 		}
-		var_dump($this->countryList);
 		return $this->countryList;
 	}
 }
