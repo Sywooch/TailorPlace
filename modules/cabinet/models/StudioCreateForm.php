@@ -41,14 +41,24 @@ class StudioCreateForm extends Model
 	public $description;
 
 	/**
-	 * @var string Экземпляр страны
+	 * @var string Название страны
 	 */
-	public $country;
+	public $countryName;
 
 	/**
-	 * @var string Экземпляр города
+	 * @var int Id страны
 	 */
-	public $city;
+	public $countryId;
+
+	/**
+	 * @var string Название города
+	 */
+	public $cityName;
+
+	/**
+	 * @var string Id города
+	 */
+	public $cityId;
 
 	/**
 	 * @var int|ActiveRecord Экземпляр валюты
@@ -152,18 +162,4 @@ class StudioCreateForm extends Model
 		return $this->currencyList;
 	}
 
-    /**
-     * Заполняет поле валюты значениями из базы
-     */
-	public function getCountryList()
-	{
-		if (!$this->countryList) {
-			$this->countryList = ArrayHelper::map(
-                Country::find()->asArray()->all(),
-                'id',
-                'name_ru'
-            );
-		}
-		return $this->countryList;
-	}
 }

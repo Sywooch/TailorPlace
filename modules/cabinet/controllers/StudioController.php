@@ -5,8 +5,10 @@ namespace app\modules\cabinet\controllers;
 use Yii;
 use app\controllers\CommonController;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
+use app\models\Country;
 use app\modules\cabinet\models\StudioCreateForm;
 
 class StudioController extends CommonController
@@ -29,11 +31,22 @@ class StudioController extends CommonController
 	{
         $Studio = new StudioCreateForm('atelier');
         $User = Yii::$app->user->identity;
-        $Studio ->country = $User->country ? $User->country : null;
-        $Studio ->country = $User->city ? $User->city : null;
+        $Studio->countryName = $User->country->name ? $User->country->name : null;
+        $Studio->countryId = $User->country->id ? $User->country->id : null;
+        $Studio->cityName = $User->city->id ? $User->city->id : null;
+        $countryList = Country::getCountryList();
 
 		return $this->render('create', [
-            'studio' => $Studio
+            'studio' => $Studio,
+            'countryList' => $countryList
         ]);
 	}
+
+    public function actionGetCountriesList()
+    {
+        $input = trim(strip_tags(Yii::$app->request->get('term')));
+        $result = Country::getCountryList($input);
+
+        echo Json::encode($result);
+    }
 }
