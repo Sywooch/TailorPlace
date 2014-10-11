@@ -15,14 +15,6 @@ class City extends ActiveRecord
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Получить название города
      * @param  string $lang код языка
      * @return string
@@ -43,7 +35,7 @@ class City extends ActiveRecord
     }
 
 
-    public static function getCityList($countryId = null)
+    public static function getCityList($countryId = null, $like = null)
     {
         $Query = self::find()
             ->select(['name_ru as value', 'name_ru as  label','id']);
@@ -53,11 +45,14 @@ class City extends ActiveRecord
         if ($countryId) {
             $Query->where(['country_id' => $countryId]);
             $UnionQuery->where(['country_id' => $countryId]);
-            $this->setCountryInSession($id);
+            self::setCountryInSession($countryId);
         } elseif (isset($_SESSION['form_country_id'])) {
-            
             $Query->where(['country_id' => $_SESSION['form_country_id']]);
             $UnionQuery->where(['country_id' => $_SESSION['form_country_id']]);
+        }
+        if ($like) {
+            $Query->andWhere('name_ru like :name', [':name' => $like . '%']);
+            $UnionQuery->andWhere('name_en like :name', [':name' => $like . '%']);
         }
 
         return $Query
@@ -67,7 +62,7 @@ class City extends ActiveRecord
             ->all();
     }
 
-    private function setCountryInSession($id)
+    private static  function setCountryInSession($id)
     {
         $_SESSION['form_country_id'] = $id;
     }

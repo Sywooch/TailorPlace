@@ -34,12 +34,11 @@ class StudioController extends CommonController
         $User = Yii::$app->user->identity;
         $Studio->countryName = $User->country->name ? $User->country->name : null;
         $Studio->countryId = $User->country->id ? $User->country->id : null;
-        $Studio->cityName = $User->city->id ? $User->city->id : null;
-        $countryList = Country::getCountryList();
+        $Studio->cityName = $User->city->name ? $User->city->name : null;
+        $Studio->cityId = $User->city->id ? $User->city->id : null;
 
 		return $this->render('create', [
             'studio' => $Studio,
-            'countryList' => $countryList
         ]);
 	}
 
@@ -54,7 +53,8 @@ class StudioController extends CommonController
     public function actionGetCityList()
     {
         $id = (int)Yii::$app->request->post('id');
-        $result = City::getCityList($id);
+        $input = trim(strip_tags(Yii::$app->request->get('term')));
+        $result = City::getCityList($id, $input);
 
         echo Json::encode($result);
     }

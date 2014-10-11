@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 05 2014 г., 20:35
+-- Время создания: Окт 11 2014 г., 23:49
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.5.13
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Структура таблицы `auth_assignment`
 --
 
-DROP TABLE IF EXISTS `auth_assignment`;
 CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `item_name` varchar(64) NOT NULL,
   `user_id` varchar(64) NOT NULL,
@@ -47,7 +46,6 @@ INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 -- Структура таблицы `auth_item`
 --
 
-DROP TABLE IF EXISTS `auth_item`;
 CREATE TABLE IF NOT EXISTS `auth_item` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
@@ -80,7 +78,6 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 -- Структура таблицы `auth_item_child`
 --
 
-DROP TABLE IF EXISTS `auth_item_child`;
 CREATE TABLE IF NOT EXISTS `auth_item_child` (
   `parent` varchar(64) NOT NULL,
   `child` varchar(64) NOT NULL,
@@ -106,7 +103,6 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 -- Структура таблицы `auth_rule`
 --
 
-DROP TABLE IF EXISTS `auth_rule`;
 CREATE TABLE IF NOT EXISTS `auth_rule` (
   `name` varchar(64) NOT NULL,
   `data` text,
@@ -121,7 +117,6 @@ CREATE TABLE IF NOT EXISTS `auth_rule` (
 -- Структура таблицы `city`
 --
 
-DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `country_id` int(11) unsigned DEFAULT NULL,
@@ -55106,7 +55101,6 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 -- Структура таблицы `country`
 --
 
-DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name_ru` varchar(100) DEFAULT NULL,
@@ -55372,7 +55366,6 @@ INSERT INTO `country` (`id`, `name_ru`, `name_en`, `code`) VALUES
 -- Структура таблицы `currency`
 --
 
-DROP TABLE IF EXISTS `currency`;
 CREATE TABLE IF NOT EXISTS `currency` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(3) NOT NULL COMMENT 'Трехзначный код валюты',
@@ -55402,7 +55395,6 @@ INSERT INTO `currency` (`id`, `code`, `symbol`, `name_ru`, `name_en`) VALUES
 -- Структура таблицы `delivery_list`
 --
 
-DROP TABLE IF EXISTS `delivery_list`;
 CREATE TABLE IF NOT EXISTS `delivery_list` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name_ru` varchar(60) NOT NULL COMMENT 'Русское название',
@@ -55425,7 +55417,6 @@ INSERT INTO `delivery_list` (`id`, `name_ru`, `name_en`) VALUES
 -- Структура таблицы `migration`
 --
 
-DROP TABLE IF EXISTS `migration`;
 CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
   `apply_time` int(11) DEFAULT NULL,
@@ -55446,7 +55437,6 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- Структура таблицы `payment_list`
 --
 
-DROP TABLE IF EXISTS `payment_list`;
 CREATE TABLE IF NOT EXISTS `payment_list` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name_ru` varchar(60) NOT NULL COMMENT 'Русское название',
@@ -55471,7 +55461,6 @@ INSERT INTO `payment_list` (`id`, `name_ru`, `name_en`) VALUES
 -- Структура таблицы `studio`
 --
 
-DROP TABLE IF EXISTS `studio`;
 CREATE TABLE IF NOT EXISTS `studio` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL COMMENT 'id пользователя - хозяина студии',
@@ -55485,6 +55474,7 @@ CREATE TABLE IF NOT EXISTS `studio` (
   `custom_delivery` varchar(250) DEFAULT NULL COMMENT 'Свой способ доставки',
   `custom_payment` varchar(250) DEFAULT NULL COMMENT 'Свой способ оплаты',
   `currency_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'Id валюты студии',
+  `address` varchar(500) DEFAULT NULL COMMENT 'Адрес студии',
   PRIMARY KEY (`id`),
   KEY `type` (`type`),
   KEY `user_id` (`user_id`)
@@ -55496,7 +55486,6 @@ CREATE TABLE IF NOT EXISTS `studio` (
 -- Структура таблицы `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(30) NOT NULL COMMENT 'Логин пользователя',
@@ -55524,7 +55513,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `login`, `email`, `password`, `auth_key`, `name`, `status`, `role`, `create_time`, `update_time`, `country_id`, `city_id`, `address`) VALUES
 (2, 'adminTest', 'adminTest@mail.com', '$2y$13$jJM57iXgZzmnaGoC.KjJ5OoG1B/w5ot9NMwT3Pb8V.dJAsF0Az3Ga', '3??l?[???d]8???v?|???????A??', NULL, 'not confirmed', 'user', '2014-08-31 10:45:48', NULL, NULL, NULL, NULL),
-(9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', 'user', '2014-09-20 11:57:40', NULL, NULL, NULL, NULL);
+(9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', 'user', '2014-09-20 11:57:40', NULL, 15, NULL, NULL);
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

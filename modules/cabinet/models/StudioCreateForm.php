@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use app\models\Country;
 use app\models\Currency;
+use app\models\Delivery;
 
 /**
  * Class StidioCreateForm
@@ -41,6 +42,11 @@ class StudioCreateForm extends Model
 	public $description;
 
 	/**
+	 * @var string $address Адрес студии
+	 */
+	public $address;
+
+	/**
 	 * @var string Название страны
 	 */
 	public $countryName;
@@ -61,14 +67,19 @@ class StudioCreateForm extends Model
 	public $cityId;
 
 	/**
-	 * @var int|ActiveRecord Экземпляр валюты
+	 * @var ActiveRecord Экземпляр валюты
 	 */
 	public $currency;
 
 	/**
-	 * @var int|ActiveRecord Экземпляр способа доставки
+	 * @var int Id валюты
 	 */
-	public $delivery;
+	public $currencyId;
+
+	/**
+	 * @var array Список способов доставки
+	 */
+	public $deliveryList;
 
 	/**
 	 * @var string Собственный способ доставки
@@ -91,14 +102,9 @@ class StudioCreateForm extends Model
     public $acceptAgreement;
 
     /**
-     * @var array Список стран
-     */
-    public $countryList;
-
-    /**
      * @var array Список валют
      */
-    public $currencyyList;
+    public $currencyList;
 
     public function __construct($type)
     {
@@ -147,19 +153,31 @@ class StudioCreateForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'name' => 'Название'
+			'name' => 'Название',
+			'countryName' => 'Название страны',
+			'cityName' => 'Название города',
+			'currencyId' => 'Денежные единицы',
+			'deliveryList' => 'Способ доставки',
 		];
 	}
 
     /**
      * Заполняет поле валюты значениями из базы
      */
-	protected function getCurrencyList()
+    public function getCurrencyList()
 	{
 		if (!$this->currencyList) {
 			$this->currencyList = Currency::find()->asArray()->all();
 		}
 		return $this->currencyList;
+	}
+
+    public function getDeliveryList()
+	{
+		if (!$this->deliveryList) {
+			$this->deliveryList = Delivery::find()->asArray()->all();
+		}
+		return $this->deliveryList;
 	}
 
 }
