@@ -1,4 +1,18 @@
-function fillCities(countryId, fieldId)
+function fillCities(countryId, fieldId, url)
 {
-    $('#fieldId')
+	if (!countryId) {
+		return 'error';
+	}
+
+    $.ajax({
+    	url: url,
+    	type: 'post',
+    	data: {id: countryId},
+    	success: function(data){
+    		if(data) {
+    			
+    		}
+    		console.log(data);
+    	}
+    });
 }

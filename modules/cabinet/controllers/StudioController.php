@@ -9,6 +9,7 @@ use yii\helpers\Json;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
 use app\models\Country;
+use app\models\City;
 use app\modules\cabinet\models\StudioCreateForm;
 
 class StudioController extends CommonController
@@ -42,10 +43,18 @@ class StudioController extends CommonController
         ]);
 	}
 
-    public function actionGetCountriesList()
+    public function actionGetCountryList()
     {
         $input = trim(strip_tags(Yii::$app->request->get('term')));
         $result = Country::getCountryList($input);
+
+        echo Json::encode($result);
+    }
+
+    public function actionGetCityList()
+    {
+        $id = (int)Yii::$app->request->post('id');
+        $result = City::getCityList($id);
 
         echo Json::encode($result);
     }

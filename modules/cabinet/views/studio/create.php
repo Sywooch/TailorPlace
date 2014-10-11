@@ -44,11 +44,11 @@ StudioAsset::register($this);
             'placeholder' => ''
         ],
         'clientOptions' => [
-            'source' => Url::toRoute('get-countries-list'),
+            'source' => Url::toRoute('get-country-list'),
             'select' => new JsExpression("function( event, ui ) {
                     console.log(ui.item);
                     $('#studiocreateform-countryid').val(ui.item.id);
-                    fillCities();
+                    fillCities(ui.item.id, 'studiocreateform-cityname', '".Url::toRoute('get-city-list')."');
                     }")
         ]
     ])->label('Название страны')
@@ -61,10 +61,11 @@ StudioAsset::register($this);
             'options' => [
                 'class' => 'form-control',
                 'title' => 'Название города',
-                'placeholder' => ''
+                'placeholder' => '',
+                'disabled' => 'disabled'
             ],
             'clientOptions' => [
-                'source' => Url::toRoute('get-countries-list'),
+                'source' => Url::toRoute('get-city-list'),
                 'select' => new JsExpression("function( event, ui ) {
                     console.log(ui.item);
                     $('#studiocreateform-cityid').val(ui.item.id);

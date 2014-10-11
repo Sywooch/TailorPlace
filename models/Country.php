@@ -42,6 +42,11 @@ class Country extends ActiveRecord
         return $name;
     }
 
+    /**
+     * Возвращает список стран на разных языках для автодополнения
+     * @param  string|null $like Начальные символы названия страны
+     * @return array
+     */
     public static function getCountryList($like = null)
     {
         $Query = self::find()

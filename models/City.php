@@ -42,4 +42,34 @@ class City extends ActiveRecord
         return $name;
     }
 
+
+    public static function getCityList($countryId = null)
+    {
+        $Query = self::find()
+            ->select(['name_ru as value', 'name_ru as  label','id']);
+        $UnionQuery = self::find()
+            ->select(['name_en as value', 'name_en as  label','id']);
+
+        if ($countryId) {
+            $Query->where(['country_id' => $countryId]);
+            $UnionQuery->where(['country_id' => $countryId]);
+            $this->setCountryInSession($id);
+        } elseif (isset($_SESSION['form_country_id'])) {
+            
+            $Query->where(['country_id' => $_SESSION['form_country_id']]);
+            $UnionQuery->where(['country_id' => $_SESSION['form_country_id']]);
+        }
+
+        return $Query
+            ->union($UnionQuery)
+            ->orderBy('value')
+            ->asArray()
+            ->all();
+    }
+
+    private function setCountryInSession($id)
+    {
+        $_SESSION['form_country_id'] = $id;
+    }
+
 }
