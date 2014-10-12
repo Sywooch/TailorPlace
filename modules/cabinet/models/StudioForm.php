@@ -221,32 +221,36 @@ class StudioForm extends Model
             ['name', 'required'],
             ['name', 'match', 'pattern' => '/^[a-zA-Zа-яА-Я0-9]+$/'],
             ['name', 'string', 'min' => 3, 'max' => 30],
-            ['name', 'unique'],
+            // ['name', 'unique'],
 
             // Страна [[countryName]]
+            // Страна [[countryId]]
             ['countryName', 'filter', 'filter' => 'trim'],
             ['countryName', 'required'],
-
-            // Страна [[countryId]]
-            ['countryId', 'integer'],
-            ['countryId', 'required'],
             ['countryId', 'validateCountryId'],
 
             // Город [[cityName]]
             // Город [[cityId]]
             ['cityId', 'validateCityId'],
 
-            // Способы доставки [[delivery]]
-// TODO сделать проверку, что пришедшие id-шники есть в базе
+            // Способы доставки [[deliveryList]]
+			['deliveryList', 'validateDeliveryList'],
+
+            // другой способ доставки [[custom_delivery]]
+			['custom_delivery', 'filter', 'filter' => 'trim'],
+			['custom_delivery', 'filter', 'filter' => 'strip_tags'],
 
         ];
     }
 
     public function validateCountryId($attribute, $params)
     {
-        if (!($this->$attribute > 0)) {
+    	$id = (int)$this->countryId;
+    	var_dump($id);
+    	exit;
+        if ($id == 0) {
             $this->addError('countryName', "Неправильно указана страна.");
-        } elseif (!Country::findOne($this->$attribute)) {
+        } elseif (!Country::findOne($id)) {
             // TODO добавить отправку уведомления об ошибке с данными на email разработчику
             $this->addError('countryName', "Указанная страна не существует.");
         }
@@ -262,6 +266,15 @@ class StudioForm extends Model
         if (!$City) {
             // TODO добавить отправку уведомления об ошибке с данными на email разработчику
             $this->addError('cityName', "У указанной страны нет такого города.");
+        }
+    }
+
+    public function validateDeliveryList($attribute, $params)
+    {
+        $deliveryList = Delivery::findAll($this->deliveryList);
+        if (count($deliveryList) != count($this->deliveryList)) {
+            // TODO добавить отправку уведомления об ошибке с данными на email разработчику
+            $this->addError('deliveryList', "Ошибка выбора способа доставки.");
         }
     }
 

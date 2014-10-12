@@ -3,7 +3,7 @@
  * Страница регистрации студии.
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var app\modules\cabinet\models\StudioCreateForm $studio
+ * @var app\modules\cabinet\models\studioform $studio
  */
 
 use yii\helpers\Html;
@@ -20,7 +20,7 @@ StudioAsset::register($this);
 if ($studio->countryId){
     $this->registerJs("
     $(function(){
-        checkCities(". $studio->countryId .", 'studiocreateform-cityname', '" . Url::toRoute('get-city-list') . "');
+        checkCities(". $studio->countryId .", 'studioform-cityname', '" . Url::toRoute('get-city-list') . "');
     });
 ");
 }
@@ -57,17 +57,17 @@ if ($studio->countryId){
         'clientOptions' => [
             'source' => Url::toRoute('get-country-list'),
             'select' => new JsExpression("function( event, ui ) {
-                    $('#studiocreateform-countryid').val(ui.item.id);
+                    $('#studioform-countryid').val(ui.item.id);
                     successCountry = true;
-                    $('.form-group.field-studiocreateform-countryname').removeClass('has-error').addClass('has-success');
-                    checkCities(ui.item.id, 'studiocreateform-cityname', '".Url::toRoute('get-city-list')."');
+                    $('.form-group.field-studioform-countryname').removeClass('has-error').addClass('has-success');
+                    checkCities(ui.item.id, 'studioform-cityname', '".Url::toRoute('get-city-list')."');
                 }"),
             'change' => new JsExpression("function( event, ui ) {
                     successCountry = false
                 }"),
             'close' => new JsExpression("function( event, ui ) {
                     if (successCountry == false) {
-                    $('.form-group.field-studiocreateform-countryname').removeClass('has-success').addClass('has-error');
+                    $('.form-group.field-studioform-countryname').removeClass('has-success').addClass('has-error');
                     }
                 }"),
         ]
@@ -87,16 +87,16 @@ if ($studio->countryId){
             'clientOptions' => [
                 'source' => Url::toRoute('get-city-list'),
                 'select' => new JsExpression("function( event, ui ) {
-                    $('#studiocreateform-cityid').val(ui.item.id);
+                    $('#studioform-cityid').val(ui.item.id);
                     successCity = true;
-                    $('.form-group.field-studiocreateform-cityname').removeClass('has-error').addClass('has-success');
+                    $('.form-group.field-studioform-cityname').removeClass('has-error').addClass('has-success');
                 }"),
                 'change' => new JsExpression("function( event, ui ) {
                     successCity = false
                 }"),
                 'close' => new JsExpression("function( event, ui ) {
                     if (successCity == false) {
-                    $('.form-group.field-studiocreateform-cityname').removeClass('has-success').addClass('has-error');
+                    $('.form-group.field-studioform-cityname').removeClass('has-success').addClass('has-error');
                     }
                 }"),
             ],
