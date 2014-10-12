@@ -135,4 +135,6 @@ if ($studio->countryId){
 		'placeholder' => 'Здесь вы можете дать подробное описание вашего ателье',
 	])
 ?>
+<?= Html::submitButton('Завершить регистрацию', ['class' => 'btn btn-success btn-large center-block']) ?>
+
 <?php ActiveForm::end(); ?>

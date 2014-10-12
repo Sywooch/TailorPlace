@@ -7,12 +7,13 @@ use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use app\models\Country;
+use app\models\City;
 use app\models\Currency;
 use app\models\Delivery;
 use app\models\Payment;
 
 /**
- * Class StidioCreateForm
+ * Class StudioForm
  * @package app\modules\cabinet\models
  * Модель формы регистрации студии.
  *
@@ -20,7 +21,7 @@ use app\models\Payment;
  * @property string $password Пароль
  * @property boolean $rememberMe Запомнить меня
  */
-class StudioCreateForm extends Model
+class StudioForm extends Model
 {
 	/**
 	 * @var string $name Тип студии (ателье или магазин)
@@ -107,11 +108,11 @@ class StudioCreateForm extends Model
      */
     public $currencyList;
 
-    public function __construct($type)
+    public function __construct($type, $config = [])
     {
         $this->type = $type;
         $this->validateType('type');
-        parent::__construct();
+        parent::__construct($config = []);
     }
 
     public function getType()
@@ -191,5 +192,77 @@ class StudioCreateForm extends Model
 		}
 		return $this->paymentList;
 	}
+
+    public function fillCountry(\app\modules\users\models\User $User)
+	{
+		if (!$this->countryName && !$this->countryId) {
+            $this->countryName = $User->country->name ? $User->country->name : null;
+            $this->countryId = $User->country->id ? $User->country->id : null;
+		}
+	}
+
+    public function fillCity(\app\modules\users\models\User $User)
+	{
+		if (!$this->cityName && !$this->cityId) {
+            $this->cityName = $User->city->name ? $User->city->name : null;
+            $this->cityId = $User->city->id ? $User->city->id : null;
+		}
+	}
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        //TODO поправить в каких сценариях применять фильтры
+        return [
+            // Название [[name]]
+            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'required'],
+            ['name', 'match', 'pattern' => '/^[a-zA-Zа-яА-Я0-9]+$/'],
+            ['name', 'string', 'min' => 3, 'max' => 30],
+            ['name', 'unique'],
+
+            // Страна [[countryName]]
+            ['countryName', 'filter', 'filter' => 'trim'],
+            ['countryName', 'required'],
+
+            // Страна [[countryId]]
+            ['countryId', 'integer'],
+            ['countryId', 'required'],
+            ['countryId', 'validateCountryId'],
+
+            // Город [[cityName]]
+            // Город [[cityId]]
+            ['cityId', 'validateCityId'],
+
+            // Способы доставки [[delivery]]
+// TODO сделать проверку, что пришедшие id-шники есть в базе
+
+        ];
+    }
+
+    public function validateCountryId($attribute, $params)
+    {
+        if (!($this->$attribute > 0)) {
+            $this->addError('countryName', "Неправильно указана страна.");
+        } elseif (!Country::findOne($this->$attribute)) {
+            // TODO добавить отправку уведомления об ошибке с данными на email разработчику
+            $this->addError('countryName', "Указанная страна не существует.");
+        }
+    }
+
+    public function validateCityId($attribute, $params)
+    {
+        $cityId = (int)$this->$attribute;
+        $City = City::findOne([
+            'id' => $cityId,
+            'country_id' => $this->countryId
+        ]);
+        if (!$City) {
+            // TODO добавить отправку уведомления об ошибке с данными на email разработчику
+            $this->addError('cityName', "У указанной страны нет такого города.");
+        }
+    }
 
 }

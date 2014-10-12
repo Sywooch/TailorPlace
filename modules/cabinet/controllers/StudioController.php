@@ -10,7 +10,7 @@ use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
 use app\models\Country;
 use app\models\City;
-use app\modules\cabinet\models\StudioCreateForm;
+use app\modules\cabinet\models\StudioForm;
 
 class StudioController extends CommonController
 {
@@ -30,12 +30,17 @@ class StudioController extends CommonController
 
 	public function actionCreateAtelier()
 	{
-        $Studio = new StudioCreateForm('atelier');
+        $Studio = new StudioForm('atelier', ['scenario' => 'create-atelier']);
         $User = Yii::$app->user->identity;
-        $Studio->countryName = $User->country->name ? $User->country->name : null;
-        $Studio->countryId = $User->country->id ? $User->country->id : null;
-        $Studio->cityName = $User->city->name ? $User->city->name : null;
-        $Studio->cityId = $User->city->id ? $User->city->id : null;
+//var_dump(Yii::$app->request->post());
+        if ($Studio->load(Yii::$app->request->post()) && $Studio->validate()) {
+
+        }
+
+        $Studio->fillCountry($User);
+        $Studio->fillCity($User);
+
+
 
 		return $this->render('create', [
             'studio' => $Studio,

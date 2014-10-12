@@ -192,7 +192,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     public function validateAcceptAgreement($attribute, $params)
     {
-        if($this->$attribute == '0'){
+        if ($this->$attribute == '0') {
             $this->addError($attribute, "Вы не подтвердили согласие.");
         }
     }
