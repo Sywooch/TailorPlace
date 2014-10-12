@@ -111,5 +111,28 @@ if ($studio->countryId){
     ArrayHelper::map($studio->getDeliveryList(), 'id', 'name_ru')
 )
 ?>
-
+<?= $form->field($studio, 'custom_delivery')
+	->textInput([
+		'placeholder' => 'Другой способ доставки',
+		'class' => 'form-control addable'
+	])
+	->label('')
+?>
+<?= $form->field($studio, 'paymentList')->checkboxList(
+    ArrayHelper::map($studio->getPaymentList(), 'id', 'name_ru')
+)
+?>
+<?= $form->field($studio, 'custom_payment')
+	->textInput([
+		'placeholder' => 'Другой способ оплаты',
+		'class' => 'form-control addable'
+	])
+	->label('')
+?>
+<?= $form->field($studio, 'slogan') ?>
+<?= $form->field($studio, 'description')
+	->textArea([
+		'placeholder' => 'Здесь вы можете дать подробное описание вашего ателье',
+	])
+?>
 <?php ActiveForm::end(); ?>

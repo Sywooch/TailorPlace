@@ -9,6 +9,7 @@ use yii\helpers\ArrayHelper;
 use app\models\Country;
 use app\models\Currency;
 use app\models\Delivery;
+use app\models\Payment;
 
 /**
  * Class StidioCreateForm
@@ -87,9 +88,9 @@ class StudioCreateForm extends Model
 	public $custom_delivery;
 
     /**
-     * @var int|ActiveRecord Экземпляр способа оплаты
+     * @var array Список способов оплаты
      */
-    public $payment;
+    public $paymentList;
 
     /**
      * @var string Собственный способ оплаты
@@ -158,6 +159,9 @@ class StudioCreateForm extends Model
 			'cityName' => 'Название города',
 			'currencyId' => 'Денежные единицы',
 			'deliveryList' => 'Способ доставки',
+			'paymentList' => 'Способ оплаты',
+			'slogan' => 'Слоган',
+			'description' => 'Описание',
 		];
 	}
 
@@ -178,6 +182,14 @@ class StudioCreateForm extends Model
 			$this->deliveryList = Delivery::find()->asArray()->all();
 		}
 		return $this->deliveryList;
+	}
+
+    public function getPaymentList()
+	{
+		if (!$this->paymentList) {
+			$this->paymentList = Payment::find()->asArray()->all();
+		}
+		return $this->paymentList;
 	}
 
 }
