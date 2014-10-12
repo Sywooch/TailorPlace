@@ -227,11 +227,11 @@ class StudioForm extends Model
             // Страна [[countryId]]
             ['countryName', 'filter', 'filter' => 'trim'],
             ['countryName', 'required'],
-            ['countryId', 'validateCountryId'],
+            ['countryId', 'validateCountryId', 'skipOnEmpty' => false],
 
             // Город [[cityName]]
             // Город [[cityId]]
-            ['cityId', 'validateCityId'],
+            ['cityId', 'validateCityId', 'skipOnEmpty' => false],
 
             // Способы доставки [[deliveryList]]
 			['deliveryList', 'validateDeliveryList'],
@@ -246,8 +246,6 @@ class StudioForm extends Model
     public function validateCountryId($attribute, $params)
     {
     	$id = (int)$this->countryId;
-    	var_dump($id);
-    	exit;
         if ($id == 0) {
             $this->addError('countryName', "Неправильно указана страна.");
         } elseif (!Country::findOne($id)) {
@@ -258,14 +256,19 @@ class StudioForm extends Model
 
     public function validateCityId($attribute, $params)
     {
-        $cityId = (int)$this->$attribute;
-        $City = City::findOne([
-            'id' => $cityId,
-            'country_id' => $this->countryId
-        ]);
-        if (!$City) {
-            // TODO добавить отправку уведомления об ошибке с данными на email разработчику
-            $this->addError('cityName', "У указанной страны нет такого города.");
+        $countryId = (int)$this->countryId;
+        if(!$countryId){
+            $this->addError('cityName', "Сначала укажите страну.");
+        } else {
+            $cityList = ArrayHelper::getColumn(City::getCityList($countryId), 'id');
+            if (count($cityList) > 0) {
+                if (!$this->$attribute) {
+                    $this->addError('cityName', "Укажите города.");
+                } elseif (!in_array($this->$attribute, $cityList)) {
+                    // TODO добавить отправку уведомления об ошибке с данными на email разработчику
+                    $this->addError('cityName', "У указанной страны нет такого города.");
+                }
+            }
         }
     }
 
