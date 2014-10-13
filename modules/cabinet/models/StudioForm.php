@@ -239,6 +239,27 @@ class StudioForm extends Model
             // другой способ доставки [[custom_delivery]]
 			['custom_delivery', 'filter', 'filter' => 'trim'],
 			['custom_delivery', 'filter', 'filter' => 'strip_tags'],
+            ['custom_delivery', 'string', 'max' => 250],
+
+            // Способы доставки [[paymentList]]
+			['paymentList', 'validateDeliveryList'],
+
+            // другой способ доставки [[custom_payment]]
+			['custom_payment', 'filter', 'filter' => 'trim'],
+			['custom_payment', 'filter', 'filter' => 'strip_tags'],
+            ['custom_payment', 'string', 'max' => 250],
+
+
+            // другой способ доставки [[custom_payment]]
+			['custom_payment', 'filter', 'filter' => 'trim'],
+			['custom_payment', 'filter', 'filter' => 'strip_tags'],
+            ['custom_payment', 'string', 'max' => 250],
+
+
+            // другой способ доставки [[custom_payment]]
+			['custom_payment', 'filter', 'filter' => 'trim'],
+			['custom_payment', 'filter', 'filter' => 'strip_tags'],
+            ['custom_payment', 'string', 'max' => 250],
 
         ];
     }
@@ -278,6 +299,15 @@ class StudioForm extends Model
         if (count($deliveryList) != count($this->deliveryList)) {
             // TODO добавить отправку уведомления об ошибке с данными на email разработчику
             $this->addError('deliveryList', "Ошибка выбора способа доставки.");
+        }
+    }
+
+    public function validatePaymentList($attribute, $params)
+    {
+        $paymentList = Payment::findAll($this->paymentList);
+        if (count($paymentList) != count($this->paymentList)) {
+            // TODO добавить отправку уведомления об ошибке с данными на email разработчику
+            $this->addError('paymentList', "Ошибка выбора способа доставки.");
         }
     }
 
