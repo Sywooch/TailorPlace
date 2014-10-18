@@ -32,9 +32,8 @@ class StudioController extends CommonController
 	{
         $Studio = new StudioForm('atelier', ['scenario' => 'create-atelier']);
         $User = Yii::$app->user->identity;
-//var_dump(Yii::$app->request->post());
         if ($Studio->load(Yii::$app->request->post()) && $Studio->validate()) {
-
+        	
         }
 
         $Studio->fillCountry($User);

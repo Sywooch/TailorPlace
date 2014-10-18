@@ -4,6 +4,8 @@ namespace app\modules\studio\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use app\models\Delivery;
+use app\models\Payment;
 
 class Studio extends ActiveRecord
 {
@@ -16,29 +18,22 @@ class Studio extends ActiveRecord
     }
 
     /**
-     * @return integer ID пользователя.
+     * Получить связанные со студией способы доставки
+     * @return yii\db\ActiveQuery
      */
-    public function getId()
+    public function getDelivery()
     {
-        return $this->id;
-    }
-
-    public function getOwner()
-    {
-        return $this->hasOne(Studio::className(), ['id' => 'user_id']);
+        return $this->hasMany(Delivery::className(), ['id' => 'delivery_id'])
+            ->viaTable('studio_delivery', 'studio_id' => 'id');
     }
 
     /**
-     * @inheritdoc
+     * Получить связанные со студией способы оплаты
+     * @return yii\db\ActiveQuery
      */
-    // public function beforeSave($insert)
-    // {
-    // }
-
-    /**
-     * @inheritdoc
-     */
-    // public function afterSave($insert, $changedAttributes)
-    // {
-    // }
+    public function getPayment()
+    {
+        return $this->hasMany(Payment::className(), ['id' => 'payment_id'])
+            ->viaTable('studio_payment', 'studio_id' => 'id');
+    }
 }

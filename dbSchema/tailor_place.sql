@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10
+-- version 4.2.8
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Окт 11 2014 г., 23:49
--- Версия сервера: 5.5.38-log
--- Версия PHP: 5.5.13
+-- Хост: localhost
+-- Время создания: Окт 18 2014 г., 07:44
+-- Версия сервера: 5.5.37-0ubuntu0.13.10.1
+-- Версия PHP: 5.5.3-1ubuntu2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,8 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `item_name` varchar(64) NOT NULL,
   `user_id` varchar(64) NOT NULL,
-  `created_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`item_name`,`user_id`)
+  `created_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -53,10 +52,7 @@ CREATE TABLE IF NOT EXISTS `auth_item` (
   `rule_name` varchar(64) DEFAULT NULL,
   `data` text,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`),
-  KEY `rule_name` (`rule_name`),
-  KEY `idx-auth_item-type` (`type`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -80,9 +76,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 
 CREATE TABLE IF NOT EXISTS `auth_item_child` (
   `parent` varchar(64) NOT NULL,
-  `child` varchar(64) NOT NULL,
-  PRIMARY KEY (`parent`,`child`),
-  KEY `child` (`child`)
+  `child` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -107,8 +101,7 @@ CREATE TABLE IF NOT EXISTS `auth_rule` (
   `name` varchar(64) NOT NULL,
   `data` text,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -118,15 +111,11 @@ CREATE TABLE IF NOT EXISTS `auth_rule` (
 --
 
 CREATE TABLE IF NOT EXISTS `city` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(11) unsigned NOT NULL,
   `country_id` int(11) unsigned DEFAULT NULL,
   `name_ru` varchar(100) DEFAULT NULL,
-  `name_en` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name_ru` (`name_ru`),
-  KEY `name_en` (`name_en`),
-  KEY `country_id` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=438354 ;
+  `name_en` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=438354 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `city`
@@ -55102,14 +55091,11 @@ INSERT INTO `city` (`id`, `country_id`, `name_ru`, `name_en`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `country` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(11) unsigned NOT NULL,
   `name_ru` varchar(100) DEFAULT NULL,
   `name_en` varchar(100) DEFAULT NULL,
-  `code` varchar(2) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name_en` (`name_en`),
-  KEY `name_ru` (`name_ru`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=248 ;
+  `code` varchar(2) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `country`
@@ -55367,13 +55353,12 @@ INSERT INTO `country` (`id`, `name_ru`, `name_en`, `code`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `currency` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `code` varchar(3) NOT NULL COMMENT 'Трехзначный код валюты',
   `symbol` varchar(10) NOT NULL COMMENT 'Символ',
   `name_ru` varchar(20) NOT NULL COMMENT 'Русское название',
-  `name_en` varchar(20) NOT NULL COMMENT 'Английское название',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `name_en` varchar(20) NOT NULL COMMENT 'Английское название'
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `currency`
@@ -55396,11 +55381,10 @@ INSERT INTO `currency` (`id`, `code`, `symbol`, `name_ru`, `name_en`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `delivery_list` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `name_ru` varchar(60) NOT NULL COMMENT 'Русское название',
-  `name_en` varchar(60) NOT NULL COMMENT 'Английское название',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `name_en` varchar(60) NOT NULL COMMENT 'Английское название'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `delivery_list`
@@ -55419,8 +55403,7 @@ INSERT INTO `delivery_list` (`id`, `name_ru`, `name_en`) VALUES
 
 CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL,
-  PRIMARY KEY (`version`)
+  `apply_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -55438,11 +55421,10 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `payment_list` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `name_ru` varchar(60) NOT NULL COMMENT 'Русское название',
-  `name_en` varchar(60) NOT NULL COMMENT 'Английское название',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `name_en` varchar(60) NOT NULL COMMENT 'Английское название'
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `payment_list`
@@ -55462,7 +55444,7 @@ INSERT INTO `payment_list` (`id`, `name_ru`, `name_en`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `studio` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL COMMENT 'id пользователя - хозяина студии',
   `type` enum('atelier','store') NOT NULL COMMENT 'Тип студи (ателье или магазин)',
   `name` varchar(30) NOT NULL COMMENT 'Название студии',
@@ -55473,12 +55455,32 @@ CREATE TABLE IF NOT EXISTS `studio` (
   `avatar` varchar(100) DEFAULT NULL COMMENT 'Путь к аватарке студии',
   `custom_delivery` varchar(250) DEFAULT NULL COMMENT 'Свой способ доставки',
   `custom_payment` varchar(250) DEFAULT NULL COMMENT 'Свой способ оплаты',
-  `currency_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'Id валюты студии',
-  `address` varchar(500) DEFAULT NULL COMMENT 'Адрес студии',
-  PRIMARY KEY (`id`),
-  KEY `type` (`type`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `currency_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'Id валюты студии'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `studio_delivery`
+--
+
+CREATE TABLE IF NOT EXISTS `studio_delivery` (
+`id` int(10) unsigned NOT NULL,
+  `studio_id` int(10) unsigned NOT NULL COMMENT 'id студии',
+  `delivery_id` int(10) unsigned NOT NULL COMMENT 'id способа доставки'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица связи студии и способа доставки';
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `studio_payment`
+--
+
+CREATE TABLE IF NOT EXISTS `studio_payment` (
+`id` int(10) unsigned NOT NULL,
+  `studio_id` int(10) unsigned NOT NULL COMMENT 'id студии',
+  `payment_id` int(10) unsigned NOT NULL COMMENT 'id способа оплаты'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица связи студии и способа оплаты';
 
 -- --------------------------------------------------------
 
@@ -55487,7 +55489,7 @@ CREATE TABLE IF NOT EXISTS `studio` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(10) unsigned NOT NULL,
   `login` varchar(30) NOT NULL COMMENT 'Логин пользователя',
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL COMMENT 'Хэш пароля пользователя',
@@ -55499,13 +55501,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `update_time` timestamp NULL DEFAULT NULL COMMENT 'Дата обновления',
   `country_id` int(10) unsigned DEFAULT NULL COMMENT 'id страны пользователя',
   `city_id` int(10) unsigned DEFAULT NULL COMMENT 'id города пользователя',
-  `address` varchar(500) DEFAULT NULL COMMENT 'Адрес доставки пользователя',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `userscol_UNIQUE` (`login`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  KEY `country_id` (`country_id`),
-  KEY `city_id` (`city_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `address` varchar(500) DEFAULT NULL COMMENT 'Адрес доставки пользователя'
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
@@ -55513,8 +55510,145 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `login`, `email`, `password`, `auth_key`, `name`, `status`, `role`, `create_time`, `update_time`, `country_id`, `city_id`, `address`) VALUES
 (2, 'adminTest', 'adminTest@mail.com', '$2y$13$jJM57iXgZzmnaGoC.KjJ5OoG1B/w5ot9NMwT3Pb8V.dJAsF0Az3Ga', '3??l?[???d]8???v?|???????A??', NULL, 'not confirmed', 'user', '2014-08-31 10:45:48', NULL, NULL, NULL, NULL),
-(9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', 'user', '2014-09-20 11:57:40', NULL, 15, NULL, NULL);
+(9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', 'user', '2014-09-20 11:57:40', NULL, NULL, NULL, NULL);
 
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `auth_assignment`
+--
+ALTER TABLE `auth_assignment`
+ ADD PRIMARY KEY (`item_name`,`user_id`);
+
+--
+-- Индексы таблицы `auth_item`
+--
+ALTER TABLE `auth_item`
+ ADD PRIMARY KEY (`name`), ADD KEY `rule_name` (`rule_name`), ADD KEY `idx-auth_item-type` (`type`);
+
+--
+-- Индексы таблицы `auth_item_child`
+--
+ALTER TABLE `auth_item_child`
+ ADD PRIMARY KEY (`parent`,`child`), ADD KEY `child` (`child`);
+
+--
+-- Индексы таблицы `auth_rule`
+--
+ALTER TABLE `auth_rule`
+ ADD PRIMARY KEY (`name`);
+
+--
+-- Индексы таблицы `city`
+--
+ALTER TABLE `city`
+ ADD PRIMARY KEY (`id`), ADD KEY `name_ru` (`name_ru`), ADD KEY `name_en` (`name_en`), ADD KEY `country_id` (`country_id`);
+
+--
+-- Индексы таблицы `country`
+--
+ALTER TABLE `country`
+ ADD PRIMARY KEY (`id`), ADD KEY `name_en` (`name_en`), ADD KEY `name_ru` (`name_ru`);
+
+--
+-- Индексы таблицы `currency`
+--
+ALTER TABLE `currency`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `delivery_list`
+--
+ALTER TABLE `delivery_list`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `migration`
+--
+ALTER TABLE `migration`
+ ADD PRIMARY KEY (`version`);
+
+--
+-- Индексы таблицы `payment_list`
+--
+ALTER TABLE `payment_list`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `studio`
+--
+ALTER TABLE `studio`
+ ADD PRIMARY KEY (`id`), ADD KEY `type` (`type`), ADD KEY `user_id` (`user_id`);
+
+--
+-- Индексы таблицы `studio_delivery`
+--
+ALTER TABLE `studio_delivery`
+ ADD PRIMARY KEY (`id`), ADD KEY `studio_id` (`studio_id`,`delivery_id`);
+
+--
+-- Индексы таблицы `studio_payment`
+--
+ALTER TABLE `studio_payment`
+ ADD PRIMARY KEY (`id`), ADD KEY `studio_id` (`studio_id`,`payment_id`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `userscol_UNIQUE` (`login`), ADD UNIQUE KEY `email_UNIQUE` (`email`), ADD KEY `country_id` (`country_id`), ADD KEY `city_id` (`city_id`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `city`
+--
+ALTER TABLE `city`
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=438354;
+--
+-- AUTO_INCREMENT для таблицы `country`
+--
+ALTER TABLE `country`
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=248;
+--
+-- AUTO_INCREMENT для таблицы `currency`
+--
+ALTER TABLE `currency`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT для таблицы `delivery_list`
+--
+ALTER TABLE `delivery_list`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT для таблицы `payment_list`
+--
+ALTER TABLE `payment_list`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT для таблицы `studio`
+--
+ALTER TABLE `studio`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `studio_delivery`
+--
+ALTER TABLE `studio_delivery`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `studio_payment`
+--
+ALTER TABLE `studio_payment`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -55523,33 +55657,33 @@ INSERT INTO `users` (`id`, `login`, `email`, `password`, `auth_key`, `name`, `st
 -- Ограничения внешнего ключа таблицы `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
-  ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `auth_item`
 --
 ALTER TABLE `auth_item`
-  ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `auth_item_child`
 --
 ALTER TABLE `auth_item_child`
-  ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `studio`
 --
 ALTER TABLE `studio`
-  ADD CONSTRAINT `studio_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+ADD CONSTRAINT `studio_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON UPDATE CASCADE;
+ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON UPDATE CASCADE,
+ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

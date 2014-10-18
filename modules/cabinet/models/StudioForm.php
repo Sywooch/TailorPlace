@@ -214,7 +214,7 @@ class StudioForm extends Model
      */
     public function rules()
     {
-        //TODO поправить в каких сценариях применять фильтры
+        //TODO поправить в каких сценариях применять фильтры. Скоректировать длины текстовых инпутов
         return [
             // Название [[name]]
             ['name', 'filter', 'filter' => 'trim'],
@@ -241,25 +241,23 @@ class StudioForm extends Model
 			['custom_delivery', 'filter', 'filter' => 'strip_tags'],
             ['custom_delivery', 'string', 'max' => 250],
 
-            // Способы доставки [[paymentList]]
+            // Способы оплаты [[paymentList]]
 			['paymentList', 'validateDeliveryList'],
 
-            // другой способ доставки [[custom_payment]]
+            // другой способ оплаты [[custom_payment]]
 			['custom_payment', 'filter', 'filter' => 'trim'],
 			['custom_payment', 'filter', 'filter' => 'strip_tags'],
             ['custom_payment', 'string', 'max' => 250],
 
+            // Слоган [[slogan]]
+			['slogan', 'filter', 'filter' => 'trim'],
+			['slogan', 'filter', 'filter' => 'strip_tags'],
+            ['slogan', 'string', 'max' => 200],
 
-            // другой способ доставки [[custom_payment]]
-			['custom_payment', 'filter', 'filter' => 'trim'],
-			['custom_payment', 'filter', 'filter' => 'strip_tags'],
-            ['custom_payment', 'string', 'max' => 250],
-
-
-            // другой способ доставки [[custom_payment]]
-			['custom_payment', 'filter', 'filter' => 'trim'],
-			['custom_payment', 'filter', 'filter' => 'strip_tags'],
-            ['custom_payment', 'string', 'max' => 250],
+            // Описание [[description]]
+			['description', 'filter', 'filter' => 'trim'],
+			['description', 'filter', 'filter' => 'strip_tags'],
+            ['description', 'string', 'max' => 10000],
 
         ];
     }
