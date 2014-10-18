@@ -1,0 +1,270 @@
+@import 'fonts.css';
+@import 'reset.css';
+
+html, body, #wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#wrapper {
+    font-family: RobotoRegular, sans-serif;
+    font-size: 14px;
+    background: #FDF8F0;
+    color: #444444;
+}
+
+#center-wrapper {
+    width: 960px;
+    margin: auto;
+}
+
+#footer {
+
+}
+
+header {
+    position: relative;
+    height: 198px;
+    border-bottom: dashed #EFEBE3 2px;
+}
+
+#l-h-spiral {
+    position: absolute;
+    left: -148px;
+    top: -9px;
+    width: 151px;
+    height: 150px;
+    background: url('../img/left-bg-spiral.png');
+}
+
+#r-h-spiral {
+    position: absolute;
+    right: -143px;
+    top: 0;
+    width: 152px;
+    height: 150px;
+    background: url('../img/right-bg-spiral.png');
+}
+
+.header-col {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+
+#logo {
+    width: 156px;
+    height: 129px;
+    background: url('../img/logo-substrate.png') no-repeat;
+    margin-top: 34px;
+}
+
+#logo h1 {
+    padding-top: 20px;
+    font-family: Intro_Regular, sans-serif;
+    font-size: 32px;
+    color: #FFB800;
+    text-align: center;
+    text-transform: uppercase;
+    background: url('../img/logo-dashed-line.png') center 60px no-repeat;
+}
+
+#logo h1 span {
+    font-family: pf_din_text_comp_proRegular, sans-serif;
+    color: #322E25;
+    letter-spacing: 6px;
+    padding-left: 10px;
+}
+
+#site-description {
+    margin-top: 34px;
+    padding: 10px 0 0 10px;
+    font-family: pt_serifItalic, serif;
+    font-size: 15px;
+    color: #504C3F;
+}
+
+header nav {
+    position: relative;
+    height: 42px;
+    width: 544px;
+    margin-top: 6px;
+    background: #FF7F66 url('../img/nav-bg.png');
+}
+
+header nav::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top: solid transparent 21px;
+    border-bottom: solid transparent 21px;
+    border-left: solid transparent 15px;
+    border-right: solid #FDF8F0 15px;
+}
+
+header nav .top-line {
+    position: absolute;
+    top: 5px;
+    height: 1px;
+    width: 100%;
+    background: url('../img/nav-dashed-line.png') repeat-x;
+}
+
+header nav .bottom-line {
+    position: absolute;
+    bottom: 5px;
+    height: 1px;
+    width: 100%;
+    background: url('../img/nav-dashed-line.png') repeat-x;
+}
+
+header nav ul li {
+    float: left;
+    height: 26px;
+    line-height: 23px;
+    margin-top: 8px;
+    padding: 0 8px;
+    font-family: RobotoMedium, sans-serif;
+    font-size: 17px;
+}
+
+header nav ul li:first-child {
+    padding-left: 16px;
+}
+
+header nav ul li:nth-last-child(n+2)::after {
+    content: '';
+    display: inline-block;
+    height: 10px;
+    width: 9px;
+    margin: 0 0 -1px 8px;
+    /*padding-top: 8px;*/
+    background: url('../img/nav-circle-marker.png') no-repeat;
+}
+
+/*header nav ul li:last-child::after {*/
+    /*content: '';*/
+    /*margin: 0 0 -9px 8px;*/
+/*}*/
+
+header nav ul li a {
+    color: #FFFFFF;
+}
+
+input.form-control {
+    border-color: #DFC8BB;
+    color: #322C25;
+}
+
+input.form-control:hover {
+    border-color: #DFC8BB;
+}
+
+input.form-control:focus {
+    border-color: #DFC8BB;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 187, 102, 0.6);
+}
+
+button.btn {
+    border-color: #DFC8BB;
+    color: #DFC7BA;
+}
+
+button.btn:hover {
+    color: #322C25;
+    background: #fff;
+    border-color: #DFC8BB;
+}
+
+button.btn:focus {
+    background: #fff;
+    border-color: #DFC8BB;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 187, 102, 0.6);
+}
+
+button.btn, input.form-control {
+    border-radius: 0;
+    font-size: 16px;
+    height: 38px;
+    border-color: #DFC8BB;
+    box-shadow: none;
+}
+
+#search {
+    margin: 12px 0 0 14px;
+    width: 524px;
+}
+
+#search input.form-control {
+    padding-right: 40px;
+}
+
+.dropdown-group .vertical-divider {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 1px;
+    height: 30px;
+    background: #DFC8BB;
+    z-index: 3;
+}
+
+.dropdown-left-group button {
+    border-right: none;
+}
+
+.dropdown-left-group input {
+    border-left: none;
+}
+
+.dropdown-left-group .caret {
+    margin: 0 0 2px 3px;
+    border-right-width: 4px;
+    border-left-width: 4px;
+    border-top: solid #AAA9A4 6px;
+}
+
+#search-submit {
+    position: absolute;
+    right: 0;
+    height: 38px;
+    width: 38px;
+    border: none;
+    background: url('../img/search-button.png') center no-repeat;
+    opacity: 0.6;
+    z-index: 3;
+}
+
+#search-submit:hover {
+    opacity: 1;
+}
+
+#personal {
+    width: 240px;
+    margin: 65px 0 0 20px;
+}
+
+.button {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    height: 38px;
+    background: #C2AA9C;
+    border: none;
+    border-radius: 9px;
+    z-index: 2;
+}
+
+.button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    z-index: -1;
+}
