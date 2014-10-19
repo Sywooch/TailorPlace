@@ -88,7 +88,7 @@ header {
 header nav {
     position: relative;
     height: 42px;
-    width: 544px;
+    width: 554px;
     margin-top: 6px;
     background: #FF7F66 url('../img/nav-bg.png');
 }
@@ -167,6 +167,10 @@ input.form-control:focus {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 187, 102, 0.6);
 }
 
+button:focus {
+    outline: none !important;
+}
+
 button.btn {
     border-color: #DFC8BB;
     color: #DFC7BA;
@@ -241,30 +245,99 @@ button.btn, input.form-control {
     opacity: 1;
 }
 
-#personal {
-    width: 240px;
-    margin: 65px 0 0 20px;
+.button {
+    display: inline-block;
+    position: relative;
+    height: 38px;
 }
 
-.button {
+.button .margin-layer {
+    width: 100%;
+    height: 4px;
+}
+
+.button .low-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #A28A7B url('../img/diagonal-bg.png');
+    border-radius: 9px;
+}
+
+.button button {
     display: block;
     position: absolute;
-    box-sizing: border-box;
-    height: 38px;
+    bottom: 4px;
+    height: 100%;
+    width: 100%;
     background: #C2AA9C;
     border: none;
     border-radius: 9px;
-    z-index: 2;
+    font-family: RobotoMedium, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 0;
+    vertical-align: middle;
 }
 
-.button:before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -20px;
-    width: 100%;
-    height: 100%;
-    background: #ccc;
-    z-index: -1;
+.button button:active {
+    bottom: 1px;
+}
+
+.button.yellow .low-layer {
+    background-color: #E49808;
+}
+
+.button.yellow button {
+    background-color: #FFB800;
+}
+
+#signup-button {
+    width: 176px;
+}
+
+#login-button {
+    width: 140px;
+    margin-top: 9px;
+}
+
+#personal {
+    width: 250px;
+    margin: 43px 0 0 0;
+}
+
+#personal.non-authorized {
+    text-align: center;
+}
+
+#personal .welcome {
+    margin-bottom: 11px;
+}
+
+i.icon {
+    display: inline-block;
+    box-sizing: content-box;
+    vertical-align: middle;
+    padding-top: 4px;
+    padding-right: 4px;
+    margin-left: -7px;
+}
+
+.person-white {
+    width: 13px;
+    height: 15px;
+    background: url('../img/person-white.png') no-repeat;
+}
+
+.login-icon {
+    width: 18px;
+    height: 16px;
+    background: url('../img/login-icon.png') no-repeat;
+}
+
+.help-icon {
+    width: 34px;
+    height: 34px;
+    background: #9FD245;
+    border-radius: 50%;
 }

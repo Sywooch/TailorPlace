@@ -70,9 +70,21 @@ AppAsset::register($this);
                     </form>
                 </div><div class="header-col">
 <!-- TODO сделать виджетом -->
-                    <div id="personal">
-                        <button class="button yellow" type="button">Регистрация</button>
+                    <div id="personal" class="non-authorized">
+                        <p class="welcome">Здравствуй гость!</p>
+                        <div id="signup-button" class="button yellow">
+                            <div class="low-layer"></div>
+                            <button type="button"><i class="icon person-white"></i> Регистрация</button>
+                        </div>
+                        <div id="login-button" class="button">
+                            <div class="low-layer"></div>
+                            <button type="button"><i class="icon login-icon"></i> Войти</button>
+                        </div>
                     </div>
+<!--                    <div id="personal" class="authorized">-->
+<!---->
+<!--                    </div>-->
+                    <div class="help-icon" id="main-help"></div>
                 </div>
             </header>
             Юбка-солнце
