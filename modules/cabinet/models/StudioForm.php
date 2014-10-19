@@ -235,7 +235,7 @@ class StudioForm extends Model
 
             // Валюта [[currencyId]]
             ['currencyId', 'required'],
-            ['currencyId', 'integer']
+            ['currencyId', 'integer'],
 
             // Способы доставки [[deliveryList]]
 			['deliveryList', 'validateDeliveryList'],

@@ -11,6 +11,8 @@ use app\modules\studio\models\Studio;
 use app\modules\cabinet\models\StudioForm;
 use app\models\Country;
 use app\models\City;
+use app\models\Delivery;
+use app\models\Payment;
 
 class StudioController extends CommonController
 {
@@ -36,8 +38,26 @@ class StudioController extends CommonController
         	$Studio = new Studio();
         	$Studio->name = $StudioForm->name;
         	$User->country_id = $StudioForm->countryId;
-        	$User->sity_id = $StudioForm->sityId;
+        	$User->city_id = $StudioForm->cityId;
         	$Studio->currency_id = $StudioForm->currencyId;
+        	$Studio->custom_delivery = $StudioForm->custom_delivery;
+        	$Studio->custom_payment = $StudioForm->custom_payment;
+        	$Studio->slogan = $StudioForm->slogan;
+        	$Studio->description = $StudioForm->description;
+        	// Сохраним студию назначив ее пользователю
+        	$User->link('studio', $Studio);
+
+        	// Когда у Студии будет id (после записи), назначим связи многие ко многим
+        	// TODO попробовать сразу подать массив в link, т.к. запрос на каждую итерацию
+        	$deliveryObjects = Delivery::findAll($StudioForm->deliveryList);
+        	foreach ($deliveryObjects as $delivery) {
+        		$Studio->link('delivery', $delivery);
+        	}
+
+        	$paymentObjects = Payment::findAll($StudioForm->paymentList);
+        	foreach ($paymentObjects as $payment) {
+        		$Studio->link('payment', $payment);
+        	}
         }
 
         $StudioForm->fillCountry($User);
