@@ -8,9 +8,9 @@ use yii\filters\AccessControl;
 use yii\helpers\Json;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
+use app\modules\cabinet\models\StudioForm;
 use app\models\Country;
 use app\models\City;
-use app\modules\cabinet\models\StudioForm;
 
 class StudioController extends CommonController
 {
@@ -30,19 +30,23 @@ class StudioController extends CommonController
 
 	public function actionCreateAtelier()
 	{
-        $Studio = new StudioForm('atelier', ['scenario' => 'create-atelier']);
+        $StudioForm = new StudioForm('atelier', ['scenario' => 'create-atelier']);
         $User = Yii::$app->user->identity;
-        if ($Studio->load(Yii::$app->request->post()) && $Studio->validate()) {
-        	
+        if ($StudioForm->load(Yii::$app->request->post()) && $StudioForm->validate()) {
+        	$Studio = new Studio();
+        	$Studio->name = $StudioForm->name;
+        	$User->country_id = $StudioForm->countryId;
+        	$User->sity_id = $StudioForm->sityId;
+        	$Studio->currency_id = $StudioForm->currencyId;
         }
 
-        $Studio->fillCountry($User);
-        $Studio->fillCity($User);
+        $StudioForm->fillCountry($User);
+        $StudioForm->fillCity($User);
 
 
 
 		return $this->render('create', [
-            'studio' => $Studio,
+            'studioForm' => $StudioForm,
         ]);
 	}
 

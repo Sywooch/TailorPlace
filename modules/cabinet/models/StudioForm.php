@@ -233,6 +233,10 @@ class StudioForm extends Model
             // Город [[cityId]]
             ['cityId', 'validateCityId', 'skipOnEmpty' => false],
 
+            // Валюта [[currencyId]]
+            ['currencyId', 'required'],
+            ['currencyId', 'integer']
+
             // Способы доставки [[deliveryList]]
 			['deliveryList', 'validateDeliveryList'],
 

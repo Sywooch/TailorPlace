@@ -24,7 +24,7 @@ class Studio extends ActiveRecord
     public function getDelivery()
     {
         return $this->hasMany(Delivery::className(), ['id' => 'delivery_id'])
-            ->viaTable('studio_delivery', 'studio_id' => 'id');
+            ->viaTable('studio_delivery', ['studio_id' => 'id']);
     }
 
     /**
@@ -34,6 +34,6 @@ class Studio extends ActiveRecord
     public function getPayment()
     {
         return $this->hasMany(Payment::className(), ['id' => 'payment_id'])
-            ->viaTable('studio_payment', 'studio_id' => 'id');
+            ->viaTable('studio_payment', ['studio_id' => 'id']);
     }
 }

@@ -3,7 +3,7 @@
  * Страница регистрации студии.
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var app\modules\cabinet\models\studioform $studio
+ * @var app\modules\cabinet\models\StudioForm $studioForm
  */
 
 use yii\helpers\Html;
@@ -17,10 +17,10 @@ use app\modules\assets\StudioAsset;
 StudioAsset::register($this);
 
 // если у студии есть страна, то надо подгрузить ее города и раздизейблить поле городов
-if ($studio->countryId){
+if ($studioForm->countryId){
     $this->registerJs("
     $(function(){
-        checkCities(". $studio->countryId .", 'studioform-cityname', '" . Url::toRoute('get-city-list') . "');
+        checkCities(". $studioForm->countryId .", 'studioform-cityname', '" . Url::toRoute('get-city-list') . "');
     });
 ");
 }
@@ -28,7 +28,7 @@ if ($studio->countryId){
 
 ?>
 
-<?php if ($studio->getType() === 'atelier'): ?>
+<?php if ($studioForm->getType() === 'atelier'): ?>
     <h1 class="atelier">Регистрация ателье</h1>
 <?php else: ?>
     <h1 class="store">Регистрация магазина</h1>
@@ -44,10 +44,10 @@ if ($studio->countryId){
     ]);
 ?>
 
-<?= $form->field($studio, 'name') ?>
-<?= $form->field($studio, 'countryName')->widget(AutoComplete::className(),
+<?= $form->field($studioForm, 'name') ?>
+<?= $form->field($studioForm, 'countryName')->widget(AutoComplete::className(),
     [
-        'model' => $studio,
+        'model' => $studioForm,
         'attribute' => 'countryName',
         'options' => [
             'class' => 'form-control',
@@ -73,10 +73,10 @@ if ($studio->countryId){
         ]
     ])
 ?>
-<?= Html::activeHiddenInput($studio, 'countryId') ?>
-<?= $form->field($studio, 'cityName')->widget(AutoComplete::className(),
+<?= Html::activeHiddenInput($studioForm, 'countryId') ?>
+<?= $form->field($studioForm, 'cityName')->widget(AutoComplete::className(),
     [
-            'model' => $studio,
+            'model' => $studioForm,
             'attribute' => 'cityName',
             'options' => [
                 'class' => 'form-control',
@@ -102,35 +102,35 @@ if ($studio->countryId){
             ],
     ])
 ?>
-<?= Html::activeHiddenInput($studio, 'cityId') ?>
-<?= $form->field($studio, 'currencyId')->dropDownList(
-        ArrayHelper::map($studio->getCurrencyList(), 'id', 'code')
+<?= Html::activeHiddenInput($studioForm, 'cityId') ?>
+<?= $form->field($studioForm, 'currencyId')->dropDownList(
+        ArrayHelper::map($studioForm->getCurrencyList(), 'id', 'code')
     )
 ?>
-<?= $form->field($studio, 'deliveryList')->checkboxList(
-    ArrayHelper::map($studio->getDeliveryList(), 'id', 'name_ru')
+<?= $form->field($studioForm, 'deliveryList')->checkboxList(
+    ArrayHelper::map($studioForm->getDeliveryList(), 'id', 'name_ru')
 )
 ?>
-<?= $form->field($studio, 'custom_delivery')
+<?= $form->field($studioForm, 'custom_delivery')
 	->textInput([
 		'placeholder' => 'Другой способ доставки',
 		'class' => 'form-control addable'
 	])
 	->label('')
 ?>
-<?= $form->field($studio, 'paymentList')->checkboxList(
-    ArrayHelper::map($studio->getPaymentList(), 'id', 'name_ru')
+<?= $form->field($studioForm, 'paymentList')->checkboxList(
+    ArrayHelper::map($studioForm->getPaymentList(), 'id', 'name_ru')
 )
 ?>
-<?= $form->field($studio, 'custom_payment')
+<?= $form->field($studioForm, 'custom_payment')
 	->textInput([
 		'placeholder' => 'Другой способ оплаты',
 		'class' => 'form-control addable'
 	])
 	->label('')
 ?>
-<?= $form->field($studio, 'slogan') ?>
-<?= $form->field($studio, 'description')
+<?= $form->field($studioForm, 'slogan') ?>
+<?= $form->field($studioForm, 'description')
 	->textArea([
 		'placeholder' => 'Здесь вы можете дать подробное описание вашего ателье',
 	])
