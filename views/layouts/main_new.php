@@ -74,25 +74,57 @@ AppAsset::register($this);
                         <p class="welcome">Здравствуй гость!</p>
                         <div id="signup-button" class="button yellow">
                             <div class="low-layer"></div>
-                            <button type="button"><i class="icon person-white"></i> Регистрация</button>
+                            <a data-type="button" href="/signup/"><i class="icon person-white"></i><span>Регистрация</span></a>
                         </div>
                         <div id="login-button" class="button">
                             <div class="low-layer"></div>
-                            <button type="button"><i class="icon login-icon"></i> Войти</button>
+                            <a data-type="button" href="/login/"><i class="icon login-icon"></i><span>Войти</span></a>
                         </div>
                     </div>
 <!--                    <div id="personal" class="authorized">-->
 <!---->
 <!--                    </div>-->
-                    <div class="help-icon" id="main-help"></div>
+                    <a href="#" class="circle-icon help-icon" id="main-help"></a>
                 </div>
+                <div class="dashed scissor-right"></div>
             </header>
-            Юбка-солнце
+            <div id="left-background"></div>
+            <div id="right-background"></div>
+            <main>
+                <?= $content ?>
+            </main>
         </div>
-        <div id="footer">
-            Футер
-        </div>
+        <div id="footer-buffer"></div>
     </div>
+    <footer>
+        <div id="dark-bg"></div>
+        <div id="footer-content">
+            <div id="mini-logo" class="footer-col">
+                <h1>Tailor <span>place</span></h1>
+            </div><div class="footer-col description">
+                <span>
+                    Свободная торговая площадка в области портняжного дела
+                </span><br>
+                <span>
+                    <?= date('Y') ?> г.
+                </span>
+            </div><div class="footer-col menu">
+                <ul>
+                    <li><a href="#">Ателье и магазины</a></li>
+                    <li><a href="#">Товары</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+<!--                <div class="social">
+                        <i class="icon vk"></i>
+                    </div>-->
+                <div class="feedback">
+                    <a href="#">Обратная связь</a>
+                </div>
+            </div>
+            <a href="#" id="footer-help" class="circle-icon help-icon"></a>
+        </div>
+    </footer>
 <?php $this->endBody() ?>
 </body>
 </html>

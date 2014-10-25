@@ -1,32 +1,44 @@
 @import 'fonts.css';
 @import 'reset.css';
 
-html, body, #wrapper {
+html, body {
     width: 100%;
     height: 100%;
-    position: relative;
-}
-
-#wrapper {
     font-family: RobotoRegular, sans-serif;
     font-size: 14px;
-    background: #FDF8F0;
     color: #444444;
 }
 
+#wrapper {
+    position: relative;
+    min-height: 100%;
+    background: #FDF8F0;
+    margin-bottom: -104px;
+    overflow: hidden;
+}
+
 #center-wrapper {
+    position: relative;
     width: 960px;
+    min-height: 100%;
     margin: auto;
 }
 
-#footer {
+#footer-buffer {
+    height: 104px;
+}
 
+footer {
+    position: relative;
+    height: 104px;
+    width: 100%;
+    background: #95938D;
+    border-top: solid #C9C5BE 1px;
 }
 
 header {
     position: relative;
     height: 198px;
-    border-bottom: dashed #EFEBE3 2px;
 }
 
 #l-h-spiral {
@@ -120,6 +132,11 @@ header nav .bottom-line {
     background: url('../img/nav-dashed-line.png') repeat-x;
 }
 
+header nav a:hover {
+    color: #82210E;
+    text-decoration: none;
+}
+
 header nav ul li {
     float: left;
     height: 26px;
@@ -167,7 +184,7 @@ input.form-control:focus {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 187, 102, 0.6);
 }
 
-button:focus {
+button:focus, a {
     outline: none !important;
 }
 
@@ -264,7 +281,7 @@ button.btn, input.form-control {
     border-radius: 9px;
 }
 
-.button button {
+.button button, .button a[data-type="button"] {
     display: block;
     position: absolute;
     bottom: 4px;
@@ -280,7 +297,7 @@ button.btn, input.form-control {
     vertical-align: middle;
 }
 
-.button button:active {
+.button button:active, .button a[data-type="button"]:active {
     bottom: 1px;
 }
 
@@ -288,8 +305,18 @@ button.btn, input.form-control {
     background-color: #E49808;
 }
 
-.button.yellow button {
+.button.yellow button, .button.yellow a[data-type="button"] {
     background-color: #FFB800;
+}
+
+.button a[data-type="button"] {
+    text-decoration: none;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.button a[data-type="button"] span {
+    padding-left: 6px;
 }
 
 #signup-button {
@@ -314,13 +341,10 @@ button.btn, input.form-control {
     margin-bottom: 11px;
 }
 
-i.icon {
+.icon {
     display: inline-block;
-    box-sizing: content-box;
-    vertical-align: middle;
-    padding-top: 4px;
-    padding-right: 4px;
-    margin-left: -7px;
+    height: 18px;
+    width: 18px;
 }
 
 .person-white {
@@ -335,9 +359,206 @@ i.icon {
     background: url('../img/login-icon.png') no-repeat;
 }
 
-.help-icon {
+.circle-icon {
+    display: inline-block;
     width: 34px;
     height: 34px;
-    background: #9FD245;
     border-radius: 50%;
+    text-align: center;
+    font-family: RobotoBold, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    line-height: 34px;
+    color: #FFFFFF;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select:none;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.circle-icon:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.help-icon {
+    background: #9FD245;
+}
+
+.help-icon:before {
+    content: '?';
+}
+
+#main-help {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+#dark-bg {
+    position: absolute;
+    bottom: 0;
+    height: 22px;
+    width: 100%;
+    background: #898781;
+}
+
+.dashed {
+    position: relative;
+    border-bottom: dashed #EFEBE3 2px;
+}
+
+.dashed.scissor-right {
+    margin-right: 12px;
+}
+
+.dashed.scissor-right::after {
+    content: '';
+    position: absolute;
+    top: -11px;
+    right: -12px;
+    width: 23px;
+    height: 24px;
+    background: url('../img/scissor.png') no-repeat -23px;
+}
+
+.dashed.scissor-left {
+    margin-left: 12px;
+}
+
+.dashed.scissor-left::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: -12px;
+    width: 23px;
+    height: 24px;
+    background: url('../img/scissor.png') no-repeat;
+}
+
+#left-background {
+    position: absolute;
+    width: 151px;
+    height: 100%;
+    left: -220px;
+    background: url('../img/left-bg-spiral.png') repeat-y 0 20px;
+}
+
+#right-background {
+    position: absolute;
+    width: 152px;
+    height: 100%;
+    right: -220px;
+    background: url('../img/right-bg-spiral.png') repeat-y 0 155px;
+}
+
+footer .footer-col {
+    display: inline-block;
+    color: #FFFFFF;
+    vertical-align: top;
+}
+
+footer a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #DDDDDD;
+}
+
+#footer-content {
+    position: relative;
+    width: 960px;
+    margin: auto;
+}
+
+#mini-logo {
+    position: relative;
+    top: -5px;
+    width: 106px;
+    height: 90px;
+    background: url('../img/logo-mini-substrate.png') no-repeat;
+}
+
+#mini-logo h1 {
+    padding-top: 12px;
+    font-family: Intro_Regular, sans-serif;
+    font-size: 22px;
+    color: #FFB800;
+    text-align: center;
+    text-transform: uppercase;
+    background: url('../img/logo-mini-dashed-line.png') center 39px no-repeat;
+}
+
+#mini-logo h1 span {
+    font-family: pf_din_text_comp_proRegular, sans-serif;
+    color: #322E25;
+    letter-spacing: 5px;
+    padding-left: 5px;
+}
+
+footer .footer-col.description {
+    width: 215px;
+    margin: 10px 0 0 15px;
+}
+
+footer .footer-col.description span:first-child {
+    font-family: pt_serifItalic, sans-serif;
+    font-size: 15px;
+}
+
+footer .footer-col.description span:last-child {
+    line-height: 28px;
+}
+
+footer .footer-col.menu {
+    margin: 20px 0 0 30px;
+}
+
+footer .footer-col.menu li {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+footer .contacts {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 168px;
+}
+
+footer .social {
+    margin-top: 18px;
+}
+
+footer .social .icon {
+    height: 16px;
+    border-radius: 0;
+}
+
+footer .social .icon.vk {
+    width: 13px;
+    background: url("../img/icon-social.png") no-repeat -8px 0;
+}
+
+footer .feedback {
+    margin-top: 22px;
+}
+
+#footer-help {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border: solid #FFFFFF 2px;
+    background: transparent;
+    line-height: 26px;
+    font-size: 24px;
 }
