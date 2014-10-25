@@ -38,9 +38,9 @@ class City extends ActiveRecord
     public static function getCityList($countryId = null, $like = null)
     {
         $Query = self::find()
-            ->select(['name_ru as value', 'name_ru as  label','id']);
+            ->select(['name_ru as value', 'name_ru as  label','id'])->orderBy('value');
         $UnionQuery = self::find()
-            ->select(['name_en as value', 'name_en as  label','id']);
+            ->select(['name_en as value', 'name_en as  label','id'])->orderBy('value');
 
         if ($countryId) {
             $Query->where(['country_id' => $countryId]);
@@ -57,7 +57,6 @@ class City extends ActiveRecord
 
         return $Query
             ->union($UnionQuery)
-            ->orderBy('value')
             ->asArray()
             ->all();
     }

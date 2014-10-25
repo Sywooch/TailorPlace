@@ -24,6 +24,10 @@ class Cabinet extends \yii\base\Module
 	        	$action->controller->addBreadcrumbsItem(['label' => 'Личный кабинет', 'url' => ['/cabinet']]);
 
 				$items = $action->controller->breadcrumbItems[$action->id];
+				if ($items === 'not add') {
+					// Просто выходим и разрешаем выолнять Action
+					return true;
+				}
 	        	if (is_array($items)) {
 	        		foreach ($items as $item) {
 	        			if (isset($item['url'])) {

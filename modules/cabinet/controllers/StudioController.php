@@ -6,6 +6,7 @@ use Yii;
 use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
+use yii\web\ForbiddenHttpException;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
 use app\modules\cabinet\models\StudioForm;
@@ -21,9 +22,25 @@ class StudioController extends CommonController
 	 * @var array
 	 */
 	public $breadcrumbItems = [
+		'index' => 'not add',
 		'what-create' => 'Регистрация ателье/магазина',
-		'create-atelier' => 'Регистрация ателье'
+		'create-atelier' => 'Регистрация ателье',
+		'create-store' => 'Регистрация магазина'
 	];
+
+	public function actionIndex()
+	{
+		$User = Yii::$app->user->identity;
+		$Studio = $User->studio;
+		if ($Studio->type == 'atelier') {
+			$this->addBreadcrumbsItem(['label' => 'Мое ателье']);
+		} else {
+			$this->addBreadcrumbsItem(['label' => 'Мой магазин']);
+		}
+		return $this->render('index', [
+            'Studio' => $Studio,
+        ]);
+	}
 
 	public function actionWhatCreate()
 	{
@@ -32,10 +49,29 @@ class StudioController extends CommonController
 
 	public function actionCreateAtelier()
 	{
-        $StudioForm = new StudioForm('atelier', ['scenario' => 'create-atelier']);
         $User = Yii::$app->user->identity;
-        if ($StudioForm->load(Yii::$app->request->post()) && $StudioForm->validate()) {
+		if ($User->studio !== null) {
+			throw new ForbiddenHttpException("Доступ запрещен");
+		}
+        $StudioForm = new StudioForm('atelier', ['scenario' => 'create-atelier']);
+        return $this->createStudio($StudioForm, $User);
+	}
+
+	public function actionCreateStore()
+	{
+        $User = Yii::$app->user->identity;
+		if ($User->studio !== null) {
+			throw new ForbiddenHttpException("Доступ запрещен");
+		}
+        $StudioForm = new StudioForm('store', ['scenario' => 'create-store']);
+        return $this->createStudio($StudioForm, $User);
+	}
+
+	private function createStudio($StudioForm, \app\modules\users\models\User $User)
+	{
+		if ($StudioForm->load(Yii::$app->request->post()) && $StudioForm->validate()) {
         	$Studio = new Studio();
+        	$Studio->type = $StudioForm->type;
         	$Studio->name = $StudioForm->name;
         	$User->country_id = $StudioForm->countryId;
         	$User->city_id = $StudioForm->cityId;
@@ -58,12 +94,16 @@ class StudioController extends CommonController
         	foreach ($paymentObjects as $payment) {
         		$Studio->link('payment', $payment);
         	}
+
+        	// Назначим новую роль пользователю (atelierOwner или storeOwner)
+        	$User->assignRole($Studio->type . 'Owner');
+
+        	// Рендерим страницу магазина или ателье
+        	return $this->redirect(['index']);
         }
 
         $StudioForm->fillCountry($User);
         $StudioForm->fillCity($User);
-
-
 
 		return $this->render('create', [
             'studioForm' => $StudioForm,

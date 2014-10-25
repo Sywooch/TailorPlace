@@ -179,18 +179,12 @@ class StudioForm extends Model
 
     public function getDeliveryList()
 	{
-		if (!$this->deliveryList) {
-			$this->deliveryList = Delivery::find()->asArray()->all();
-		}
-		return $this->deliveryList;
+		return Delivery::find()->asArray()->all();
 	}
 
     public function getPaymentList()
 	{
-		if (!$this->paymentList) {
-			$this->paymentList = Payment::find()->asArray()->all();
-		}
-		return $this->paymentList;
+		return Payment::find()->asArray()->all();
 	}
 
     public function fillCountry(\app\modules\users\models\User $User)
@@ -219,7 +213,7 @@ class StudioForm extends Model
             // Название [[name]]
             ['name', 'filter', 'filter' => 'trim'],
             ['name', 'required'],
-            ['name', 'match', 'pattern' => '/^[a-zA-Zа-яА-Я0-9]+$/'],
+            // ['name', 'match', 'pattern' => '/^[a-zA-Zа-яА-Я0-9]+$/'],
             ['name', 'string', 'min' => 3, 'max' => 30],
             // ['name', 'unique'],
 

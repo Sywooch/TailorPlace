@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Окт 18 2014 г., 07:44
+-- Время создания: Окт 25 2014 г., 08:45
 -- Версия сервера: 5.5.37-0ubuntu0.13.10.1
 -- Версия PHP: 5.5.3-1ubuntu2.6
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-('user', '9', 1411214260);
+('storeOwner', '9', 1414225530);
 
 -- --------------------------------------------------------
 
@@ -55456,7 +55456,14 @@ CREATE TABLE IF NOT EXISTS `studio` (
   `custom_delivery` varchar(250) DEFAULT NULL COMMENT 'Свой способ доставки',
   `custom_payment` varchar(250) DEFAULT NULL COMMENT 'Свой способ оплаты',
   `currency_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'Id валюты студии'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `studio`
+--
+
+INSERT INTO `studio` (`id`, `user_id`, `type`, `name`, `slogan`, `description`, `create_time`, `update_time`, `avatar`, `custom_delivery`, `custom_payment`, `currency_id`) VALUES
+(11, 9, 'store', 'Магазинчик / < > \\w ~ ^', '', '', '2014-10-25 08:25:29', NULL, NULL, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -55468,7 +55475,15 @@ CREATE TABLE IF NOT EXISTS `studio_delivery` (
 `id` int(10) unsigned NOT NULL,
   `studio_id` int(10) unsigned NOT NULL COMMENT 'id студии',
   `delivery_id` int(10) unsigned NOT NULL COMMENT 'id способа доставки'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица связи студии и способа доставки';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Таблица связи студии и способа доставки';
+
+--
+-- Дамп данных таблицы `studio_delivery`
+--
+
+INSERT INTO `studio_delivery` (`id`, `studio_id`, `delivery_id`) VALUES
+(8, 11, 2),
+(9, 11, 3);
 
 -- --------------------------------------------------------
 
@@ -55480,7 +55495,17 @@ CREATE TABLE IF NOT EXISTS `studio_payment` (
 `id` int(10) unsigned NOT NULL,
   `studio_id` int(10) unsigned NOT NULL COMMENT 'id студии',
   `payment_id` int(10) unsigned NOT NULL COMMENT 'id способа оплаты'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица связи студии и способа оплаты';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='Таблица связи студии и способа оплаты';
+
+--
+-- Дамп данных таблицы `studio_payment`
+--
+
+INSERT INTO `studio_payment` (`id`, `studio_id`, `payment_id`) VALUES
+(6, 11, 1),
+(7, 11, 2),
+(8, 11, 3),
+(9, 11, 5);
 
 -- --------------------------------------------------------
 
@@ -55496,7 +55521,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `auth_key` varchar(32) NOT NULL COMMENT 'Ключ аутентификации пользователя',
   `name` varchar(100) DEFAULT NULL COMMENT 'Имя пользователя (опционально)',
   `status` enum('ok','not confirmed','banned') NOT NULL DEFAULT 'not confirmed' COMMENT 'Статус пользователя (нормальный, не подтвердил авторизацию, забанен)',
-  `role` enum('user','storeOwner','atelierOwner','admin') NOT NULL DEFAULT 'user' COMMENT 'Роль пользователя',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата создания',
   `update_time` timestamp NULL DEFAULT NULL COMMENT 'Дата обновления',
   `country_id` int(10) unsigned DEFAULT NULL COMMENT 'id страны пользователя',
@@ -55508,9 +55532,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `email`, `password`, `auth_key`, `name`, `status`, `role`, `create_time`, `update_time`, `country_id`, `city_id`, `address`) VALUES
-(2, 'adminTest', 'adminTest@mail.com', '$2y$13$jJM57iXgZzmnaGoC.KjJ5OoG1B/w5ot9NMwT3Pb8V.dJAsF0Az3Ga', '3??l?[???d]8???v?|???????A??', NULL, 'not confirmed', 'user', '2014-08-31 10:45:48', NULL, NULL, NULL, NULL),
-(9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', 'user', '2014-09-20 11:57:40', NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `login`, `email`, `password`, `auth_key`, `name`, `status`, `create_time`, `update_time`, `country_id`, `city_id`, `address`) VALUES
+(2, 'adminTest', 'adminTest@mail.com', '$2y$13$jJM57iXgZzmnaGoC.KjJ5OoG1B/w5ot9NMwT3Pb8V.dJAsF0Az3Ga', '3??l?[???d]8???v?|???????A??', NULL, 'not confirmed', '2014-08-31 10:45:48', NULL, NULL, NULL, NULL),
+(9, 'test', 'test@test.com', '$2y$13$MRGY3wFuByaSrCXqqqMKmuZXX8TfP1SjrKgvdbWeQ65hVKFaB6zR2', ';', NULL, 'not confirmed', '2014-09-20 11:57:40', NULL, NULL, NULL, NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -55586,13 +55610,13 @@ ALTER TABLE `studio`
 -- Индексы таблицы `studio_delivery`
 --
 ALTER TABLE `studio_delivery`
- ADD PRIMARY KEY (`id`), ADD KEY `studio_id` (`studio_id`,`delivery_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `studio_id` (`studio_id`), ADD KEY `delivery_id` (`delivery_id`);
 
 --
 -- Индексы таблицы `studio_payment`
 --
 ALTER TABLE `studio_payment`
- ADD PRIMARY KEY (`id`), ADD KEY `studio_id` (`studio_id`,`payment_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `studio_id` (`studio_id`), ADD KEY `payment_id` (`payment_id`);
 
 --
 -- Индексы таблицы `users`
@@ -55633,17 +55657,17 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT для таблицы `studio`
 --
 ALTER TABLE `studio`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT для таблицы `studio_delivery`
 --
 ALTER TABLE `studio_delivery`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `studio_payment`
 --
 ALTER TABLE `studio_payment`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
@@ -55677,6 +55701,20 @@ ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_i
 --
 ALTER TABLE `studio`
 ADD CONSTRAINT `studio_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `studio_delivery`
+--
+ALTER TABLE `studio_delivery`
+ADD CONSTRAINT `studio_delivery_ibfk_2` FOREIGN KEY (`delivery_id`) REFERENCES `delivery_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `studio_delivery_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `studio_payment`
+--
+ALTER TABLE `studio_payment`
+ADD CONSTRAINT `studio_payment_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `studio_payment_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `users`

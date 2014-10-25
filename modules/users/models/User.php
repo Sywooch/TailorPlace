@@ -171,7 +171,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     /**
      * Назначить роль пользователю
-     * @param  Role   $role Объект конкретной роли
+     * @param  string $role Название роли
      * @return null
      */
     public function assignRole($role)

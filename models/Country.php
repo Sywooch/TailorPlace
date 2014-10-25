@@ -50,9 +50,9 @@ class Country extends ActiveRecord
     public static function getCountryList($like = null)
     {
         $Query = self::find()
-            ->select(['name_ru as value', 'name_ru as  label','id']);
+            ->select(['name_ru as value', 'name_ru as  label','id'])->orderBy('value');
         $UnionQuery = self::find()
-            ->select(['name_en as value', 'name_en as  label','id']);
+            ->select(['name_en as value', 'name_en as  label','id'])->orderBy('value');
 
         if ($like) {
             $Query->where('name_ru like :name', [':name' => $like . '%']);
@@ -61,7 +61,6 @@ class Country extends ActiveRecord
 
         return $Query
             ->union($UnionQuery)
-            ->orderBy('value')
             ->asArray()
             ->all();
     }
