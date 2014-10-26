@@ -73,6 +73,10 @@ $config = [
                 '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
             // Личный кабинет
                 'cabinet' => 'cabinet/default/index/',
+                'cabinet/studio/<section:(all|vitrine|sale)>/' => 'cabinet/studio/index/',
+                'cabinet/studio/<order:\w+>/' => 'cabinet/studio/index/',
+                'cabinet/studio/<section:(all|vitrine|sale)>/<order:\w+>/' => 'cabinet/studio/index/',
+            // Инициализация ролей
                 'roles' => 'rbac/rbac/init/',
             ],
         ],

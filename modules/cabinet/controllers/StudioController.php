@@ -6,6 +6,7 @@ use Yii;
 use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
+use yii\helpers\BaseUrl;
 use yii\web\ForbiddenHttpException;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
@@ -33,11 +34,16 @@ class StudioController extends CommonController
 		$User = Yii::$app->user->identity;
 		$Studio = $User->studio;
 		if ($Studio->type == 'atelier') {
-			$this->addBreadcrumbsItem(['label' => 'Мое ателье']);
+			$studioType = 'Мое ателье';
 		} else {
-			$this->addBreadcrumbsItem(['label' => 'Мой магазин']);
+			$studioType = 'Мой магазин';
 		}
+		$this->addBreadcrumbsItem(['label' => $studioType]);
+var_dump(BaseUrl::base());
+exit();
+		// $menuItem = $this->request->get('section');
 		return $this->render('index', [
+            'studioType' => $studioType,
             'Studio' => $Studio,
         ]);
 	}

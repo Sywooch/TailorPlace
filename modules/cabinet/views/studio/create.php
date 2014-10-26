@@ -29,9 +29,9 @@ if ($studioForm->countryId){
 ?>
 
 <?php if ($studioForm->getType() === 'atelier'): ?>
-    <h1 class="atelier">Регистрация ателье</h1>
+    <h1>Регистрация ателье</h1>
 <?php else: ?>
-    <h1 class="store">Регистрация магазина</h1>
+    <h1>Регистрация магазина</h1>
 <?php endif ?>
 <?php
     $form = ActiveForm::begin([
