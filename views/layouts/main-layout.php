@@ -34,7 +34,7 @@ AppAsset::register($this);
                         <h1>Tailor <span>place</span></h1>
                     </div>
                 </div><div class="header-col">
-                    <h2 id="site-description">Свободная торговая площадка в области портняжного дела</h2>
+                    <article id="site-description">Свободная торговая площадка в области портняжного дела</article>
 <!-- TODO <nav> сделать виджетом, чтобы активную ссылку удобней было ставить -->
                     <nav>
                         <div class="top-line"></div>
@@ -70,29 +70,40 @@ AppAsset::register($this);
                     </form>
                 </div><div class="header-col">
 <!-- TODO сделать виджетом -->
-                    <div id="personal" class="non-authorized">
-                        <p class="welcome">Здравствуй гость!</p>
-                        <div id="signup-button" class="button yellow">
-                            <div class="low-layer"></div>
-                            <a data-type="button" href="/signup/"><i class="icon person-white"></i><span>Регистрация</span></a>
-                        </div>
-                        <div id="login-button" class="button">
-                            <div class="low-layer"></div>
-                            <a data-type="button" href="/login/"><i class="icon login-icon"></i><span>Войти</span></a>
-                        </div>
-                    </div>
-<!--                    <div id="personal" class="authorized">-->
-<!---->
+<!--                    <div id="personal" class="non-authorized">-->
+<!--                        <p class="welcome">Здравствуй гость!</p>-->
+<!--                        <div id="signup-button" class="button yellow">-->
+<!--                            <div class="low-layer"></div>-->
+<!--                            <a data-type="button" href="/signup/"><i class="icon icon-person-white"></i><span>Регистрация</span></a>-->
+<!--                        </div>-->
+<!--                        <div id="login-button" class="button">-->
+<!--                            <div class="low-layer"></div>-->
+<!--                            <a data-type="button" href="/login/"><i class="icon icon-login"></i><span>Войти</span></a>-->
+<!--                        </div>-->
 <!--                    </div>-->
-                    <a href="#" class="circle-icon help-icon" id="main-help"></a>
+                    <div id="personal" class="authorized">
+                        <menu>
+                            <li><i class="icon icon-person-green"></i><a href="">Личный кабинет</a><a href="" id="logout"><i class="icon"></i></a></li>
+                            <li><i class="icon icon-order"></i><a href="">Заказы</a></li>
+                            <li><i class="icon icon-basket"></i><a href="">Корзина</a></li>
+                            <li><i class="icon icon-message"></i><a href="">Сообщения</a></li>
+                        </menu>
+                    </div>
+                    <a href="#" class="icon-circle icon-help" id="main-help"></a>
                 </div>
                 <div class="dashed scissor-right"></div>
             </header>
             <div id="left-background"></div>
             <div id="right-background"></div>
-            <main>
+            <?php
+            // На главной странице выведем блок с информацией о сайте
+            if ($this->context->id == 'site' && $this->context->action->id == 'index') {
+                echo $this->renderFile('@app/views/parts/about-site.php');
+            }
+            ?>
+            <div id="content">
                 <?= $content ?>
-            </main>
+            </div>
         </div>
         <div id="footer-buffer"></div>
     </div>
@@ -122,7 +133,7 @@ AppAsset::register($this);
                     <a href="#">Обратная связь</a>
                 </div>
             </div>
-            <a href="#" id="footer-help" class="circle-icon help-icon"></a>
+            <a href="#" id="footer-help" class="icon-circle icon-help"></a>
         </div>
     </footer>
 <?php $this->endBody() ?>

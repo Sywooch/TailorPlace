@@ -9,6 +9,18 @@ html, body {
     color: #444444;
 }
 
+a {
+    font-family: RobotoRegular, sans-serif;
+    font-size: 15px;
+    color: #444444;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #FF7F66;
+    text-decoration: none;
+}
+
 #wrapper {
     position: relative;
     min-height: 100%;
@@ -132,9 +144,14 @@ header nav .bottom-line {
     background: url('../img/nav-dashed-line.png') repeat-x;
 }
 
-header nav a:hover {
-    color: #82210E;
+header nav a {
+    font-family: RobotoMedium, sans-serif;
+    color: #FFFFFF;
     text-decoration: none;
+}
+
+header nav a:hover {
+    color: #FBEDC8;
 }
 
 header nav ul li {
@@ -341,25 +358,38 @@ button.btn, input.form-control {
     margin-bottom: 11px;
 }
 
+#personal.authorized {
+    margin-top: 62px;
+    padding-left: 30px;
+}
+
+#personal.authorized menu li:first-child {
+    padding-bottom: 4px;
+}
+
+#personal.authorized menu li:first-child a {
+    font-family: RobotoMedium, sans-serif;
+}
+
 .icon {
     display: inline-block;
     height: 18px;
     width: 18px;
 }
 
-.person-white {
+.icon-person-white {
     width: 13px;
     height: 15px;
     background: url('../img/person-white.png') no-repeat;
 }
 
-.login-icon {
+.icon-login {
     width: 18px;
     height: 16px;
     background: url('../img/login-icon.png') no-repeat;
 }
 
-.circle-icon {
+.icon-circle {
     display: inline-block;
     width: 34px;
     height: 34px;
@@ -385,11 +415,11 @@ button.btn, input.form-control {
     text-decoration: none;
 }
 
-.help-icon {
+.icon-help {
     background: #9FD245;
 }
 
-.help-icon:before {
+.icon-help:before {
     content: '?';
 }
 
@@ -562,3 +592,15 @@ footer .feedback {
     line-height: 26px;
     font-size: 24px;
 }
+
+.bold-underline {
+    display: inline-block;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    padding-bottom: 3px;
+    vertical-align: top;
+}
+
+.atelier .bold-underline {border-bottom-color: #FFB800;}
+.store .bold-underline {border-bottom-color: #FF7F66;}
+.user .bold-underline {border-bottom-color: #9FD245;}

@@ -11,7 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    public $layout = 'main_new';
+    public $layout = 'main-layout';
     public function behaviors()
     {
         return [
