@@ -31,6 +31,8 @@ class StudioController extends CommonController
 
 	public function actionIndex()
 	{
+		$sectionList = ['all', 'sale', 'vitrine'];
+		$orderList = ['name_ask', 'name_desk', 'price_ask', 'price_desk', 'date_ask', 'date_desk'];
 		$User = Yii::$app->user->identity;
 		$Studio = $User->studio;
 		if ($Studio->type == 'atelier') {
@@ -39,12 +41,15 @@ class StudioController extends CommonController
 			$studioType = 'Мой магазин';
 		}
 		$this->addBreadcrumbsItem(['label' => $studioType]);
-var_dump(BaseUrl::base());
-exit();
-		// $menuItem = $this->request->get('section');
+// var_dump(Yii::$app->request->get());
+// exit();
+		$section = in_array(Yii::$app->request->get('section'), $sectionList) ? Yii::$app->request->get('section') : '';
+		$order = in_array(Yii::$app->request->get('order'), $orderList) ? Yii::$app->request->get('order') : '';
 		return $this->render('index', [
             'studioType' => $studioType,
             'Studio' => $Studio,
+            'section' => $section,
+            'order' => $order
         ]);
 	}
 
