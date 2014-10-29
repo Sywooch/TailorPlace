@@ -97,7 +97,7 @@ $config = [
     'params' => $params,
 ];
 
-Yii::setAlias('@root', realpath(dirname(__FILE__).'/../'));
+Yii::setAlias('@root', realpath(dirname(__FILE__) . '/../'));
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

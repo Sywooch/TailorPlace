@@ -37,7 +37,7 @@ use yii\helpers\Url;
 </div>
 <div class="table-header">
 	<div>
-		// TODO у первого дива сделать нижний отриц. margin, z-index больше, и полосатый bg
+		<!-- TODO у первого дива сделать нижний отриц. margin, z-index больше, и полосатый bg -->
 		<div><a href="">Название</a></div>
 		<div></div>
 	</div>

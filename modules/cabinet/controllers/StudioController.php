@@ -6,7 +6,7 @@ use Yii;
 use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
-use yii\helpers\BaseUrl;
+use yii\helpers\Url;
 use yii\web\ForbiddenHttpException;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
@@ -15,6 +15,7 @@ use app\models\Country;
 use app\models\City;
 use app\models\Delivery;
 use app\models\Payment;
+use app\modules\good\models\Photo;
 
 class StudioController extends CommonController
 {
@@ -41,10 +42,16 @@ class StudioController extends CommonController
 			$studioType = 'Мой магазин';
 		}
 		$this->addBreadcrumbsItem(['label' => $studioType]);
-// var_dump(Yii::$app->request->get());
-// exit();
+
 		$section = in_array(Yii::$app->request->get('section'), $sectionList) ? Yii::$app->request->get('section') : '';
 		$order = in_array(Yii::$app->request->get('order'), $orderList) ? Yii::$app->request->get('order') : '';
+
+		$photo = new Photo();
+		$photo->good_id = 23;
+		$photo->file_name = 'qweqwe.asd';
+		var_dump($photo->getDir());
+		exit;
+
 		return $this->render('index', [
             'studioType' => $studioType,
             'Studio' => $Studio,
