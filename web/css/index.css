@@ -58,6 +58,10 @@ h3 {
     margin-top: 32px;
 }
 
+#studio-carousel {
+    position: relative;
+}
+
 #studio-carousel .studio-block {
     margin-bottom: 35px;
 }
@@ -127,6 +131,11 @@ h3 {
 #studio-carousel .some-goods a {
     margin-right: 2px;
     line-height: 51px;
+}
+
+#studio-carousel .how-be-this {
+    bottom: -55px;
+    z-index: 1;
 }
 
 main .dashed {

@@ -108,6 +108,9 @@ AppAsset::register($this);
                         <img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg">
                     </div>
                 </div>
+                <div class="how-be-this">
+                    <span class="darker"><span>↑</span> <a href="">Как сюда попасть?</a></span>
+                </div>
             </div>
             <div id="content">
                 <?= $content ?>

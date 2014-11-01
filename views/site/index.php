@@ -101,6 +101,9 @@ $this->registerCssFile('@web/css/index.css', [
                 <a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a><a href=""><img src="/photos/good/test-small.jpg"></a>
             </div>
         </div>
+        <div class="how-be-this">
+            <span class="darker"><span>↑</span> <a href="">Как сюда попасть?</a></span>
+        </div>
     </section>
     <div class="dashed scissor-right"></div>
     <section id="popular-goods">
