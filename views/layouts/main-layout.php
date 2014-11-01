@@ -34,7 +34,7 @@ AppAsset::register($this);
                         <h1>Tailor <span>place</span></h1>
                     </div>
                 </div><div class="header-col">
-                    <article id="site-description">Свободная торговая площадка в области портняжного дела</article>
+                    <p id="site-description"><strong>Свободная торговая площадка в области портняжного дела</strong></p>
 <!-- TODO <nav> сделать виджетом, чтобы активную ссылку удобней было ставить -->
                     <nav>
                         <div class="top-line"></div>
@@ -54,14 +54,14 @@ AppAsset::register($this);
                     <form id="search" method="post">
                         <div class="input-group dropdown-group dropdown-left-group">
                             <div class="input-group-btn">
-                                <button data-toggle="dropdown" class="btn btn-default" type="button">Ател./Маг. <span class="caret"></span></button>
+                                <button data-toggle="dropdown" class="btn btn-default" type="button">Товары <span class="caret"></span></button>
                                 <div class="vertical-divider"></div>
                                 <ul role="menu" class="dropdown-menu">
+                                    <li><a href="#">Товары</a></li>
+                                    <li class="divider"></li>
                                     <li><a href="#">Ател./Маг.</a></li>
                                     <li><a href="#">Ателье</a></li>
                                     <li><a href="#">Магазины</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Товары</a></li>
                                 </ul>
                             </div><!-- /btn-group -->
                             <input type="text" class="form-control">
@@ -89,7 +89,7 @@ AppAsset::register($this);
                             <li><i class="icon icon-message"></i><a href="">Сообщения</a></li>
                         </menu>
                     </div>
-                    <a href="#" class="icon-circle icon-help" id="main-help"></a>
+                    <a href="#" class="icon-circle icon-circle-text icon-help" id="main-help"></a>
                 </div>
                 <div class="dashed scissor-right"></div>
             </header>
@@ -101,6 +101,14 @@ AppAsset::register($this);
                 echo $this->renderFile('@app/views/parts/about-site.php');
             }
             ?>
+            <!-- Крусель товаров -->
+            <div id="good-carousel">
+                <div class="img-line">
+                    <div class="moving-line">
+                        <img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg"><img width="148" height="148" src="/photos/good/test.jpg">
+                    </div>
+                </div>
+            </div>
             <div id="content">
                 <?= $content ?>
             </div>
@@ -121,8 +129,8 @@ AppAsset::register($this);
                 </span>
             </div><div class="footer-col menu">
                 <ul>
-                    <li><a href="#">Ателье и магазины</a></li>
-                    <li><a href="#">Товары</a></li>
+                    <li><a href="#" class="white">Ателье и магазины</a></li>
+                    <li><a href="#" class="white">Товары</a></li>
                 </ul>
             </div>
             <div class="contacts">
@@ -130,10 +138,10 @@ AppAsset::register($this);
                         <i class="icon vk"></i>
                     </div>-->
                 <div class="feedback">
-                    <a href="#">Обратная связь</a>
+                    <a href="#" class="white">Обратная связь</a>
                 </div>
             </div>
-            <a href="#" id="footer-help" class="icon-circle icon-help"></a>
+            <a href="#" id="footer-help" class="icon-circle icon-circle-text icon-help"></a>
         </div>
     </footer>
 <?php $this->endBody() ?>
