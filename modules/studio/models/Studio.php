@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use app\models\Delivery;
 use app\models\Payment;
+use app\modules\good\models\Good;
 
 class Studio extends ActiveRecord
 {
@@ -35,5 +36,10 @@ class Studio extends ActiveRecord
     {
         return $this->hasMany(Payment::className(), ['id' => 'payment_id'])
             ->viaTable('studio_payment', ['studio_id' => 'id']);
+    }
+
+    public function getGoods()
+    {
+        return $this->hasMany(Good::className(), ['studio_id' => 'id'])->with('photos');
     }
 }

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace app\modules\cabinet\models;
 
 use Yii;

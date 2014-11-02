@@ -11,10 +11,12 @@ use yii\web\ForbiddenHttpException;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
 use app\modules\cabinet\models\StudioForm;
+use app\modules\cabinet\models\GoodForm;
 use app\models\Country;
 use app\models\City;
 use app\models\Delivery;
 use app\models\Payment;
+use app\modules\good\models\Good;
 use app\modules\good\models\Photo;
 
 class StudioController extends CommonController
@@ -27,7 +29,8 @@ class StudioController extends CommonController
 		'index' => 'not add',
 		'what-create' => 'Регистрация ателье/магазина',
 		'create-atelier' => 'Регистрация ателье',
-		'create-store' => 'Регистрация магазина'
+		'create-store' => 'Регистрация магазина',
+		'add-good' => 'Добавление товара',
 	];
 
 	public function actionIndex()
@@ -46,11 +49,12 @@ class StudioController extends CommonController
 		$section = in_array(Yii::$app->request->get('section'), $sectionList) ? Yii::$app->request->get('section') : '';
 		$order = in_array(Yii::$app->request->get('order'), $orderList) ? Yii::$app->request->get('order') : '';
 
-		$photo = new Photo();
-		$photo->good_id = 23;
-		$photo->file_name = 'qweqwe.asd';
-		var_dump($photo->getDir());
-		exit;
+		$Goods = $Studio->goods;
+		foreach ($Goods as $key => $Good) {
+			var_dump($Good->photos);
+		}
+		
+		// exit;
 
 		return $this->render('index', [
             'studioType' => $studioType,
@@ -128,6 +132,20 @@ class StudioController extends CommonController
         ]);
 	}
 
+	public function actionAddGood()
+	{
+		$GoodForm = new GoodForm(Yii::$app->user->identity->studio);
+		return $this->render('addGood', [
+			'GoodForm' => $GoodForm,
+		]);
+	}
+
+	// TODO перенести эти два метода в commonController
+	/**
+	 * Возвращает список стран в Json формате
+	 * AJAX метод
+	 * @return null
+	 */
     public function actionGetCountryList()
     {
         $input = trim(strip_tags(Yii::$app->request->get('term')));
@@ -136,6 +154,11 @@ class StudioController extends CommonController
         echo Json::encode($result);
     }
 
+	/**
+	 * Возвращает список городов в Json формате
+	 * AJAX метод
+	 * @return null
+	 */
     public function actionGetCityList()
     {
         $id = (int)Yii::$app->request->post('id');

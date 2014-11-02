@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Окт 26 2014 г., 18:45
+-- Время создания: Ноя 02 2014 г., 12:47
 -- Версия сервера: 5.5.37-0ubuntu0.13.10.1
 -- Версия PHP: 5.5.3-1ubuntu2.6
 
@@ -117,7 +117,65 @@ CREATE TABLE IF NOT EXISTS `category_list` (
   `concretization_ru` varchar(50) DEFAULT NULL COMMENT 'Уточнение русское',
   `concretization_en` varchar(50) DEFAULT NULL COMMENT 'Уточнение аглийское',
   `type` enum('atelier','store') NOT NULL COMMENT 'Тип студии, к которому относится классификация товара'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица с категориями товаров';
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COMMENT='Таблица с категориями товаров';
+
+--
+-- Дамп данных таблицы `category_list`
+--
+
+INSERT INTO `category_list` (`id`, `name_ru`, `name_en`, `concretization_ru`, `concretization_en`, `type`) VALUES
+(1, 'Брюки', 'Suit pants', NULL, NULL, 'atelier'),
+(2, 'Верхняя одежда', 'Outerwear', NULL, NULL, 'atelier'),
+(3, 'Головной убор', 'Headdress', NULL, NULL, 'atelier'),
+(4, 'Детская одежда', 'Children''s wear', NULL, NULL, 'atelier'),
+(5, 'Джинсы', 'Jeans', NULL, NULL, 'atelier'),
+(6, 'Домашняя одежда', 'Indoor clothing', NULL, NULL, 'store'),
+(7, 'Женская одежда', 'Women''s Clothing', NULL, NULL, 'atelier'),
+(8, 'Жилет', 'Vest', NULL, NULL, 'atelier'),
+(9, 'Зимняя одежда', 'Winter clothing', NULL, NULL, 'atelier'),
+(10, 'Изделие из кожи', 'Leather product', NULL, NULL, 'atelier'),
+(11, 'Кардиган', 'Cardigan', NULL, NULL, 'atelier'),
+(12, 'Колготки', 'Tights', NULL, NULL, 'atelier'),
+(13, 'Комбинезон', 'Overall', NULL, NULL, 'atelier'),
+(14, 'Костюм', 'Suit', NULL, NULL, 'atelier'),
+(15, 'Кофта', 'Blouse', NULL, NULL, 'atelier'),
+(16, 'Купальник', 'Swimsuit', NULL, NULL, 'atelier'),
+(17, 'Куртка', 'Jacket', NULL, NULL, 'atelier'),
+(18, 'Летняя одежда', 'Summer clothing', NULL, NULL, 'atelier'),
+(19, 'Маскарадная одежда', 'Masquerade clothing', NULL, NULL, 'atelier'),
+(20, 'Мужская одежда', 'Men''s wear', NULL, NULL, 'atelier'),
+(21, 'Национальная одежда', 'National clothes', NULL, NULL, 'atelier'),
+(22, 'Нижнее белье', 'Underwear', NULL, NULL, 'atelier'),
+(23, 'Носки', 'Socks', NULL, NULL, 'atelier'),
+(24, 'Обувь', 'Shoes', NULL, NULL, 'atelier'),
+(25, 'Осенняя (весенняя) одежда', 'Autumn (spring) clothes', NULL, NULL, 'atelier'),
+(26, 'Пальто', 'Coat', NULL, NULL, 'atelier'),
+(27, 'Пиджак', 'Blazer', NULL, NULL, 'atelier'),
+(28, 'Платье', 'Dress', NULL, NULL, 'atelier'),
+(29, 'Плащ', 'Cloak', NULL, NULL, 'atelier'),
+(30, 'Праздничная одежда', 'Festival clothes', NULL, NULL, 'atelier'),
+(31, 'Спецодежда', 'Coveralls', NULL, NULL, 'atelier'),
+(32, 'Спортивная одежда', 'Sportswear', NULL, NULL, 'atelier'),
+(33, 'Термобелье', 'Thermolinen', NULL, NULL, 'atelier'),
+(34, 'Униформа', 'Uniform', NULL, NULL, 'atelier'),
+(35, 'Футболка', 'T-shirt', NULL, NULL, 'atelier'),
+(36, 'Халат', 'Bathrobe', NULL, NULL, 'atelier'),
+(37, 'Шорты', 'Shorts', NULL, NULL, 'atelier'),
+(38, 'Штаны', 'Pants', NULL, NULL, 'atelier'),
+(39, 'Шуба', 'Fur coat', NULL, NULL, 'atelier'),
+(40, 'Юбка', 'Skirt', NULL, NULL, 'atelier'),
+(41, 'Другое', 'Other', NULL, NULL, 'atelier'),
+(42, 'Иглы, булавки', 'Needles, pins', NULL, NULL, 'store'),
+(43, 'Измерительные инструменты', 'Measuring tools', 'сантиметры, линейки, угольники', 'centimeters, rulers, gons', 'store'),
+(44, 'Инструменты для разметки', 'Devices for marking', 'мелки', 'crayons', 'store'),
+(45, 'Манекены', 'Mannequins', NULL, NULL, 'store'),
+(46, 'Мебель', 'Furniture', 'доски для раскройки, столы', 'board to be cut, tables', 'store'),
+(47, 'Нитки', 'Threads', NULL, NULL, 'store'),
+(48, 'Отделочные ленты', 'Decorative ribbons', 'тесьма, велкро', 'webbing, velcro', 'store'),
+(49, 'Пуговицы, кнопки', 'Buttons', NULL, NULL, 'store'),
+(50, 'Режущие инструменты', 'Cutting tools', 'ножницы', 'knives, scissors', 'store'),
+(51, 'Ткани', 'Fabrics', NULL, NULL, 'store'),
+(52, 'Электроприборы', 'Appliances', 'швейные машины, утюги', 'sewing machines, irons', 'store');
 
 -- --------------------------------------------------------
 
@@ -55376,7 +55434,14 @@ CREATE TABLE IF NOT EXISTS `goods` (
   `quantity` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Количество товара (только для магазина)',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата создания',
   `update_time` timestamp NULL DEFAULT NULL COMMENT 'Дата обновления'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица с товарами';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Таблица с товарами';
+
+--
+-- Дамп данных таблицы `goods`
+--
+
+INSERT INTO `goods` (`id`, `studio_id`, `name`, `price`, `description`, `quantity`, `create_time`, `update_time`) VALUES
+(1, 11, 'Тестовый товарчег', 12000, 'Это тестовый товар', 3, '2014-11-02 11:16:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -55401,7 +55466,14 @@ CREATE TABLE IF NOT EXISTS `good_photos` (
   `good_id` int(10) unsigned NOT NULL COMMENT 'id товара',
   `file_name` varchar(30) NOT NULL COMMENT 'Имя файла',
   `main` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Это главная фотография товара?'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Фотографии товаров';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Фотографии товаров';
+
+--
+-- Дамп данных таблицы `good_photos`
+--
+
+INSERT INTO `good_photos` (`id`, `good_id`, `file_name`, `main`) VALUES
+(1, 1, '1.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -55664,7 +55736,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `category_list`
 --
 ALTER TABLE `category_list`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT для таблицы `city`
 --
@@ -55689,7 +55761,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `good_category`
 --
@@ -55699,7 +55771,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT для таблицы `good_photos`
 --
 ALTER TABLE `good_photos`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `payment_list`
 --
@@ -55758,8 +55830,8 @@ ADD CONSTRAINT `goods_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`id
 -- Ограничения внешнего ключа таблицы `good_category`
 --
 ALTER TABLE `good_category`
-ADD CONSTRAINT `good_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `good_category_ibfk_1` FOREIGN KEY (`good_id`) REFERENCES `goods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `good_category_ibfk_1` FOREIGN KEY (`good_id`) REFERENCES `goods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `good_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `good_photos`
