@@ -7,6 +7,8 @@ use yii\web\Controller;
 
 class CommonController extends Controller
 {
+    public $layout = '@root/views/layouts/main-layout';
+
     /**
      * Массив экшэнов, которые запрещено сохранять для возврата на предыдущую страницу
      * @var array

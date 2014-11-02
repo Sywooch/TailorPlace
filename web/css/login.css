@@ -1,0 +1,17 @@
+#login-action {
+    width: 140px;
+}
+
+.panel {
+    width: 796px;
+    margin: 0 auto 50px;
+}
+
+.panel .left-col {
+    width: 230px;
+    text-align: right;
+}
+
+.panel .error-summary {
+    padding-left: 28px;
+}

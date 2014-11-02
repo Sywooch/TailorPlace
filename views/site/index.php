@@ -39,7 +39,7 @@ $this->registerCssFile('@web/css/index.css', [
             <div class="studio-info">
                 <div class="photo">
                     <img src="/photos/studio/test-middle.jpg">
-                    <div class="icon-circle atelier"><i></i></div>
+                    <div class="icon-circle store"><i></i></div>
                 </div><div class="info">
                     <h4>
                         <a href="" class="big-red">«Чудеса»</a>

@@ -80,8 +80,7 @@ class DefaultController extends CommonController
 				Yii::$app->user->login($user, 3600*24*30);
 				return $this->goBack();
 			} else {
-				Yii::$app->session->setFlash('error', 'users', 'Неверно введен логин или пароль');
-				$model->addError('password', 'Неверно введен логин или пароль');
+				$model->addError('', 'Неверно введен логин или пароль');
 				return $this->render('login', [
 					'model' => $model
 				]);

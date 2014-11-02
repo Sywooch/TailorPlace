@@ -137,15 +137,20 @@ header {
 
 #logo h1 {
     padding-top: 20px;
-    font-family: Intro_Regular, sans-serif;
-    font-size: 32px;
-    color: #FFB800;
     text-align: center;
     text-transform: uppercase;
     background: url('../img/logo-dashed-line.png') center 60px no-repeat;
 }
 
-#logo h1 span {
+#logo h1 a {
+
+    font-family: Intro_Regular, sans-serif;
+    font-size: 32px;
+    color: #FFB800;
+    text-decoration: none;
+}
+
+#logo h1 a span {
     font-family: pf_din_text_comp_proRegular, sans-serif;
     color: #322E25;
     letter-spacing: 6px;
@@ -409,10 +414,6 @@ button.btn:focus .caret {
     text-decoration: none;
     line-height: 38px;
     cursor: pointer;
-}
-
-.button a[data-type="button"] span {
-    padding-left: 6px;
 }
 
 #signup-button {
@@ -742,23 +743,43 @@ h3 {
     clear: both;
 }
 
+/* Хлебные крошки */
+ul.breadcrumb {
+    background-color: transparent;
+    color: #444444;
+}
+ul.breadcrumb a {
+    font-size: 14px;
+}
+/* <Конец> Хлебные крошки */
+
 /* Иконки */
 .icon {
     display: inline-block;
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
+    background: url('../img/main-group-icons.png') no-repeat;
+    margin-bottom: 1px;
+}
+
+.button button.icon-line,
+.button a[data-type="button"].icon-line {
+    padding-right: 5px;
+}
+.icon-line .icon,
+.icon-line span {
+    vertical-align: middle;
+}
+.icon-line .icon {
+    margin-right: 6px;
 }
 
 .icon-person-white {
-    width: 13px;
-    height: 15px;
-    background: url('../img/person-white.png') no-repeat;
+    background-position: -544px -16px;
 }
 
 .icon-login {
-    width: 18px;
-    height: 16px;
-    background: url('../img/login-icon.png') no-repeat;
+    background-position: -560px 0;
 }
 
 .icon-circle {
@@ -766,6 +787,7 @@ h3 {
     width: 34px;
     height: 34px;
     border-radius: 50%;
+    vertical-align: middle;
 }
 
 .icon-circle-text {
@@ -842,7 +864,120 @@ h3 {
     margin: 6px;
     background-position: -14px -18px;
 }
+
+/* Иконки персоны */
+.icon-circle.person-green {
+    background-color: #9FD245;
+}
+.icon-circle.person-green i {
+    width: 12px;
+    height: 16px;
+    margin: 8px auto;
+    background-position: -37px 0;
+}
+
+/* Основные иконки */
+
 /* <Конец> Иконки */
+
+/*  Формы и оформление */
+.panel {
+    background-color: #FAF3EB;
+    border: solid #CFBAAD 1px;
+    border-radius: 15px;
+}
+
+.panel .panel-header,
+.panel .panel-body,
+.panel .panel-footer {
+    background-color: #FAF3EB;
+}
+.panel .panel-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+    padding-top: 22px;
+}
+.panel .panel-footer {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: none;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.panel .panel-header h3 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.panel .panel-header::after {
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: #CFBAAD;
+    margin: 22px 10px 0 10px;
+}
+
+.panel .panel-footer::before {
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: #CFBAAD;
+    margin: 0 10px 22px 10px;
+}
+
+.panel .left-col,
+.panel .center-col,
+.panel .right-col {
+    display: inline-block;
+    vertical-align: top;
+    height: 38px;
+    line-height: 38px;
+}
+
+.panel .center-col {
+    position: relative;
+    width: 300px;
+}
+
+.panel .left-col {
+    margin-right: 15px;
+    font-family: RobotoMedium, sans-serif;
+    font-size: 16px;
+}
+
+.panel .left-col label {
+    font-weight: normal;
+}
+
+.panel .center-col .help-block {
+    position: absolute;
+    width: 210px;
+    background-color: #FF7F66;
+    padding: 10px 12px;
+    display: none;
+    left: 105%;
+    float: right;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.panel .has-error .center-col .help-block {
+    display: block;
+}
+
+.panel .error-summary {
+    font-size: 15px;
+    color: #E96C53;
+    margin-bottom: 10px;
+}
+
+.panel .error-summary li{
+    width: 300px;
+    margin: auto;
+}
+/* <Конец> Формы и оформление */
 
 /* Различные виджеты */
 .widget.news li {

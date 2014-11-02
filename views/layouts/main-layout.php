@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -31,7 +32,7 @@ AppAsset::register($this);
 <!-- header-col выстроены в линию, и важно, чтобы не было пробельного символа между тегами -->
                 <div class="header-col">
                     <div id="logo">
-                        <h1>Tailor <span>place</span></h1>
+                        <h1><a href="/">Tailor <span>place</span></a></h1>
                     </div>
                 </div><div class="header-col">
                     <p id="site-description"><strong>Свободная торговая площадка в области портняжного дела</strong></p>
@@ -69,18 +70,20 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div><div class="header-col">
+                    <?php if (Yii::$app->user->isGuest): ?>
 <!-- TODO сделать виджетом -->
-<!--                    <div id="personal" class="non-authorized">-->
-<!--                        <p class="welcome">Здравствуй гость!</p>-->
-<!--                        <div id="signup-button" class="button yellow">-->
-<!--                            <div class="low-layer"></div>-->
-<!--                            <a data-type="button" href="/signup/"><i class="icon icon-person-white"></i><span>Регистрация</span></a>-->
-<!--                        </div>-->
-<!--                        <div id="login-button" class="button">-->
-<!--                            <div class="low-layer"></div>-->
-<!--                            <a data-type="button" href="/login/"><i class="icon icon-login"></i><span>Войти</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div id="personal" class="non-authorized">
+                        <p class="welcome">Здравствуй гость!</p>
+                        <div id="signup-button" class="button yellow">
+                            <div class="low-layer"></div>
+                            <a data-type="button" href="/signup/" class="icon-line"><i class="icon icon-person-white"></i><span>Регистрация</span></a>
+                        </div>
+                        <div id="login-button" class="button">
+                            <div class="low-layer"></div>
+                            <a data-type="button" href="/login/" class="icon-line"><i class="icon icon-login"></i><span>Войти</span></a>
+                        </div>
+                    </div>
+                    <?php else: ?>
                     <div id="personal" class="authorized">
                         <menu>
                             <li><i class="icon icon-person-green"></i><a href="">Личный кабинет</a><a href="" id="logout"><i class="icon"></i></a></li>
@@ -89,6 +92,7 @@ AppAsset::register($this);
                             <li><i class="icon icon-message"></i><a href="">Сообщения</a></li>
                         </menu>
                     </div>
+                    <?php endif ?>
                     <a href="#" class="icon-circle icon-circle-text icon-help" id="main-help"></a>
                 </div>
                 <div class="dashed scissor-right"></div>
@@ -113,6 +117,13 @@ AppAsset::register($this);
                 </div>
             </div>
             <div id="content">
+                <?php
+                 if (!($this->context->id == 'site' && $this->context->action->id == 'index')) {
+                    echo Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]);
+                }
+                ?>
                 <?= $content ?>
             </div>
         </div>
