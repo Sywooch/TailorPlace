@@ -53,6 +53,12 @@ a.italic {
     font-family: pt_serifItalic, serif;
     font-size: 15px;
 }
+
+a.dashed-underline {
+    text-decoration: none;
+    border-bottom: 1px dashed #444444;
+    line-height: 12px;
+}
 /* <Конец> Ссылки */
 
 /* Текстовые стили */
@@ -451,6 +457,10 @@ button.btn:focus .caret {
     font-family: RobotoMedium, sans-serif;
 }
 
+#logout {
+    margin: 2px 0 0 5px;
+}
+
 #main-help {
     position: absolute;
     top: 20px;
@@ -754,34 +764,6 @@ ul.breadcrumb a {
 /* <Конец> Хлебные крошки */
 
 /* Иконки */
-.icon {
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-    background: url('../img/main-group-icons.png') no-repeat;
-    margin-bottom: 1px;
-}
-
-.button button.icon-line,
-.button a[data-type="button"].icon-line {
-    padding-right: 5px;
-}
-.icon-line .icon,
-.icon-line span {
-    vertical-align: middle;
-}
-.icon-line .icon {
-    margin-right: 6px;
-}
-
-.icon-person-white {
-    background-position: -544px -16px;
-}
-
-.icon-login {
-    background-position: -560px 0;
-}
-
 .icon-circle {
     display: inline-block;
     width: 34px;
@@ -877,6 +859,53 @@ ul.breadcrumb a {
 }
 
 /* Основные иконки */
+.icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background: url('../img/main-group-icons.png') no-repeat;
+    margin-bottom: 2px;
+}
+
+.button button.icon-line,
+.button a[data-type="button"].icon-line {
+    padding-right: 5px;
+}
+.icon-line .icon,
+.icon-line span {
+    vertical-align: middle;
+}
+.icon-line .icon {
+    margin-right: 6px;
+}
+
+.icon.person-white {
+    background-position: -544px -16px;
+}
+
+.icon.login {
+    background-position: -560px 0;
+}
+
+.icon.logout {
+    background-position: -576px 0;
+}
+
+.icon.person-green {
+    background-position: -560px -16px;
+}
+
+.icon.order {
+    background-position: -432px -16px;
+}
+
+.icon.basket {
+    background-position: -464px 0;
+}
+
+.icon.message {
+    background-position: -464px -16px;
+}
 
 /* <Конец> Иконки */
 
@@ -911,6 +940,10 @@ ul.breadcrumb a {
     vertical-align: middle;
 }
 
+.panel .panel-header .icon-circle {
+    margin-right: 10px;
+}
+
 .panel .panel-header::after {
     display: block;
     content: '';
@@ -929,7 +962,8 @@ ul.breadcrumb a {
 
 .panel .left-col,
 .panel .center-col,
-.panel .right-col {
+.panel .right-col,
+.panel .form-group {
     display: inline-block;
     vertical-align: top;
     height: 38px;
@@ -957,10 +991,32 @@ ul.breadcrumb a {
     background-color: #FF7F66;
     padding: 10px 12px;
     display: none;
-    left: 105%;
-    float: right;
+    left: 315px;
+    bottom: 0;
     color: #FFFFFF;
     margin: 0;
+    border: solid #E5725C 1px;
+    font-size: 15px;
+}
+
+.panel .right-col {
+    color: #7E827A;
+    font-size: 15px;
+    padding-left: 24px;
+}
+
+.panel .has-error .center-col:after {
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 300px;
+    margin: auto;
+    border-top: solid transparent 5px;
+    border-bottom: solid transparent 5px;
+    border-left: solid transparent 8px;
+    border-right: solid #FF7F66 8px;
 }
 
 .panel .has-error .center-col .help-block {
@@ -973,9 +1029,70 @@ ul.breadcrumb a {
     margin-bottom: 10px;
 }
 
-.panel .error-summary li{
+.panel .error-summary li {
     width: 300px;
     margin: auto;
+}
+
+.panel .captcha-line,
+.panel .captcha-line .left-col,
+.panel .captcha-line .center-col,
+.panel .captcha-line .right-col {
+    height: 62px;
+    line-height: 62px;
+    vertical-align: middle;
+}
+
+.panel .captcha-line .right-col {
+    padding-left: 15px;
+}
+.panel .captcha-line .right-col span:first-child {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 22px;
+}
+.panel .captcha-line .right-col span:last-child {
+    display: inline-block;
+    line-height: 18px;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.panel .captcha-line input {
+    display: inline-block;
+    width: 155px;
+}
+
+.panel .captcha-line img {
+    display: inline-block;
+    border: solid #CFBAAD 1px;
+    margin-left: 13px;
+}
+
+.panel .captcha-line .center-col .help-block {
+    top: 0;
+}
+
+.has-error .form-control,
+.has-error .form-control:focus,
+.has-error .form-control:hover
+{
+    border-color: #FF7F66;
+}
+.has-error .form-control:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px rgba(219, 143, 123, 0.82);
+}
+
+.has-success .form-control,
+.has-success .form-control:focus,
+.has-success .form-control:hover
+{
+    border-color: #9FD246;
+}
+
+.has-error .control-label,
+.has-success .control-label {
+    color: #444444;
 }
 /* <Конец> Формы и оформление */
 
@@ -984,3 +1101,25 @@ ul.breadcrumb a {
     margin-top: 15px;
 }
 /* <Конец> Различные виджеты */
+
+/* Оформление чекбоксов */
+input[type=checkbox] {display: none;}
+
+input[type=checkbox] + label:before {
+    content: "";
+    display: inline-block;
+    border: 1px solid #DFC8BB;
+    font-size: 11px;
+    line-height: 15px;
+    margin: 0 5px 5px 0;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "✔";
+}
+/* <Конец> Оформление чекбоксов */

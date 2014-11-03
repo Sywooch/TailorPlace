@@ -259,10 +259,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'login' => 'Логин',
-            'acceptAgreement' => 'Я согласен(а) с пользовательским соглашением',
+            'acceptAgreement' => 'Я прочитал(а) и принимаю соглашение',
             'password' => 'Пароль',
             'repassword' => 'Повторите пароль',
             'email' => 'E-mail',
+            'captcha' => ' Код подтверждение',
         ];
     }
 

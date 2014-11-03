@@ -30,7 +30,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
     ]);
     ?>
     <div class="panel-header">
-        <div class="icon-circle person-green"><i></i></div> <h3>Авторизация</h3>
+        <div class="icon-circle person-green"><i></i></div><h3>Авторизация</h3>
     </div>
     <div class="panel-body">
         <ul>
@@ -51,7 +51,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
     <div class="panel-footer">
         <div class="button yellow" id="login-action">
             <div class="low-layer"></div>
-            <button type="submit" data-type="button" class="icon-line"><i class="icon icon-login"></i><span>Войти</span></button>
+            <button type="submit" data-type="button" class="icon-line"><i class="icon login"></i><span>Войти</span></button>
         </div>
     </div>
     <?php ActiveForm::end() ?>

@@ -76,20 +76,20 @@ AppAsset::register($this);
                         <p class="welcome">Здравствуй гость!</p>
                         <div id="signup-button" class="button yellow">
                             <div class="low-layer"></div>
-                            <a data-type="button" href="/signup/" class="icon-line"><i class="icon icon-person-white"></i><span>Регистрация</span></a>
+                            <a data-type="button" href="/signup/" class="icon-line"><i class="icon person-white"></i><span>Регистрация</span></a>
                         </div>
                         <div id="login-button" class="button">
                             <div class="low-layer"></div>
-                            <a data-type="button" href="/login/" class="icon-line"><i class="icon icon-login"></i><span>Войти</span></a>
+                            <a data-type="button" href="/login/" class="icon-line"><i class="icon login"></i><span>Войти</span></a>
                         </div>
                     </div>
                     <?php else: ?>
                     <div id="personal" class="authorized">
                         <menu>
-                            <li><i class="icon icon-person-green"></i><a href="">Личный кабинет</a><a href="" id="logout"><i class="icon"></i></a></li>
-                            <li><i class="icon icon-order"></i><a href="">Заказы</a></li>
-                            <li><i class="icon icon-basket"></i><a href="">Корзина</a></li>
-                            <li><i class="icon icon-message"></i><a href="">Сообщения</a></li>
+                            <li class="icon-line"><i class="icon person-green"></i><a href="">Личный кабинет</a><a href="/logout/" id="logout"><i class="icon logout"></i></a></li>
+                            <li class="icon-line"><i class="icon order"></i><a href="">Заказы</a></li>
+                            <li class="icon-line"><i class="icon basket"></i><a href="">Корзина</a></li>
+                            <li class="icon-line"><i class="icon message"></i><a href="">Сообщения</a></li>
                         </menu>
                     </div>
                     <?php endif ?>

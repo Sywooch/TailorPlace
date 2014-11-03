@@ -1,0 +1,49 @@
+#signup-action {
+    width: 210px;
+}
+
+.panel {
+    width: 796px;
+    margin: 0 auto 40px;
+}
+
+.panel .left-col {
+    width: 230px;
+    text-align: right;
+}
+
+.panel .error-summary {
+    padding-left: 28px;
+}
+
+#acceptAgreement label {
+    font-family: pt_serifItalic, serif;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+#agreement {
+    position: relative;
+    width: 796px;
+    margin: 20px auto 40px;
+}
+
+#agreement h4 {
+    text-align: center;
+    font-family: RobotoMedium, sans-serif;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+#agreement p {
+    padding-bottom: 10px;
+}
+
+#agreement .how-be-this {
+    bottom: -55px;
+    z-index: 1;
+}
+
+.dashed.scissor-right {
+    margin-bottom: 50px;
+}
