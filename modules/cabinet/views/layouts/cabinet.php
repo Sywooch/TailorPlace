@@ -1,99 +1,46 @@
 <?php
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+
+use app\modules\assets\cabinet\CommonAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-AppAsset::register($this);
+CommonAsset::register($this);
+
+$this->beginContent('@app/views/layouts/main-layout.php');
 ?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-
-<?php $this->beginBody() ?>
-    <div class="wrap">
-        <?php
-            NavBar::begin([
-                'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            $items = [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
-                ];
-            if (Yii::$app->user->isGuest) {
-                $items[] = [
-                    'label' => 'Зарегистрироваться',
-                    'url' => ['/signup']
-                ];
-                $items[] = [
-                    'label' => 'Войти',
-                    'url' => ['/login']
-                ];
-            } else {
-                $items[] = [
-                    'label' => 'Личный кабинет',
-                    'url' => ['/cabinet'],
-                    'active' => true,
-                ];
-                $items[] = [
-                    'label' => 'Выйти',
-                    'url' => ['/logout'],
-                ];
-            }
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => $items,
-            ]);
-            NavBar::end();
-        ?>
-
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <div class="row">
-                <div class="col-sm-3">
-                    <ul class="nav nav-pills nav-stacked">
-                         <li><a href="#">Статистика</a></li>
-                         <li><a href="#">Моё ателье</a></li>
-                         <li><a href="#">Сообщения</a></li>
-                         <li><a href="#">Заказы</a></li>
-                         <li><a href="#">Персональные данные</a></li>
-                         <li><a href="#">Услуги сайта</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-8">
-                    <?= $content ?>
-                </div>
+<aside id="personal-menu" class="float left">
+    <div class="person-info">
+<!--        <img src="/photos/studio/test.jpg">-->
+        <div>
+            <div>
+                <div class="icon-circle store" data-toggle="tooltip" data-placement="right" title="Магазин"><i></i></div>
+                <p class="name darker">
+                    Ludalang
+                </p>
             </div>
+            <p class="city darker">Санкт-Перетбург</p>
         </div>
     </div>
+    <div class="menu">
+        <p class="big-red-medium">Магазин</p>
+        <menu>
+            <li class="icon-line"><i class="icon store"></i>Мой магазин</li>
+            <li class="icon-line"><i class="icon statistic"></i>Статистика</li>
+            <li class="icon-line"><i class="icon order"></i>Заказы</li>
+            <li class="icon-line"><i class="icon archive"></i>Архив заказов</li>
+            <li class="icon-line"><i class="icon arrow"></i>Дополнительные услуги</li>
+        </menu>
+        <p class="big-red-medium">Аккаунт</p>
+        <menu>
+            <li class="icon-line"><i class="icon person"></i>Персональные данные</li>
+            <li class="icon-line"><i class="icon basket"></i>Корзина</li>
+            <li class="icon-line"><i class="icon message"></i>Сообщения</li>
+        </menu>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer>
-
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
+</aside>
+<main class="float right">
+    <?= $content ?>
+</main>
+<?php $this->endContent(); ?>

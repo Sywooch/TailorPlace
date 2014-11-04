@@ -86,7 +86,7 @@ AppAsset::register($this);
                     <?php else: ?>
                     <div id="personal" class="authorized">
                         <menu>
-                            <li class="icon-line"><i class="icon person-green"></i><a href="">Личный кабинет</a><a href="/logout/" id="logout"><i class="icon logout"></i></a></li>
+                            <li class="icon-line"><i class="icon person-green"></i><a href="/cabinet/">Личный кабинет</a><a href="/logout/" id="logout"><i class="icon logout"></i></a></li>
                             <li class="icon-line"><i class="icon order"></i><a href="">Заказы</a></li>
                             <li class="icon-line"><i class="icon basket"></i><a href="">Корзина</a></li>
                             <li class="icon-line"><i class="icon message"></i><a href="">Сообщения</a></li>
@@ -125,6 +125,7 @@ AppAsset::register($this);
                 }
                 ?>
                 <?= $content ?>
+                <div class="clear"></div>
             </div>
         </div>
         <div id="footer-buffer"></div>

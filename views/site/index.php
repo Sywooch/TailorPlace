@@ -7,7 +7,7 @@ $this->registerCssFile('@web/css/index.css', [
     'depends' => [AppAsset::className()]
 ]);
 ?>
-<main class="left">
+<main class="left float">
     <section id="studio-carousel">
         <h3>Ателье и магазины</h3>
         <h4 class="flag-link">
@@ -274,11 +274,10 @@ $this->registerCssFile('@web/css/index.css', [
                     <span>2 600</span><span>руб.</span>
                 </div>
             </div>
-            </div>
         </div>
     </section>
 </main>
-<aside class="right">
+<aside class="float right">
     <section class="widget news">
         <h3>Новости</h3>
         <div class="flag-link">
@@ -300,5 +299,4 @@ $this->registerCssFile('@web/css/index.css', [
         </ul>
     </section>
 </aside>
-<div class="clear"></div>
 

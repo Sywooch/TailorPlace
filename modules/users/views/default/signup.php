@@ -5,9 +5,7 @@
  * @var yii\widgets\ActiveForm $form
  * @var app\modules\users\models\User $model
  */
- 
-use yii\helpers\Html;
-use yii\helpers\Url;
+
 use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 use app\modules\assets\users\SignupAsset;
@@ -21,7 +19,7 @@ $this->params['page-id'] = 'signup';
 $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{input}<div class="help-block"></div></div>';
 ?>
 
-<div class="panel">
+<div class="panel big">
     <?php
     $form = ActiveForm::begin([
         'fieldConfig' => [
@@ -95,7 +93,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
         </p>
     </div>
     <div class="how-be-this">
-        <span class="darker"><span>↓</span> <a href="">Развернуть</a></span>
+        <span class="darker"><span>↓</span> <a href="#agreement" class="dashed-underline">Развернуть</a></span>
     </div>
 </div>
 <div class="dashed scissor-right"></div>

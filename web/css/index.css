@@ -1,16 +1,4 @@
-main {
-    float: left;
-    width: 700px;
-}
 
-aside {
-    float: left;
-    width: 220px;
-}
-
-main.right, aside.right {
-    margin-left: 40px;
-}
 
 h3, .flag-link {
     display: inline-block;

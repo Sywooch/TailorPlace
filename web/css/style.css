@@ -55,9 +55,22 @@ a.italic {
 }
 
 a.dashed-underline {
+    display: inline-block;
+    position: relative;
     text-decoration: none;
-    border-bottom: 1px dashed #444444;
-    line-height: 12px;
+}
+a.dashed-underline::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 2px;
+    bottom: 0;
+    background: url('../img/dashed-bg.png') repeat-x;
+}
+a.dashed-underline:hover::after {
+    display: none;
 }
 /* <Конец> Ссылки */
 
@@ -74,6 +87,12 @@ a.dashed-underline {
 .news-date {
     font-family: pt_serifItalic, serif;
     font-size: 13px;
+    color: #FF7F66;
+}
+
+.big-red-medium {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 18px;
     color: #FF7F66;
 }
 /* <Конец> Текстовые стили */
@@ -614,6 +633,20 @@ footer .feedback {
     font-size: 24px;
 }
 
+main.float {
+    float: left;
+    width: 700px;
+}
+
+aside.float {
+    float: left;
+    width: 220px;
+}
+
+main.float.right, aside.float.right {
+    margin-left: 40px;
+}
+
 .bold-underline {
     display: inline-block;
     border-bottom-style: solid;
@@ -907,6 +940,22 @@ ul.breadcrumb a {
     background-position: -464px -16px;
 }
 
+.icon.store {
+    background-position: -416px -16px;
+}
+
+.icon.statistic {
+    background-position: -432px 0;
+}
+
+.icon.archive {
+    background-position: -416px 0;
+}
+
+.icon.arrow {
+    background-position: -448px 0;
+}
+
 /* <Конец> Иконки */
 
 /*  Формы и оформление */
@@ -914,6 +963,11 @@ ul.breadcrumb a {
     background-color: #FAF3EB;
     border: solid #CFBAAD 1px;
     border-radius: 15px;
+}
+
+.panel.big {
+    width: 794px;
+    margin: 0 auto 40px;
 }
 
 .panel .panel-header,
@@ -1123,3 +1177,60 @@ input[type=checkbox]:checked + label:before {
     content: "✔";
 }
 /* <Конец> Оформление чекбоксов */
+
+/* Оформление фотографии и подписи студии/пользователя */
+.person-info {
+    position: relative;
+}
+
+.person-info img {
+    border: solid #CFBAAD 1px;
+    margin-bottom: 9px;
+}
+
+.person-info > div {
+    padding: 10px 0 20px 0;
+    background: #DDCCC1 url('../img/nav-bg.png');
+}
+
+.person-info .name {
+    display: inline-block;
+    vertical-align: middle;
+    width: 154px;
+    font-family: RobotoMedium, sans-serif;
+    font-size: 16px;
+}
+
+.person-info .icon-circle {
+    margin: 0 10px 0 18px;
+    cursor: help;
+}
+
+.person-info .city {
+    text-align: center;
+    font-family: pt_serifItalic, serif;
+    font-size: 13px;
+}
+
+.person-info > div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-top: solid transparent 10px;
+    border-bottom: solid #FDF8F0 10px;
+    border-left: solid #FDF8F0 55px;
+    border-right: solid transparent 55px;
+}
+
+.person-info > div::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-top: solid transparent 10px;
+    border-bottom: solid #FDF8F0 10px;
+    border-left: solid transparent 55px;
+    border-right: solid #FDF8F0 55px;
+}
+/* <Конец> Оформление фотографии и подписи студии/пользователя */
