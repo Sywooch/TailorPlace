@@ -39,6 +39,11 @@
     padding-bottom: 10px;
 }
 
+#agreement-text {
+    height: 100px;
+    overflow: hidden;
+}
+
 #agreement .how-be-this {
     bottom: -55px;
     z-index: 1;
