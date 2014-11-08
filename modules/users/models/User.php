@@ -184,7 +184,8 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         if ($this->getId()) {
             $auth->revokeAll($this->getId());
             $auth->assign($Role, $this->getId());
-            $this->role = $Role->name;
+            // TODO если понадобится назначать роль и сразу ее использовать, то придумать как сделать, строка ниже не работает
+            // $this->role = $Role->name;
         } else {
             throw new UserException("Попытка назначить права пользователю, не зарегистрированному в базе.");
         }

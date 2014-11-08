@@ -58,6 +58,8 @@ class DefaultController extends CommonController
 			return $this->goHome();
 		}
 
+		$model->captcha = '';
+
 		// Рендерим представление.
 		return $this->render('signup', [
 			'model' => $model
