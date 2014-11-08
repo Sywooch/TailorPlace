@@ -21,7 +21,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
 ?>
 
 
-<div class="panel">
+<div class="panel big-panel">
     <?php
     $form = ActiveForm::begin([
         'fieldConfig' => [

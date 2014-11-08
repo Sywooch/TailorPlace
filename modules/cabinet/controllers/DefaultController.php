@@ -2,7 +2,9 @@
 
 namespace app\modules\cabinet\controllers;
 
+use Yii;
 use app\controllers\CommonController;
+use app\modules\users\models\User;
 use yii\filters\AccessControl;
 
 class DefaultController extends CommonController
@@ -30,6 +32,11 @@ class DefaultController extends CommonController
 	// }
 	public function actionIndex()
 	{
-		return $this->render('index');
+        if (Yii::$app->user->identity->studio === null) {
+            $action = 'index-user';
+        } else {
+            $action = 'index-studio';
+        }
+		return $this->render($action);
 	}
 }

@@ -2,6 +2,18 @@
     width: 210px;
 }
 
+.panel .panel-header {
+    padding-top: 12px;
+}
+
+.panel .panel-footer {
+    height: 110px;
+}
+
+.panel .panel-footer::before {
+    margin-bottom: 22px;
+}
+
 .panel .left-col {
     width: 230px;
     text-align: right;

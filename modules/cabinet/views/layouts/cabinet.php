@@ -11,7 +11,7 @@ $this->beginContent('@app/views/layouts/main-layout.php');
 ?>
 <aside id="personal-menu" class="float left">
     <div class="person-info">
-<!--        <img src="/photos/studio/test.jpg">-->
+        <img src="/photos/studio/test.jpg">
         <div>
             <div>
                 <div class="icon-circle store" data-toggle="tooltip" data-placement="right" title="Магазин"><i></i></div>
@@ -25,17 +25,17 @@ $this->beginContent('@app/views/layouts/main-layout.php');
     <div class="menu">
         <p class="big-red-medium">Магазин</p>
         <menu>
-            <li class="icon-line"><i class="icon store"></i>Мой магазин</li>
-            <li class="icon-line"><i class="icon statistic"></i>Статистика</li>
-            <li class="icon-line"><i class="icon order"></i>Заказы</li>
-            <li class="icon-line"><i class="icon archive"></i>Архив заказов</li>
-            <li class="icon-line"><i class="icon arrow"></i>Дополнительные услуги</li>
+            <li class="icon-line"><i class="icon store"></i><a href="">Мой магазин</a></li>
+            <li class="icon-line"><i class="icon statistic"></i><a href="">Статистика</a></li>
+            <li class="icon-line"><i class="icon order"></i><a href="">Заказы</a></li>
+            <li class="icon-line"><i class="icon archive"></i><a href="">Архив заказов</a></li>
+            <li class="icon-line"><i class="icon arrow"></i><a href="">Дополнительные услуги</a></li>
         </menu>
         <p class="big-red-medium">Аккаунт</p>
         <menu>
-            <li class="icon-line"><i class="icon person"></i>Персональные данные</li>
-            <li class="icon-line"><i class="icon basket"></i>Корзина</li>
-            <li class="icon-line"><i class="icon message"></i>Сообщения</li>
+            <li class="icon-line"><i class="icon person"></i><a href="">Персональные данные</a></li>
+            <li class="icon-line"><i class="icon basket"></i><a href="">Корзина</a></li>
+            <li class="icon-line"><i class="icon message"></i><a href="">Сообщения</a></li>
         </menu>
     </div>
 

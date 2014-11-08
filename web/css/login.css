@@ -2,9 +2,16 @@
     width: 140px;
 }
 
-.panel {
-    width: 796px;
-    margin: 0 auto 50px;
+.panel .panel-header {
+    padding-top: 12px;
+}
+
+.panel .panel-footer {
+    height: 80px;
+}
+
+.panel .panel-footer::before {
+    margin-bottom: 22px;
 }
 
 .panel .left-col {

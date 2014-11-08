@@ -79,6 +79,18 @@ a.dashed-underline:hover::after {
     color: #322C25;
 }
 
+.little-bigger {
+    font-size: 15px;
+}
+
+.bigger {
+    font-size: 16px;
+}
+
+.smaller {
+    font-size: 13px;
+}
+
 .lighter {
     color: #646464;
     font-size: 14px;
@@ -94,6 +106,17 @@ a.dashed-underline:hover::after {
     font-family: RobotoMedium, sans-serif;
     font-size: 18px;
     color: #FF7F66;
+}
+
+.big-digit {
+    font-family: RobotoBlack, sans-serif;
+    font-size: 30px;
+    color: #797979;
+}
+
+.digit {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 15px;
 }
 /* <Конец> Текстовые стили */
 
@@ -932,6 +955,10 @@ ul.breadcrumb a {
     background-position: -432px -16px;
 }
 
+.icon.order-light {
+    background-position: -752px 0;
+}
+
 .icon.basket {
     background-position: -464px 0;
 }
@@ -956,18 +983,59 @@ ul.breadcrumb a {
     background-position: -448px 0;
 }
 
+.icon.rouble {
+    background-position: -592px -16px;
+    margin-bottom: 0;
+}
+
+.icon.rouble-light {
+    background-position: -624px -16px;
+    margin-bottom: 0;
+}
+
+.icon.little-star {
+    background-position: -784px 0;
+    margin: 0 3px;
+}
+
+.icon.star {
+    background-position: -688px 0;
+    margin-bottom: 0;
+}
+
 /* <Конец> Иконки */
 
 /*  Формы и оформление */
 .panel {
+    position: relative;
     background-color: #FAF3EB;
     border: solid #CFBAAD 1px;
     border-radius: 15px;
+    padding: 10px 0;
 }
 
-.panel.big {
+.panel.big-panel {
     width: 794px;
     margin: 0 auto 40px;
+}
+
+.panel.small-panel {
+    height: 142px;
+    width: 165px;
+}
+
+.panel.small-panel div {
+    text-align: center;
+}
+
+.panel.small-panel .panel-body {
+    padding: 0;
+}
+
+.panel.small-panel .panel-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .panel .panel-header,
@@ -979,14 +1047,14 @@ ul.breadcrumb a {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     text-align: center;
-    padding-top: 22px;
 }
 .panel .panel-footer {
+    /*height: 60px;*/
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-top: none;
-    padding-bottom: 20px;
     text-align: center;
+    padding: 0;
 }
 
 .panel .panel-header h3 {
@@ -1003,7 +1071,7 @@ ul.breadcrumb a {
     content: '';
     height: 1px;
     background-color: #CFBAAD;
-    margin: 22px 10px 0 10px;
+    margin: 22px 14px 0 14px;
 }
 
 .panel .panel-footer::before {
@@ -1011,7 +1079,7 @@ ul.breadcrumb a {
     content: '';
     height: 1px;
     background-color: #CFBAAD;
-    margin: 0 10px 22px 10px;
+    margin: 0 14px;
 }
 
 .panel .left-col,
@@ -1234,3 +1302,28 @@ input[type=checkbox]:checked + label:before {
     border-right: solid #FDF8F0 55px;
 }
 /* <Конец> Оформление фотографии и подписи студии/пользователя */
+
+/* Оформление больших цифр репутации */
+.rating-block {
+    display: inline-block;
+    width: 74px;
+    text-align: center;
+}
+
+.rating-block span:last-child {
+    font-family: RobotoBlack, sans-serif;
+    font-size: 18px;
+    color: #797979;
+}
+
+.rating-block .line {
+    box-sizing: content-box;
+    height: 1px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.rating-block .line > div {
+    height: 1px;
+}
+/* <Конец> Оформление больших цифр репутации */

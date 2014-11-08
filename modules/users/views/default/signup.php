@@ -19,7 +19,7 @@ $this->params['page-id'] = 'signup';
 $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{input}<div class="help-block"></div></div>';
 ?>
 
-<div class="panel big">
+<div class="panel big-panel">
     <?php
     $form = ActiveForm::begin([
         'fieldConfig' => [
