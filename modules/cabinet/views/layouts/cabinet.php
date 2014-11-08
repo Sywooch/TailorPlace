@@ -25,7 +25,7 @@ $this->beginContent('@app/views/layouts/main-layout.php');
     <div class="menu">
         <p class="big-red-medium">Магазин</p>
         <menu>
-            <li class="icon-line"><i class="icon store"></i><a href="">Мой магазин</a></li>
+            <li class="icon-line"><i class="icon store"></i><a href="/cabinet/studio/">Мой магазин</a></li>
             <li class="icon-line"><i class="icon statistic"></i><a href="">Статистика</a></li>
             <li class="icon-line"><i class="icon order"></i><a href="">Заказы</a></li>
             <li class="icon-line"><i class="icon archive"></i><a href="">Архив заказов</a></li>

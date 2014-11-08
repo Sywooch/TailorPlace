@@ -21,6 +21,8 @@ use app\modules\good\models\Photo;
 
 class StudioController extends CommonController
 {
+	public $layout = 'cabinet';
+
 	/**
 	 * Элементы хлебных крошек
 	 * @var array
@@ -51,10 +53,9 @@ class StudioController extends CommonController
 
 		$Goods = $Studio->goods;
 		foreach ($Goods as $key => $Good) {
-			var_dump($Good->photos);
+			// var_dump($Good->photos);
 		}
 		
-		// exit;
 
 		return $this->render('index', [
             'studioType' => $studioType,

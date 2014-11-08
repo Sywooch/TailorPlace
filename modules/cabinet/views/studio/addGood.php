@@ -27,8 +27,8 @@ use yii\helpers\Html;
 <div class="input-group dropdown-group dropdown-left-group">
 	<label class="col-sm-3 control-label" for="goodform-categories">Категория</label>
 	<div class="col-sm-9">
-	    <input type="text" class="form-control">
-	    <?= Html::activeHiddenInput($GoodForm, 'categories') ?>
+	    <input type="text" class="form-control" >
+	    <?= Html::activeHiddenInput($GoodForm, 'categories[]') ?>
 	    <div class="input-group-btn">
 	        <button data-toggle="dropdown" class="btn btn-default" type="button"><span class="caret"></span></button>
 	        <div class="vertical-divider"></div>

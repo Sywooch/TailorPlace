@@ -31,11 +31,11 @@ class Purse extends PanelWidget
         $this->startFooter();
 
         echo Html::beginTag('div', ['class' => 'header icon-line']);
-            echo Html::a('История платежей', ['href' => '']);
+            echo Html::a('История платежей', []);
         echo Html::endTag('div');
         if ($this->showFillLine) {
             echo Html::beginTag('div', ['class' => 'header icon-line']);
-                echo Html::a('Пополнить баланс', ['href' => '']);
+                echo Html::a('Пополнить баланс', []);
             echo Html::endTag('div');
         }
 
