@@ -20,9 +20,12 @@
     display: inline-block;
 }
 
-.first-line h4 {
-    text-align: center;
+h4 {
     margin-bottom: 11px;
+}
+
+.small-widget h4 {
+    text-align: center;
 }
 
 .first-line .panel .panel-footer {
@@ -33,10 +36,112 @@
     margin-top: 8px;
 }
 
+.small-widget .header span {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 15px;
+}
+
+.small-widget .header i.little-star {
+    margin-top: 1px;
+}
+
 #PersonalIndexStudioRating .panel-footer {
     height: 40px;
 }
 
 .first-line .panel .panel-body > div:nth-child(2) {
     margin-top: 4px;
+}
+
+/* Виджеты пользователя */
+.panel .panel-body {
+    padding: 0 0 10px 0;
+}
+
+#PersonalIndexUserOrders ul li,
+#PersonalIndexUserBasket ul li {
+    padding: 5px 15px;
+}
+
+#PersonalIndexUserOrders ul div,
+#PersonalIndexUserBasket ul div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#PersonalIndexUserOrders ul li div:first-child {
+    margin-right: 14px;
+}
+
+#PersonalIndexUserOrders ul li div:nth-child(2) {
+    width: 130px;
+}
+
+#PersonalIndexUserOrders ul li div:nth-child(3) {
+    width: 130px;
+    text-align: center;
+}
+
+#PersonalIndexUserOrders ul li div:last-child,
+#PersonalIndexUserBasket ul li div:last-child {
+    width: 110px;
+    text-align: right;
+}
+
+#PersonalIndexUserOrders ul li:nth-child(2n),
+#PersonalIndexUserBasket ul li:nth-child(2n) {
+    background-color: #EADFD7;
+}
+
+#PersonalIndexUserOrders .panel-footer div,
+#PersonalIndexUserBasket .panel-footer div {
+    margin-top: 10px;
+}
+
+#PersonalIndexUserOrders p,
+#PersonalIndexUserBasket p {
+    font-family: RobotoBlack, sans-serif;
+    font-size: 28px;
+    color: #95938E;
+    text-align: center;
+    padding: 5px 50px;
+}
+
+#PersonalIndexUserBasket ul li div:first-child {
+    width: 298px;
+}
+
+main > .float:first-child {
+    float: left;
+    width: 480px;
+}
+
+main > .float:last-child {
+    float: left;
+    width: 220px;
+}
+
+#PersonalIndexUserRating {
+    margin: auto;
+}
+
+#PersonalIndexUserRating .panel-footer {
+    height: 40px;
+}
+
+#PersonalIndexUserRating .panel-footer div {
+    margin-top: 7px;
+}
+
+.open-owner-studio {
+    text-align: center;
+}
+
+.open-owner-studio p {
+    font-size: 15px;
+    margin: 28px 0 20px;
+}
+
+#owner-studio-button {
+    width: 140px;
 }

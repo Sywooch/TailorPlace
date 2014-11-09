@@ -134,7 +134,7 @@ AppAsset::register($this);
         <div id="dark-bg"></div>
         <div id="footer-content">
             <div id="mini-logo" class="footer-col">
-                <h1>Tailor <span>place</span></h1>
+                <h6>Tailor <span>place</span></h6>
             </div><div class="footer-col description">
                 <span>
                     Свободная торговая площадка в области портняжного дела

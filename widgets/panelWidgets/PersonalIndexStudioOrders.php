@@ -8,6 +8,7 @@
 
 namespace app\widgets\panelWidgets;
 
+use Yii;
 use yii\helpers\Html;
 
 class PersonalIndexStudioOrders extends PanelWidget
@@ -32,8 +33,8 @@ class PersonalIndexStudioOrders extends PanelWidget
         echo Html::tag('div', 'Общая сумма');
         echo Html::beginTag('div', ['class' => 'icon-line']);
             echo Html::tag('i', '', ['class' => 'icon rouble-light']);
-            echo Html::tag('span', '0', ['class' => 'digit']);
-            echo Html::tag('span', 'руб.', ['class' => 'smaller']);
+            echo Html::tag('span', Yii::$app->numberHelper->price(0), ['class' => 'digit']);
+            echo Html::tag('span', ' руб.', ['class' => 'smaller']);
         echo Html::endTag('div');
 
         $this->endFooter();

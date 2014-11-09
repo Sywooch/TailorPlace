@@ -67,6 +67,7 @@ class StudioController extends CommonController
 
 	public function actionWhatCreate()
 	{
+        $this->layout = '@app/views/layouts/main-layout';
 		return $this->render('whatCreate');
 	}
 

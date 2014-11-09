@@ -9,6 +9,11 @@ html, body {
     color: #444444;
 }
 
+h2 {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 32px;
+}
+
 /* Ссылки */
 a {
     font-family: RobotoRegular, sans-serif;
@@ -117,6 +122,10 @@ a.dashed-underline:hover::after {
 .digit {
     font-family: RobotoMedium, sans-serif;
     font-size: 15px;
+}
+
+.italic {
+    font-family: pt_serifItalic, serif;
 }
 /* <Конец> Текстовые стили */
 
@@ -578,7 +587,7 @@ footer .footer-col {
     background: url('../img/logo-mini-substrate.png') no-repeat;
 }
 
-#mini-logo h1 {
+#mini-logo h6 {
     padding-top: 12px;
     font-family: Intro_Regular, sans-serif;
     font-size: 22px;
@@ -588,7 +597,7 @@ footer .footer-col {
     background: url('../img/logo-mini-dashed-line.png') center 39px no-repeat;
 }
 
-#mini-logo h1 span {
+#mini-logo h6 span {
     font-family: pf_din_text_comp_proRegular, sans-serif;
     color: #322E25;
     letter-spacing: 5px;
@@ -993,6 +1002,11 @@ ul.breadcrumb a {
     margin-bottom: 0;
 }
 
+.icon.rouble-gold {
+    background-position: -608px -16px;
+    margin-bottom: 0;
+}
+
 .icon.little-star {
     background-position: -784px 0;
     margin: 0 3px;
@@ -1012,6 +1026,7 @@ ul.breadcrumb a {
     border: solid #CFBAAD 1px;
     border-radius: 15px;
     padding: 10px 0;
+    width: 450px;
 }
 
 .panel.big-panel {

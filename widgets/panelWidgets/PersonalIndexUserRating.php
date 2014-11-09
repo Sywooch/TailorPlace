@@ -1,6 +1,6 @@
 <?php
 /**
- * Виджет рейтинга студии
+ * Виджет рейтинга пользователя
  */
 
 namespace app\widgets\panelWidgets;
@@ -8,7 +8,7 @@ namespace app\widgets\panelWidgets;
 use yii\helpers\Html;
 use app\widgets\RatingBlock;
 
-class PersonalIndexStudioRating extends PanelWidget
+class PersonalIndexUserRating extends PanelWidget
 {
     protected $size = 'small';
 
@@ -19,7 +19,7 @@ class PersonalIndexStudioRating extends PanelWidget
 
         echo Html::beginTag('div', ['class' => 'header icon-line']);
             echo Html::tag('i', '', ['class' => 'icon little-star']);
-            echo Html::tag('span', 'Исполнитель');
+            echo Html::tag('span', 'Заказчик');
             echo Html::tag('i', '', ['class' => 'icon little-star']);
         echo Html::endTag('div');
 
@@ -30,9 +30,7 @@ class PersonalIndexStudioRating extends PanelWidget
         $this->startFooter();
 
         echo Html::beginTag('div', ['class' => 'icon-line']);
-            echo Html::tag('i', '', ['class' => 'icon star']);
-            echo Html::tag('span', 'Заказчик', ['class' => 'little-bigger']);
-            echo Html::tag('span', ' 100%', ['class' => 'digit']);
+            echo Html::a('История заказов', []);
         echo Html::endTag('div');
 
         $this->endFooter();

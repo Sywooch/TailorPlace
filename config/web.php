@@ -80,6 +80,7 @@ $config = [
                 'roles' => 'rbac/rbac/init/',
             ],
         ],
+        'numberHelper' => 'app\components\NumberHelper',
         'db' => require(__DIR__ . '/db.php'),
     ],
     'modules' => [
