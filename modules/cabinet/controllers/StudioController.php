@@ -30,9 +30,18 @@ class StudioController extends CommonController
 	public $breadcrumbItems = [
 		'index' => 'not add',
 		'what-create' => 'Регистрация ателье/магазина',
-		'create-atelier' => 'Регистрация ателье',
-		'create-store' => 'Регистрация магазина',
-		'add-good' => 'Добавление товара',
+		'create-atelier' => [
+            ['label' => 'Регистрация ателье/магазина', 'url' => '/cabinet/studio/what-create/'],
+            ['label' => 'Регистрация ателье']
+        ],
+		'create-store' => [
+            ['label' => 'Регистрация ателье/магазина', 'url' => '/cabinet/studio/what-create/'],
+            ['label' => 'Регистрация магазина']
+        ],
+		'add-good' => [
+            ['label' => 'Мой магазин', 'url' => '/cabinet/studio/'],
+            ['label' => 'Добавление товара']
+        ]
 	];
 
 	public function actionIndex()
@@ -73,6 +82,8 @@ class StudioController extends CommonController
 
 	public function actionCreateAtelier()
 	{
+        $this->layout = '@app/views/layouts/main-layout';
+
         $User = Yii::$app->user->identity;
 		if ($User->studio !== null) {
 			throw new ForbiddenHttpException("Доступ запрещен");
@@ -83,6 +94,8 @@ class StudioController extends CommonController
 
 	public function actionCreateStore()
 	{
+        $this->layout = '@app/views/layouts/main-layout';
+
         $User = Yii::$app->user->identity;
 		if ($User->studio !== null) {
 			throw new ForbiddenHttpException("Доступ запрещен");
@@ -94,6 +107,7 @@ class StudioController extends CommonController
 	private function createStudio($StudioForm, \app\modules\users\models\User $User)
 	{
 		if ($StudioForm->load(Yii::$app->request->post()) && $StudioForm->validate()) {
+            // TODO обернуть в транзакцию
         	$Studio = new Studio();
         	$Studio->type = $StudioForm->type;
         	$Studio->name = $StudioForm->name;

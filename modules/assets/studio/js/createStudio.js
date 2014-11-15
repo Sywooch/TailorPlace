@@ -23,3 +23,10 @@ function checkCities(countryId, fieldId, url)
     	}
     });
 }
+
+$(function(){
+    var id = $('#studioform-countryid').val();
+    if (id > 0) {
+        checkCities(id, 'studioform-cityname', '/cabinet/studio/get-city-list/');
+    }
+});

@@ -1,0 +1,41 @@
+.panel .panel-header {
+    padding-top: 12px;
+}
+
+.panel .left-col {
+    width: 230px;
+    text-align: right;
+}
+
+.panel .center-col {
+    width: 340px;
+}
+
+.error-summary li {
+    padding-left: 14px;
+}
+
+.select.currency {
+    width: 100px;
+}
+
+.select .ui-selectmenu-text {
+    text-align: center;
+}
+
+input[type=checkbox] + label:before {
+    margin-bottom: 2px;
+}
+
+.checkboxList:last-child {
+    margin-top: 5px;
+}
+
+.checkboxList i.icon {
+    margin: 0 7px 2px 4px;
+}
+
+#register-action {
+    width: 240px;
+    margin: 25px 0 10px 0;
+}

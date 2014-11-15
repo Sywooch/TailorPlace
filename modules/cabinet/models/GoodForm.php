@@ -4,8 +4,9 @@ namespace app\modules\cabinet\models;
 
 use Yii;
 use yii\base\Model;
-use app\modules\studio\models\Studio;
 use yii\base\InvalidParamException;
+use app\modules\studio\models\Studio;
+use app\models\GoodCategory;
 
 /**
  * Class GoodForm
@@ -56,5 +57,11 @@ class GoodForm extends Model
     public function isStoreGood()
     {
     	return $this->Studio->type === 'store';
+    }
+
+    public function getCategoryList()
+    {
+    // TODO сделать получение категорий в соответствии с типом студии
+        return GoodCategory::find()->asArray()->all();
     }
 }

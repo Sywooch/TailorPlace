@@ -8,15 +8,19 @@ main h2 {
     margin-bottom: 22px;
 }
 
+.atelier-section, .store-section {
+    position: relative;
+    float: left;
+    height: 230px;
+}
+
 .atelier-section {
     width: 349px;
     border-right: dashed #EFEBE3 2px;
-    float: left;
 }
 
 .store-section {
     width: 350px;
-    float: left;
 }
 
 .flag {
@@ -134,4 +138,29 @@ main h2 {
 
 .store-section .icon-line {
     margin-top: -9px;
+}
+
+.button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 22px;
+    width: 190px;
+}
+
+#attention {
+    width: 310px;
+    margin: 25px auto 45px;
+}
+
+#attention i {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#attention span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 280px;
 }
