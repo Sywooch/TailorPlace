@@ -19,7 +19,7 @@ class Delivery extends ActiveRecord
      * Получить связанные студии
      * @return yii\db\ActiveQuery
      */
-    public function getStudio()
+    public function getStudios()
     {
         return $this->hasMany(Studio::className(), ['id' => 'studio_id'])
             ->viaTable('studio_delivery', ['drlivery_id' => 'id']);
