@@ -7,8 +7,17 @@
  */
 
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use app\assets\AppAsset;
+
+$this->registerCssFile('@web/css/cabinet-studio-addGood.css', [
+    'depends' => [AppAsset::className()]
+]);
+$this->registerJsFile('@web/js/cabinet-studio-addGood.js', [
+    'depends' => [AppAsset::className()]
+]);
 
 $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{input}<div class="help-block"></div></div>';
 $requiredFieldTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</div><div class="center-col">{input}<div class="help-block"></div></div>';
@@ -45,46 +54,126 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                 ])
                 ?>
             </li>
-            <li>
-                <?= $form->field($GoodForm, 'categories[]', [
-                        'template' => $selectTemplate,
-                    ])->dropDownList(
-                        ArrayHelper::map($GoodForm->categoryList, 'id', 'name_ru')
-                    )
-                ?>
-            </li>
-            <li>
-                <div class="input-group dropdown-group dropdown-left-group">
-                    <label class="col-sm-3 control-label" for="goodform-categories">Категория</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" >
-                        <?= Html::activeHiddenInput($GoodForm, 'categories[]') ?>
-                        <div class="input-group-btn">
-                            <button data-toggle="dropdown" class="btn btn-default" type="button"><span class="caret"></span></button>
-                            <div class="vertical-divider"></div>
-                            <ul role="menu" class="dropdown-menu">
-                                <li><a href="#">Товары</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Ател./Маг.</a></li>
-                                <li><a href="#">Ателье</a></li>
-                                <li><a href="#">Магазины</a></li>
-                            </ul>
-                        </div><!-- /btn-group -->
+            <li class="multyField">
+                <div class="left-col">Категория</div><div class="center-col">
+                    <div class="select category">
+                        <?= Html::dropDownList('GoodForm[categories][]',
+                            null, //номер выбранной опции
+                            ArrayHelper::map($GoodForm->categoryList, 'id', 'name_ru'), [
+                                'id' => 'goodform-categories'
+                            ]
+                            )
+                        ?>
+                        <div class="select-button"><span class="caret"></span></div>
                     </div>
                 </div>
+                <button type="button" class="deleteButton" id="deleteCategory" data-toggle="tooltip" data-placement="right" title="Убрать категорию"></button>
+                <div class="left-col"></div><div class="center-col">
+                    <button type="button" class="addButton" id="addCategory" data-toggle="tooltip" data-placement="right" title="Добавить категорию"></button>
+                </div>
+<!--                --><?//= $form->field($GoodForm, 'categories[]', [
+//                        'template' => $selectTemplate,
+//                    ])->dropDownList(
+//                        ArrayHelper::map($GoodForm->categoryList, 'id', 'name_ru')
+//                    )
+//                ?>
             </li>
-            <?php
-            if ($GoodForm->isStoreGood()) {
-                echo $form->field($GoodForm, 'quantity');
-            }
-            ?>
-            <?= $form->field($GoodForm, 'description')->textArea([
-                    'placeholder' => 'Здесь вы можете дать подробное описание товара',
-                ])
-            ?>
+            <li class="quantity">
+                <?php
+                if ($GoodForm->isStoreGood()) {
+                    echo $form->field($GoodForm, 'quantity');
+                }
+                ?>
+            </li>
+            <li class="description">
+                <?= $form->field($GoodForm, 'description')->textArea([
+                        'placeholder' => 'Здесь вы можете дать подробное описание товара',
+                    ])
+                ?>
+            </li>
+            <li class="photos">
+                <div class="left-col">Фотографии товара</div>
+                <div class="center-col">
+                    <div id="photos-to-upload">
+                        <div class="photo-wrapper">
+                            <img src="/photos/good/test.jpg" width="82" height="82">
+                            <div class="icon-circle setting" data-toggle="tooltip" data-placement="right" title="Настроить фотографию"><i></i></div>
+                            <div class="icon-circle remove" data-toggle="tooltip" data-placement="right" title="Убрать фотографию"><i></i></div>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="/photos/good/test.jpg" width="82" height="82">
+                            <div class="icon-circle setting" data-toggle="tooltip" data-placement="right" title="Настроить фотографию"><i></i></div>
+                            <div class="icon-circle remove" data-toggle="tooltip" data-placement="right" title="Убрать фотографию"><i></i></div>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="/photos/good/test.jpg" width="82" height="82">
+                            <div class="icon-circle setting" data-toggle="tooltip" data-placement="right" title="Настроить фотографию"><i></i></div>
+                            <div class="icon-circle remove" data-toggle="tooltip" data-placement="right" title="Убрать фотографию"><i></i></div>
+                        </div>
+                    </div>
+                    <div id="photos">
+                        <!-- Когда нет фотографий -->
+<!--                        <p>Нажмите для выбора файлов<br>или<br>перетащиет файлы сюда</p>-->
+                        <!-- Когда есть фотографии -->
+                        <p>Добавить еще</p>
+                    </div>
+                    <div class="help-block"></div>
+                </div>
+            </li>
         </ul>
     </div>
     <div class="panel-footer">
-        <?php ActiveForm::end(); ?>
+        <div class="button yellow" id="add-action">
+            <div class="low-layer"></div>
+            <button type="submit">Добавить товар</button>
+        </div>
+    </div>
+    <?php ActiveForm::end(); ?>
+</div>
+
+<div class="modal fade" id="photoSettings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="darker">Выберите область фотографии для превью</h4>
+            </div>
+            <div class="modal-body">
+                <div id="photo-place">
+                    <div id="photo-wrapper">
+                        <img src="/photos/good/1/1.jpg" height="400">
+                        <div class="top-shadow"></div>
+                        <div class="bottom-shadow"></div>
+                        <div id="select-place">
+                            <div class="marker left-top"></div>
+                            <div class="marker top"></div>
+                            <div class="marker right-top"></div>
+                            <div class="marker right"></div>
+                            <div class="marker right-bottom"></div>
+                            <div class="marker bottom"></div>
+                            <div class="marker left-bottom"></div>
+                            <div class="marker left"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="preview-wrapper">
+                    <figure>
+                        <div id="preview">
+                            <img src="/photos/good/1/1_small.jpeg" width="82" height="82">
+                        </div>
+                        <figcaption>Превью</figcaption>
+                    </figure>
+                    <p>Изображение-превью
+                        используется для
+                        отображения товара
+                        в общем каталоге
+                        товаров.</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,159 @@
+#add-action {
+    width: 190px;
+    margin: 25px 0 10px 0;
+}
+
+.panel {
+    margin-bottom: 45px;
+}
+
+.panel .panel-header {
+    padding-top: 12px;
+}
+
+.panel .panel-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.panel .left-col {
+    width: 205px;
+    text-align: right;
+}
+
+.panel .center-col {
+    width: 295px;
+}
+
+.select, select {
+    width: 100%;
+}
+
+li.multyField {
+    margin-bottom: 15px;
+}
+
+li.quantity input {
+    width: 110px;
+}
+
+li.description textarea {
+    height: 158px;
+}
+
+li.photos {
+    background-color: #F1E8DF;
+    padding: 15px 0;
+}
+
+li.photos .left-col,
+li.photos .center-col {
+    vertical-align: middle;
+}
+
+#photos {
+    border: dashed #CFBBAE 2px;
+    background: #F9F3EC url('../img/photo-diagonal-bg.png');
+}
+
+#photos:hover {
+    background-color: #E6DAD5;
+    border-color: #BEAA9D;
+    cursor: pointer;
+}
+
+#photos p {
+    text-align: center;
+    font-family: RobotoBlack, sans-serif;
+    font-size: 15px;
+    color: #95938E;
+    padding: 15px 0;
+}
+
+#photos-to-upload {
+    text-align: justify;
+    /*line-height: 0; *//* если не сделать, то псевдоэлемент даст высоту приличную *//*
+    font-size: 1px; *//* 1px для Opera */
+}
+
+/* justify невыравнивает последнюю строку, поэтому добавим в конец псевдоэлемент */
+#photos-to-upload:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    visibility: hidden;
+}
+
+#photos-to-upload .photo-wrapper {
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    border: solid #DFC8BB 1px;
+    width: 82px;
+    height: 82px;
+}
+
+.icon-circle.setting,
+.icon-circle.remove {
+    position: absolute;
+    top: -10px;
+    display: none;
+}
+
+.icon-circle.setting {
+    left: -10px;
+}
+
+.icon-circle.remove {
+    right: -10px;
+}
+
+#photos-to-upload .photo-wrapper:hover .icon-circle.setting,
+#photos-to-upload .photo-wrapper:hover .icon-circle.remove {
+    display: block;
+}
+
+/* Модальное окно */
+.modal-dialog .modal-content {
+    border-radius: 15px;
+    background-color: #F3ECE4;
+}
+
+.modal-dialog .modal-content .modal-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: solid #DFC8BB 1px;
+    border-bottom-color: #D0CAC4;
+}
+
+.modal-dialog .modal-content .modal-header h4 {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+.modal-dialog .modal-content .modal-footer {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: solid #DFC8BB 1px;
+    border-top-color: #D0CAC4;
+}
+
+.modal-dialog .modal-content .modal-body {
+    padding: 0;
+    background-color: #F0E6DD;
+}
+
+#photo-place {
+    float: left;
+    width: 400px;
+    height: 400px;
+    margin-left: 25px;
+    background: #DAC9BE url('../img/photo-setting-diagonal-bg.png');
+}
+
+#preview-wrapper {
+    float: right;
+    width: 150px;
+}

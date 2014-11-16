@@ -937,7 +937,7 @@ ul.breadcrumb a {
     background-position: -37px 0;
 }
 
-/* Иеонка товара */
+/* Иконка товара */
 .icon-circle.good {
     background-color: #CFBAAD;
 }
@@ -946,6 +946,41 @@ ul.breadcrumb a {
     height: 14px;
     margin: 9px auto;
     background-position: -75px 0;
+}
+
+/* Иконки настройки фотографий */
+.icon-circle.setting {
+    background-color: #CFBAAD;
+    width: 24px;
+    height: 24px;
+    border: solid #FFFFFF 1px;
+}
+.icon-circle.setting i {
+    width: 18px;
+    height: 14px;
+    margin: 4px auto;
+    background-position: -117px 0;
+}
+.icon-circle.setting:hover {
+    cursor: pointer;
+    background-color: #C4AFA2;
+}
+
+.icon-circle.remove {
+    background-color: #FF7F66;
+    width: 24px;
+    height: 24px;
+    border: solid #FFFFFF 1px;
+}
+.icon-circle.remove i {
+    width: 10px;
+    height: 10px;
+    margin: 6px auto;
+    background-position: -117px -21px;
+}
+.icon-circle.remove:hover {
+    cursor: pointer;
+    background-color: #F07863;
 }
 
 /* Основные иконки */
@@ -1489,3 +1524,55 @@ ul.ui-menu {
     height: 1px;
 }
 /* <Конец> Оформление больших цифр репутации */
+
+/* Оформление кнопки удаления поля */
+button.deleteButton {
+    position: relative;
+    border: 0;
+    padding: 0;
+    width: 26px;
+    height: 10px;
+    background-color: transparent;
+    margin: 14px 6px;
+}
+/* <Конец> Оформление кнопки удаления поля */
+
+/* Оформление кнопки добавления поля */
+button.addButton {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    background-color: #FFFFFF;
+    border: solid #DFC8BB 1px;
+}
+button.addButton:before,
+button.deleteButton:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 22px;
+    height: 4px;
+    background-color: #95938D;
+}
+button.addButton:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 4px;
+    height: 22px;
+    background-color: #95938D;
+}
+button.deleteButton:hover:before,
+button.addButton:hover:before,
+button.addButton:hover:after {
+    background-color: #797979;
+}
+/* <Конец> Оформление кнопки добавления поля */
