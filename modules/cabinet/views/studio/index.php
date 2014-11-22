@@ -183,23 +183,20 @@ $this->registerJsFile('@web/js/cabinet-studio-index.js', [
 </ul>
 <div class="pagination">
     <div class="dashed scissor-right"></div>
-    <ul class="pages">
-        <li class="link">1</li>
-        <li class="link">2</li>
-        <li class="link">3</li>
-        <li>...</li>
-        <li class="link">9</li>
-        <li class="link">11</li>
-        <li class="link">12</li>
+    <ul class="pages bigger">
+        <li class="link active">1</li><li class="link"><a href="" class="bigger">2</a></li><li class="link"><a href="" class="bigger">3</a></li><li>...</li><li class="link"><a href="" class="bigger">9</a></li><li class="link"><a href="" class="bigger">11</a></li><li class="link"><a href="" class="bigger">12</a></li>
     </ul>
-    <form method="get">
-        <label>Перейти <input type="text" name="page"></label>
-        <div id="add-good-button" class="button yellow">
-            <div class="low-layer"></div>
-            <button type="submit">Ok</button>
+    <form method="get"class="page-selector">
+        <div class="form-group">
+            <label>Перейти <input type="text" name="page" class="form-control"></label>
+            <div id="pagination-button" class="button yellow">
+                <div class="low-layer"></div>
+                <button type="submit">Ok</button>
+            </div>
         </div>
     </form>
-    <ul class="count-on-page">
+    <div class="show-word bigger">Показывать:</div>
+    <ul class="count-on-page bigger darker">
         <li><a href="">15</a></li>
         <li><a href="">30</a></li>
         <li><a href="">60</a></li>

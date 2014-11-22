@@ -1611,3 +1611,73 @@ button.addButton:hover:after {
     background-color: #797979;
 }
 /* <Конец> Оформление кнопки добавления поля */
+
+/* Пагинатор */
+.pagination {
+    width: 100%;
+    margin-bottom: 45px;
+}
+
+.pagination .dashed  {
+    margin-bottom: 18px;
+}
+
+.pagination .pages,
+.pagination .page-selector,
+.pagination .show-word,
+.pagination .count-on-page {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pagination .pages {
+    width: 210px;
+    margin-left: 14px;
+}
+
+.pagination .pages li {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+.pagination .pages li.active {
+    background-color: #FF7F66;
+    color: #FFFFFF;
+    border-radius: 50%;
+}
+
+.pagination .page-selector {
+    margin: 5px 45px 0 5px;
+}
+
+.pagination .page-selector label {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.pagination .page-selector input {
+    display: inline-block;
+    width: 54px;
+    margin: 0 11px 0 6px;
+}
+
+.pagination .page-selector .form-group {
+    margin: 0;
+}
+
+#pagination-button {
+    width: 60px;
+    vertical-align: middle;
+}
+#pagination-button button {
+    text-transform: uppercase;
+}
+
+.pagination .count-on-page li {
+    display: inline-block;
+    margin-left: 11px;
+}
+/* <Конец> Пагинатор */
