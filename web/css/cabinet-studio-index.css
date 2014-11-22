@@ -1,0 +1,164 @@
+#add-good-button {
+    width: 188px;
+}
+
+.over-table {
+    position: relative;
+    height: 45px;
+}
+
+.add-button-wrapper {
+    position: absolute;
+    right: 0;
+    top: -30px
+}
+
+.over-table menu {
+    margin-top: 20px;
+}
+
+.over-table menu li {
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.over-table .dashed-underline {
+    font-size: 16px;
+    padding-bottom: 3px;
+    vertical-align: top;
+}
+
+.table-header > div {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.table-header > div > div:first-child {
+    height: 45px;
+    background: #EFE5DC url('../img/diagonal-bg.png');
+}
+
+.table-header > div > div:last-child {
+    height: 3px;
+    background: #EBDFD5 url('../img/diagonal-bg.png');
+}
+
+.table-header .name {
+    width: 465px;
+    margin-left: 0;
+}
+
+.table-header .price,
+.table-header .date {
+    width: 115px;
+}
+
+.table-header a {
+    font-family: RobotoMedium, sans-serif;
+    margin: 12px 0 0 14px;
+}
+
+/* Список товаров */
+.good-list > li {
+    background-color: #FDF8F0;
+}
+.good-list > li:nth-child(2n) {
+    background-color: #F8F0E8;
+}
+.good-list > li:hover {
+    background-color: #EFF2D7;
+}
+
+.good-list .main-info {
+    border-bottom: solid #EAE6DE 1px;
+    padding-bottom: 14px;
+}
+
+.good-list .img-link,
+.good-list .name-box,
+.good-list .price-box,
+.good-list .date-box {
+    display: inline-block;
+    box-sizing: content-box;
+    vertical-align: top;
+}
+.good-list .img-link {
+    width: 48px;
+    height: 48px;
+    border: solid #BE957B 1px;
+    margin: 18px 0 0 14px;
+}
+
+.good-list .name-box {
+    margin: 18px 0 0 14px;
+}
+
+.good-list .name-box > span {
+    display: inline-block;
+    width: 386px;
+}
+
+.good-list .vitrine-button {
+    width: 92px;
+    height: 22px;
+    font-family: RobotoMedium, sans-serif;
+    font-size: 13px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.good-list .vitrine-button.to-vitrine {
+    background-color: #CFBAAD;
+}
+
+.good-list .vitrine-button.on-vitrine {
+    background-color: #9FD245;
+}
+
+.good-list .price-box,
+.good-list .date-box {
+    width: 116px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.good-list .date-box {
+    margin-top: 35px;
+}
+
+.good-list .sub-info {
+    position: relative;
+    overflow: hidden;
+    padding: 5px 18px;
+}
+
+.good-list .sub-info > ul li {
+    display: inline-block;
+    margin-right: 20px;
+    opacity: 0.7;
+}
+
+.good-list > li:hover .sub-info > ul li {
+    opacity: 1;
+}
+
+.good-list .redact {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 3px 14px;
+}
+
+.good-list .redact span:first-child {
+    margin-right: 15px;
+}
+
+.good-list > li:hover .redact {
+    display: block;
+}

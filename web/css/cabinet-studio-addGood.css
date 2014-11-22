@@ -70,21 +70,6 @@ li.photos .center-col {
     padding: 15px 0;
 }
 
-#photos-to-upload {
-    text-align: justify;
-    /*line-height: 0; *//* если не сделать, то псевдоэлемент даст высоту приличную *//*
-    font-size: 1px; *//* 1px для Opera */
-}
-
-/* justify невыравнивает последнюю строку, поэтому добавим в конец псевдоэлемент */
-#photos-to-upload:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 0;
-    visibility: hidden;
-}
-
 #photos-to-upload .photo-wrapper {
     position: relative;
     display: inline-block;
@@ -92,6 +77,12 @@ li.photos .center-col {
     border: solid #DFC8BB 1px;
     width: 82px;
     height: 82px;
+    margin-right: 18px;
+    margin-bottom: 18px;
+}
+
+#photos-to-upload .photo-wrapper:nth-child(3n) {
+    margin-right: 0;
 }
 
 .icon-circle.setting,
@@ -138,6 +129,7 @@ li.photos .center-col {
     border-bottom-right-radius: 15px;
     border: solid #DFC8BB 1px;
     border-top-color: #D0CAC4;
+    text-align: center;
 }
 
 .modal-dialog .modal-content .modal-body {
@@ -146,6 +138,7 @@ li.photos .center-col {
 }
 
 #photo-place {
+    position: relative;
     float: left;
     width: 400px;
     height: 400px;
@@ -155,5 +148,104 @@ li.photos .center-col {
 
 #preview-wrapper {
     float: right;
-    width: 150px;
+    width: 173px;
+    padding: 50px 15px
+}
+
+#preview-wrapper figure {
+    text-align: center;
+}
+
+
+#preview-wrapper p {
+    color: #504C3F;
+    margin-top: 10px;
+}
+
+#preview {
+    display: inline-block;
+    box-sizing: content-box;
+    width: 82px;
+    height: 82px;
+    border: solid #BE957B 1px;
+    margin-bottom: 6px;
+}
+
+#photo-wrapper {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#photo-wrapper .photo-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.5;
+}
+
+#select-place {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 260px;
+    height: 260px;
+    overflow: hidden;
+}
+
+#select-place img {
+    margin: -10px -20px -90px -20px;
+}
+
+#photo-wrapper .marker {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+}
+
+#photo-wrapper .marker.left-top {
+    top: 10px;
+    left: 20px;
+    margin: -5px 0 0 -5px;
+    cursor: se-resize;
+}
+
+#photo-wrapper .marker.right-top {
+    top: 10px;
+    left: 280px;
+    margin: -5px 0 0 -5px;
+    cursor: sw-resize;
+}
+
+#photo-wrapper .marker.right-bottom {
+    top: 270px;
+    left: 280px;
+    margin: -5px 0 0 -5px;
+    cursor: nw-resize;
+}
+
+#photo-wrapper .marker.left-bottom {
+    top: 270px;
+    left: 20px;
+    margin: -5px 0 0 -5px;
+    cursor: ne-resize;
+}
+
+#photo-settings-cancel {
+    width: 100px;
+    margin-right: 15px;
+}
+
+#photo-settings-save {
+    width: 100px;
 }

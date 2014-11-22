@@ -127,6 +127,11 @@ a.dashed-underline:hover::after {
 .italic {
     font-family: pt_serifItalic, serif;
 }
+
+.price-normal {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 18px;
+}
 /* <Конец> Текстовые стили */
 
 #wrapper {
@@ -384,6 +389,14 @@ button.btn, input.form-control, select.form-control {
     border-top: solid #AAA9A4 6px;
 }
 
+.caret.top {
+    border-right-width: 4px;
+    border-left-width: 4px;
+    border-bottom: solid #AAA9A4 6px;
+    border-top-color: transparent;
+    margin-bottom: 6px;
+}
+
 button.btn:hover .caret,
 button.btn:focus .caret {
     border-top-color: #FFFFFF;
@@ -483,7 +496,7 @@ button.btn:focus .caret {
 
 .button a[data-type="button"] {
     text-decoration: none;
-    line-height: 38px;
+    line-height: 37px;
     cursor: pointer;
 }
 
@@ -1117,6 +1130,28 @@ ul.breadcrumb a {
 
 .icon.by-cash-when-meeting {
     background-position: -512px 0;
+}
+
+.icon.good-white {
+    background-position: -768px -16px;
+}
+
+.icon.delete-red {
+    background-position: -720px 0;
+}
+
+.icon.edit {
+    background-position: -672px -16px;
+    margin-bottom: 0;
+}
+
+/* Классификация товаров */
+.icon.women {
+    background-position: -240px -16px;
+}
+
+.icon.the-dress {
+    background-position: -304px -16px;
 }
 
 /* <Конец> Иконки */

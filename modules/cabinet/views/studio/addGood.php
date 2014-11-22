@@ -131,7 +131,7 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
     <?php ActiveForm::end(); ?>
 </div>
 
-<div class="modal fade" id="photoSettings" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="photo-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -141,18 +141,14 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                 <div id="photo-place">
                     <div id="photo-wrapper">
                         <img src="/photos/good/1/1.jpg" height="400">
-                        <div class="top-shadow"></div>
-                        <div class="bottom-shadow"></div>
+                        <div class="photo-shadow"></div>
                         <div id="select-place">
-                            <div class="marker left-top"></div>
-                            <div class="marker top"></div>
-                            <div class="marker right-top"></div>
-                            <div class="marker right"></div>
-                            <div class="marker right-bottom"></div>
-                            <div class="marker bottom"></div>
-                            <div class="marker left-bottom"></div>
-                            <div class="marker left"></div>
+                            <img src="/photos/good/1/1.jpg" height="400">
                         </div>
+                        <div class="marker left-top"></div>
+                        <div class="marker right-top"></div>
+                        <div class="marker right-bottom"></div>
+                        <div class="marker left-bottom"></div>
                     </div>
                 </div>
                 <div id="preview-wrapper">
@@ -160,9 +156,9 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                         <div id="preview">
                             <img src="/photos/good/1/1_small.jpeg" width="82" height="82">
                         </div>
-                        <figcaption>Превью</figcaption>
+                        <figcaption class="darker">Превью</figcaption>
                     </figure>
-                    <p>Изображение-превью
+                    <p class="italic">Изображение-превью
                         используется для
                         отображения товара
                         в общем каталоге
@@ -171,8 +167,14 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                 <div class="clear"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="button" id="photo-settings-cancel">
+                    <div class="low-layer"></div>
+                    <button type="submit" data-dismiss="modal">Отмена</button>
+                </div>
+                <div class="button yellow" id="photo-settings-save">
+                    <div class="low-layer"></div>
+                    <button type="submit">Сохранить</button>
+                </div>
             </div>
         </div>
     </div>
