@@ -151,6 +151,10 @@ class StudioController extends CommonController
 	public function actionAddGood()
 	{
 		$GoodForm = new GoodForm(Yii::$app->user->identity->studio);
+		$post = Yii::$app->request->post();
+		if ($post) {
+			var_dump($post);
+		}
 		return $this->render('addGood', [
 			'GoodForm' => $GoodForm,
 		]);

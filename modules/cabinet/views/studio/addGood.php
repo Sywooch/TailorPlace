@@ -61,8 +61,7 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                             null, //номер выбранной опции
                             ArrayHelper::map($GoodForm->categoryList, 'id', 'name_ru'), [
                                 'id' => 'goodform-categories'
-                            ]
-                            )
+                            ])
                         ?>
                         <div class="select-button"><span class="caret"></span></div>
                     </div>
@@ -71,12 +70,11 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                 <div class="left-col"></div><div class="center-col">
                     <button type="button" class="addButton" id="addCategory" data-toggle="tooltip" data-placement="right" title="Добавить категорию"></button>
                 </div>
-<!--                --><?//= $form->field($GoodForm, 'categories[]', [
-//                        'template' => $selectTemplate,
-//                    ])->dropDownList(
-//                        ArrayHelper::map($GoodForm->categoryList, 'id', 'name_ru')
-//                    )
-//                ?>
+				 <!-- $form->field($GoodForm, 'categories[]', [
+                        'template' => $selectTemplate,
+                    ])->dropDownList(
+                        ArrayHelper::map($GoodForm->categoryList, 'id', 'name_ru')
+                    ) -->
             </li>
             <li class="quantity">
                 <?php
