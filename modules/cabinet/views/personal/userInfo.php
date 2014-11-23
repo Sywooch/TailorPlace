@@ -9,7 +9,7 @@ use yii\helpers\Url;
 ?>
 <div id="user-data" class="info-wrapper">
 	<h4 class="icon-line big-red-medium"><i class="icon person"></i><span>Аккаунт</span></h4>
-    <div id="user-redact" class="button">
+    <div class="button">
         <div class="low-layer"></div>
         <a data-type="button" href="<?= Url::toRoute('user-redact') ?>">Редактировать</a>
     </div>

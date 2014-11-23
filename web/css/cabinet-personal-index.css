@@ -2,22 +2,22 @@
     position: relative;
 }
 
-#user-redact {
+.info-wrapper .button {
     position: absolute;
     right: 0;
     top: 13px;
     width: 140px;
 }
 
-#user-data > ul {
+.info-wrapper > ul {
     margin-top: 5px;
 }
 
-.info-wrapper > ul li:nth-child(2n) {
+.info-wrapper > ul > li:nth-child(2n) {
     background-color: #F8F0E8;
 }
 
-.info-wrapper > ul li > div {
+.info-wrapper > ul > li > div {
     display: inline-block;
     box-sizing: content-box;
     vertical-align: top;
@@ -45,4 +45,24 @@
     font-family: RobotoLight, sans-serif;
     font-size: 12px;
     line-height: 12px;
+}
+
+#user-data + .dashed {
+    margin: 38px 0 22px 0;
+}
+
+.info-wrapper .sublist {
+    margin: 4px 0 7px 0;
+}
+
+.info-wrapper .sublist li {
+    padding: 1px 0;
+}
+
+.info-wrapper:last-child {
+    margin-bottom: 45px;
+}
+
+#studio-data .icon.store {
+    margin-bottom: 0;
 }

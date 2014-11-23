@@ -1125,38 +1125,6 @@ ul.breadcrumb a {
     margin-bottom: -2px;
 }
 
-.icon.mail {
-    background-position: -528px 0;
-}
-
-.icon.express-delivery {
-    background-position: -528px -16px;
-}
-
-.icon.personal-meeting {
-    background-position: -544px 0;
-}
-
-.icon.webmoney {
-    background-position: -480px 0;
-}
-
-.icon.yandex-money {
-    background-position: -480px -16px;
-}
-
-.icon.mail-transfer {
-    background-position: -496px 0;
-}
-
-.icon.bank-transfer {
-    background-position: -496px -16px;
-}
-
-.icon.by-cash-when-meeting {
-    background-position: -512px 0;
-}
-
 .icon.good {
     background-position: -752px -16px;
 }
@@ -1171,6 +1139,46 @@ ul.breadcrumb a {
 .icon.edit {
     background-position: -672px -16px;
     margin-bottom: 0;
+}
+
+/* Способы достаки */
+.icon.mail-delivery {
+    background-position: -528px 0;
+    margin-bottom: 1px;
+}
+.icon.express-delivery {
+    background-position: -528px -16px;
+}
+.icon.personal-meeting {
+    background-position: -544px 0;
+    margin-bottom: 0;
+}
+.icon.other {
+    background-position: -592px 0;
+    margin-bottom: -2px;
+}
+
+/* Способы оплаты */
+.icon.webmoney {
+    background-position: -480px 0;
+}
+.icon.yandex-money {
+    background-position: -480px -16px;
+}
+.icon.mail-transfer {
+    background-position: -496px 0;
+}
+.icon.bank-transfer {
+    background-position: -496px -16px;
+}
+.icon.by-cash-when-meeting {
+    background-position: -512px 0;
+}
+.icon.qiwi {
+    background-position: -512px -16px;
+}
+.icon.pay-pal {
+    background-position: -512px -16px;
 }
 
 /* Классификация товаров */
