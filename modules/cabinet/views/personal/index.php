@@ -1,9 +1,14 @@
 <?php
-use app\modules\assets\PersonalAsset;
-PersonalAsset::register($this);
+
+use app\assets\AppAsset;
+use yii\helpers\Html;
+
+$this->registerCssFile('@web/css/cabinet-personal-index.css', [
+    'depends' => [AppAsset::className()]
+]);
+
 ?>
 
-<div class="content">
-	<h1>Персональные данные</h1>
-	<?= $userView ?>
-</div>
+<h3>Персональные данные</h3>
+<?= $userView ?>
+<?= $studioView ?>

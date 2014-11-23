@@ -33,7 +33,7 @@ $this->beginContent('@app/views/layouts/main-layout.php');
         </menu>
         <p class="big-red-medium">Аккаунт</p>
         <menu>
-            <li class="icon-line"><i class="icon person"></i><a href="">Персональные данные</a></li>
+            <li class="icon-line"><i class="icon person"></i><a href="/cabinet/personal/">Персональные данные</a></li>
             <li class="icon-line"><i class="icon basket"></i><a href="">Корзина</a></li>
             <li class="icon-line"><i class="icon message"></i><a href="">Сообщения</a></li>
         </menu>

@@ -486,12 +486,25 @@ button.btn:focus .caret {
     bottom: 1px;
 }
 
+.button.disable button:active, .button.disable a[data-type="button"]:active {
+    bottom: 4px;
+}
+
 .button.yellow .low-layer {
     background-color: #E49808;
 }
 
 .button.yellow button, .button.yellow a[data-type="button"] {
     background-color: #FFB800;
+}
+
+.button.disable .low-layer {
+    background-color: #CECBC6;
+}
+
+.button.disable button, .button.disable a[data-type="button"] {
+    background-color: #E7E4DF;
+    color: #848484;
 }
 
 .button a[data-type="button"] {
@@ -932,7 +945,7 @@ ul.breadcrumb a {
     background-position: -18px 0;
 }
 
-.icon-circle.store.small i{
+.icon-circle.store.small i {
     width: 13px;
     height: 12px;
     margin: 6px;
@@ -996,6 +1009,14 @@ ul.breadcrumb a {
     background-color: #F07863;
 }
 
+.icon-circle.little-help {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    background-color: #9FD245;
+}
+
 /* Основные иконки */
 .icon {
     display: inline-block;
@@ -1029,6 +1050,10 @@ ul.breadcrumb a {
     background-position: -576px 0;
 }
 
+.icon.person {
+    background-position: -448px -16px;
+    margin-bottom: 0;
+}
 .icon.person-green {
     background-position: -560px -16px;
 }
@@ -1132,6 +1157,9 @@ ul.breadcrumb a {
     background-position: -512px 0;
 }
 
+.icon.good {
+    background-position: -752px -16px;
+}
 .icon.good-white {
     background-position: -768px -16px;
 }

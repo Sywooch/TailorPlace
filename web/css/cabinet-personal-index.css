@@ -1,0 +1,48 @@
+.info-wrapper {
+    position: relative;
+}
+
+#user-redact {
+    position: absolute;
+    right: 0;
+    top: 13px;
+    width: 140px;
+}
+
+#user-data > ul {
+    margin-top: 5px;
+}
+
+.info-wrapper > ul li:nth-child(2n) {
+    background-color: #F8F0E8;
+}
+
+.info-wrapper > ul li > div {
+    display: inline-block;
+    box-sizing: content-box;
+    vertical-align: top;
+    min-height: 33px;
+    line-height: 33px;
+}
+
+.info-wrapper > ul li > div:first-child {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 15px;
+    padding-left: 22px;
+    width: 225px;
+}
+
+.info-wrapper > ul li > div:last-child {
+    font-size: 15px;
+    width: 427px;
+    padding-right: 22px;
+}
+
+
+
+.info-wrapper > ul li > div:first-child small {
+    display: inline-block;
+    font-family: RobotoLight, sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+}

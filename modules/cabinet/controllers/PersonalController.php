@@ -10,6 +10,8 @@ use app\modules\studio\models\Studio;
 
 class PersonalController extends CommonController
 {
+    public $layout = 'cabinet';
+
 	/**
 	 * Элементы хлебных крошек
 	 * @var array
@@ -39,28 +41,38 @@ class PersonalController extends CommonController
 	public function actionIndex()
 	{
 		$User = Yii::$app->getUser()->identity;
-		$userView = $this->generateUserView($User);
 
 		$Studio = $User->studio;
-		if ($Studio) {
-			$studioView = $this->generateStudioView($Studio);
-		}
+        if ($Studio) {
+            $hasStudio = true;
+            $studioType = ($Studio->type == 'atelier') ? 'Ателье' : 'Магазин';
+            $studioView = $this->generateStudioView($Studio, $studioType);
+        } else {
+            $hasStudio = false;
+            $studioView = '';
+        }
+
+        $userView = $this->generateUserView($User, $hasStudio);
 
 		return $this->render('index', [
 			'userView' => $userView,
-			'studioView' => $studioView,
+			'studioView' => $studioView
 		]);
 	}
 
-	private function generateUserView(\app\modules\users\models\User $User)
+	private function generateUserView(\app\modules\users\models\User $User, $hasStudio = false)
 	{
 		return $this->renderPartial('userInfo', [
-			'user' => $User]);
+			'User' => $User,
+            'hasStudio' => $hasStudio,
+        ]);
 	}
 
-	private function generateStudioView(\app\modules\studio\models\Studio $Studio)
+	private function generateStudioView(\app\modules\studio\models\Studio $Studio, $studioType)
 	{
 		return $this->renderPartial('studioInfo', [
-			'studio' => $Studio]);
+			'Studio' => $Studio,
+            'studioType' => $studioType,
+        ]);
 	}
 }

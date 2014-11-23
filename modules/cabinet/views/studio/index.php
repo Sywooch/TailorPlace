@@ -45,10 +45,19 @@ $this->registerJsFile('@web/js/cabinet-studio-index.js', [
 		</li>
 	</menu>
     <div class="add-button-wrapper">
+        <!-- Нормальная кнопка -->
         <div id="add-good-button" class="button yellow">
             <div class="low-layer"></div>
             <a data-type="button" href="<?= Url::toRoute('add-good') ?>" class="icon-line"><i class="icon good-white"></i><span>Добавить товар</span></a>
         </div>
+        <!-- Задизейбленная кнопка -->
+<!--        <div id="add-good-button" class="button disable">-->
+<!--            <div class="low-layer"></div>-->
+<!--            <button class="icon-line" disabled><i class="icon good"></i><span>Добавить товар</span></button>-->
+<!--        </div>-->
+<!--        <div id="need-more" class="icon-line">-->
+<!--            <span class="italic">Нужно еще 45 продаж</span> <a href="" class="icon-circle icon-circle-text little-help">?</a>-->
+<!--        </div>-->
     </div>
 </div>
 <div class="table-header">
@@ -89,6 +98,8 @@ $this->registerJsFile('@web/js/cabinet-studio-index.js', [
             <ul>
                 <li class="icon-line"><i class="icon women"></i><span>Женская одежда</span></li>
                 <li class="icon-line"><i class="icon the-dress"></i><span>Платье</span></li>
+                <li class="icon-line"><i class="icon the-dress"></i><span>Платье</span></li>
+                <li class="icon-line"><i class="icon women"></i><span>Женская одежда</span></li>
             </ul>
             <div class="redact">
                 <span class="icon-line"><i class="icon edit"></i><a href="" class="dashed-underline">Редактировать</a></span>
