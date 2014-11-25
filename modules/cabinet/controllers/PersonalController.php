@@ -7,6 +7,7 @@ use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use app\modules\users\models\User;
 use app\modules\studio\models\Studio;
+use app\modules\cabinet\models\StudioForm;
 
 class PersonalController extends CommonController
 {
@@ -17,7 +18,8 @@ class PersonalController extends CommonController
 	 * @var array
 	 */
 	public $breadcrumbItems = [
-		'index' => 'Персональные данные'
+		'index' => 'Персональные данные',
+		'studio-redact' => 'not add',
 	];
 	// public function behaviors()
 	// {
@@ -75,4 +77,24 @@ class PersonalController extends CommonController
             'studioType' => $studioType,
         ]);
 	}
+
+    public function actionStudioRedact()
+    {
+        $User = Yii::$app->getUser()->identity;
+        $Studio = $User->studio;
+        if ($Studio->type == 'atelier') {
+            $this->addBreadcrumbsItem(['label' => 'Редактирование ателье']);
+            $studioType = 'ателье';
+        } else {
+            $this->addBreadcrumbsItem(['label' => 'Редактирование магазина']);
+            $studioType = 'магазина';
+        }
+
+        $StudioForm = new StudioForm($Studio->type, $Studio);
+//        var_dump($Form);
+        return $this->render('studioRedact', [
+            'Form' => $StudioForm,
+            'studioType' => $studioType,
+        ]);
+    }
 }

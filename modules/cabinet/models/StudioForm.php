@@ -45,11 +45,6 @@ class StudioForm extends Model
 	public $description;
 
 	/**
-	 * @var string $address Адрес студии
-	 */
-	public $address;
-
-	/**
 	 * @var string Название страны
 	 */
 	public $countryName;
@@ -68,11 +63,6 @@ class StudioForm extends Model
 	 * @var string Id города
 	 */
 	public $cityId;
-
-	/**
-	 * @var ActiveRecord Экземпляр валюты
-	 */
-	public $currency;
 
 	/**
 	 * @var int Id валюты
@@ -109,10 +99,22 @@ class StudioForm extends Model
      */
     public $currencyList;
 
-    public function __construct($type, $config = [])
+    public function __construct($type, \app\modules\studio\models\Studio $Studio = null, $config = [])
     {
         $this->type = $type;
         $this->validateType('type');
+
+        if ($Studio) {
+            $this->name = $Studio->name;
+            $this->slogan = $Studio->slogan;
+            $this->description = $Studio->description;
+            $this->fillCountry($Studio->user);
+            $this->fillCity($Studio->user);
+            $this->currencyId = $Studio->currency_id;
+            $this->custom_delivery = $Studio->custom_delivery;
+            $this->custom_payment = $Studio->custom_payment;
+        }
+
         parent::__construct($config = []);
     }
 
