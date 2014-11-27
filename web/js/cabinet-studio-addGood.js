@@ -7,7 +7,20 @@ $(function(){
     // Добавление категории
     $('#addCategory').click(function(){
     	var baseSelect = $('#goodform-categories');
-    	var options = baseSelect.childs();
-    	console.log(options);
+    	// console.log(baseSelect);
+    	var options = baseSelect.children().clone();
+    	// console.log(options);
+    	var newSelect = $('<select name="GoodForm[categories][]">');
+    	newSelect.append(options);
+    	// console.log(newSelect);
+    	// baseSelect.parent().append(newSelect);
+    	var wrapperBlock = baseSelect.parents('.multyField');
+    	console.log(wrapperBlock);
+    	var leftCol = $('<div class="left-col">');
+		var centerCol = $('<div class="center-col">');
+		centerCol.append(newSelect);
+		newSelect.selectmenu();
+		wrapperBlock.append(leftCol);
+		wrapperBlock.append(centerCol);
     });
 });
