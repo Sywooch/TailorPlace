@@ -29,8 +29,8 @@
     width: 100%;
 }
 
-li.multyField {
-    margin-bottom: 15px;
+li#add-button-line {
+    margin: 5px 0 15px;
 }
 
 li.quantity input {

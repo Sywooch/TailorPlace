@@ -7,20 +7,27 @@ $(function(){
     // Добавление категории
     $('#addCategory').click(function(){
     	var baseSelect = $('#goodform-categories');
-    	// console.log(baseSelect);
+    	// 
+    	// 
     	var options = baseSelect.children().clone();
     	// console.log(options);
     	var newSelect = $('<select name="GoodForm[categories][]">');
     	newSelect.append(options);
     	// console.log(newSelect);
     	// baseSelect.parent().append(newSelect);
-    	var wrapperBlock = baseSelect.parents('.multyField');
-    	console.log(wrapperBlock);
+    	var li = $('<li>');
     	var leftCol = $('<div class="left-col">');
 		var centerCol = $('<div class="center-col">');
-		centerCol.append(newSelect);
+		var selectWrapper = $('<div class="select category">');
+		li.append(leftCol).append(centerCol);
+		centerCol.append(selectWrapper);
+		var selectButton = $('<div class="select-button"><span class="caret"></span></div>');
+		selectWrapper.append(newSelect).append(selectButton);
+		$(this).parents('#add-button-line').before(li);
 		newSelect.selectmenu();
-		wrapperBlock.append(leftCol);
-		wrapperBlock.append(centerCol);
+		selectButton.click(function(){
+			var parent = $(this).parent();
+			$('select', parent).selectmenu( "open" );
+		});
     });
 });
