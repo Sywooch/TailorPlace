@@ -71,8 +71,11 @@ $config = [
                 'captcha' => 'common/captcha',
                 'feedback' => 'site/feedback',
                 '404' => 'site/404',
+                '403' => 'site/403',
             // Модуль [[Users]]
                 '<_a:(login|logout|signup|activation|recovery|index|repair-password)>' => 'users/default/<_a>',
+            // Модуль [[good]]
+                'good' => 'good/default/index',
             // Личный кабинет
                 'cabinet' => 'cabinet/default/index/',
                 'cabinet/studio/<section:(all|vitrine|sale)>/' => 'cabinet/studio/index/',
@@ -95,6 +98,12 @@ $config = [
         ],
         'cabinet' => [
             'class' => 'app\modules\cabinet\Cabinet'
+        ],
+        'good' => [
+            'class' => 'app\modules\good\Good'
+        ],
+        'studio' => [
+            'class' => 'app\modules\studio\Studio'
         ],
     ],
     'params' => $params,

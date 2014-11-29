@@ -99,3 +99,7 @@ p.description {
     margin-bottom: 45px;
     font-size: 15px;
 }
+
+p.description a {
+    color: #FF7F66;
+}

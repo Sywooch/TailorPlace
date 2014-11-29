@@ -7,7 +7,7 @@
 use yii\widgets\ActiveForm;
 use app\assets\AppAsset;
 
-$this->registerCssFile('@web/css/cabinet-personal-studioRedact.css', [
+$this->registerCssFile('@web/css/cabinet-personal-redact.css', [
     'depends' => [AppAsset::className()]
 ]);
 
@@ -32,13 +32,14 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
                 ])
                 ?>
             </li>
-            <li>
+            <li class="pass-field">
                 <?= $form->field($User, 'oldPassword')->passwordInput() ?>
             </li>
-            <li>
+            <li class="pass-field">
                 <?= $form->field($User, 'newPassword')->passwordInput() ?>
+                <div class="right-col">Минимум 6 символов</div>
             </li>
-            <li>
+            <li class="pass-field">
                 <?= $form->field($User, 'repassword')->passwordInput() ?>
             </li>
             <li>

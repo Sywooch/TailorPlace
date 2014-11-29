@@ -109,4 +109,11 @@ class SiteController extends Controller
     {
         return $this->render('404');
     }
+
+    public function action403()
+    {
+        return $this->render('403', [
+            'isGuest' => Yii::$app->user->isGuest,
+        ]);
+    }
 }

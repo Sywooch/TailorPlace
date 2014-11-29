@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\assets\AppAsset;
 
-$this->registerCssFile('@web/css/cabinet-personal-studioRedact.css', [
+$this->registerCssFile('@web/css/cabinet-personal-redact.css', [
     'depends' => [AppAsset::className()]
 ]);
 $this->registerJsFile('@web/js/checkCity.js', [

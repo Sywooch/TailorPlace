@@ -7,6 +7,10 @@
     text-align: right;
 }
 
+.panel #user-form .center-col {
+    width: 260px
+}
+
 .error-summary li {
     padding-left: 21px;
 }
