@@ -19,7 +19,12 @@ class PersonalController extends CommonController
 	 */
 	public $breadcrumbItems = [
 		'index' => 'Персональные данные',
-		'studio-redact' => 'not add',
+		'studio-redact' => [
+            ['label' => 'Персональные данные', 'url' => '/cabinet/personal/']
+        ],
+		'user-redact' => [
+            ['label' => 'Персональные данные', 'url' => '/cabinet/personal/']
+        ],
 	];
 	// public function behaviors()
 	// {
@@ -91,10 +96,19 @@ class PersonalController extends CommonController
         }
 
         $StudioForm = new StudioForm($Studio->type, $Studio);
-//        var_dump($Form);
+//        var_dump($StudioForm);
         return $this->render('studioRedact', [
-            'Form' => $StudioForm,
+            'StudioForm' => $StudioForm,
             'studioType' => $studioType,
+        ]);
+    }
+
+    public function actionUserRedact()
+    {
+        $this->addBreadcrumbsItem(['label' => 'Редактирование персональных данных']);
+        $User = Yii::$app->getUser()->identity;
+        return $this->render('userRedact', [
+            'User' => $User,
         ]);
     }
 }

@@ -159,8 +159,8 @@ class StudioForm extends Model
 	{
 		return [
 			'name' => 'Название',
-			'countryName' => 'Название страны',
-			'cityName' => 'Название города',
+			'countryName' => 'Страна',
+			'cityName' => 'Город',
 			'currencyId' => 'Денежные единицы',
 			'deliveryList' => 'Способ доставки',
 			'paymentList' => 'Способ оплаты',

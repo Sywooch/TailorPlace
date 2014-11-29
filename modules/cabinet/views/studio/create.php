@@ -70,7 +70,7 @@ if ($studioForm->getType() === 'atelier') {
                             'attribute' => 'countryName',
                             'options' => [
                                 'class' => 'form-control',
-                                'title' => 'Название страны',
+                                'title' => 'Страна',
                                 'placeholder' => 'Начните вводить название страны'
                             ],
                             'clientOptions' => [
@@ -103,7 +103,7 @@ if ($studioForm->getType() === 'atelier') {
                                 'attribute' => 'cityName',
                                 'options' => [
                                     'class' => 'form-control',
-                                    'title' => 'Название города',
+                                    'title' => 'Город',
                                     'placeholder' => 'Начните вводить название города',
                                     'disabled' => 'disabled'
                                 ],
@@ -126,8 +126,8 @@ if ($studioForm->getType() === 'atelier') {
                         ])
                     ?>
                     <?= Html::activeHiddenInput($studioForm, 'cityId') ?>
-<!-- TODO раскомментить, когда добавится поддержка отображения валюты на всех страницах, пока только рубли -->
-<!--                </li>-->
+                </li>
+                <!-- TODO раскомментить, когда добавится поддержка отображения валюты на всех страницах, пока только рубли -->
 <!--                <li>-->
 <!--                    --><?//= $form->field($studioForm, 'currencyId', [
 //                            'template' => $selectTemplate,

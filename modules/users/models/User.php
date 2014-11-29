@@ -14,12 +14,23 @@ use app\models\City;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
-
     /**
      * Переменная используется для сбора пользовательской информации, но не сохраняется в базу.
      * @var string $repassword Повторный пароль
      */
     public $repassword;
+
+    /**
+     * Переменная используется для сбора пользовательской информации, но не сохраняется в базу.
+     * @var string $repassword Старый пароль, нужен при редактировании пароля
+     */
+    public $oldPassword;
+
+    /**
+     * Переменная используется для сбора пользовательской информации, но не сохраняется в базу.
+     * @var string $repassword Старый пароль, нужен при редактировании пароля
+     */
+    public $newPassword;
 
     /**
      * Переменная используется для сбора пользовательской информации, но не сохраняется в базу.
@@ -263,6 +274,8 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             'acceptAgreement' => 'Я прочитал(а) и принимаю соглашение',
             'password' => 'Пароль',
             'repassword' => 'Повторите пароль',
+            'oldPassword' => 'Старый пароль',
+            'newPassword' => 'Новый пароль',
             'email' => 'E-mail',
             'captcha' => ' Код подтверждение',
         ];

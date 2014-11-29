@@ -1017,6 +1017,16 @@ ul.breadcrumb a {
     background-color: #9FD245;
 }
 
+.icon-circle.redact {
+    background-color: #CFBAAD;
+}
+.icon-circle.redact i {
+    width: 17px;
+    height: 17px;
+    margin: 8px auto;
+    background-position: -89px 0;
+}
+
 /* Основные иконки */
 .icon {
     display: inline-block;
