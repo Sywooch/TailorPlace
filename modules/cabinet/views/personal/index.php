@@ -9,6 +9,6 @@ $this->registerCssFile('@web/css/cabinet-personal-index.css', [
 
 ?>
 
-<h3>Персональные данные</h3>
+<h2>Персональные данные</h2>
 <?= $userView ?>
 <?= $studioView ?>

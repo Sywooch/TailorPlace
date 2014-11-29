@@ -1,0 +1,25 @@
+.panel .panel-header {
+    padding-top: 12px;
+}
+
+.panel .left-col {
+    width: 230px;
+    text-align: right;
+}
+
+.panel .instruction {
+    width: 350px;
+    margin: 0 auto 25px;
+    padding-left: 25px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.error-summary li {
+    padding-left: 14px;
+}
+
+#feedback-action {
+    width: 210px;
+    margin: 25px 0 10px 0;
+}

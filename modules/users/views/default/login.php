@@ -1,9 +1,9 @@
 <?php
 /**
  * Страница авторизации пользователя.
- * @var yii\base\View $this
+ * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var common\modules\users\models\User $model
+ * @var app\modules\users\models\User $model
  */
 
 use yii\widgets\ActiveForm;
@@ -30,7 +30,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
     ]);
     ?>
     <div class="panel-header">
-        <div class="icon-circle person-green"><i></i></div><h3>Авторизация</h3>
+        <div class="icon-circle person-green"><i></i></div><h2>Авторизация</h2>
     </div>
     <div class="panel-body">
         <ul>

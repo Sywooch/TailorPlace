@@ -69,8 +69,10 @@ $config = [
             'rules' => [
             // Общее
                 'captcha' => 'common/captcha',
+                'feedback' => 'site/feedback',
+                '404' => 'site/404',
             // Модуль [[Users]]
-                '<_a:(login|logout|signup|activation|recovery|index)>' => 'users/default/<_a>',
+                '<_a:(login|logout|signup|activation|recovery|index|repair-password)>' => 'users/default/<_a>',
             // Личный кабинет
                 'cabinet' => 'cabinet/default/index/',
                 'cabinet/studio/<section:(all|vitrine|sale)>/' => 'cabinet/studio/index/',

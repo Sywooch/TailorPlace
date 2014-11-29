@@ -32,7 +32,7 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
     ]);
     ?>
     <div class="panel-header">
-        <div class="icon-circle good"><i></i></div><h3>Добавление товара</h3>
+        <div class="icon-circle good"><i></i></div><h2>Добавление товара</h2>
     </div>
     <div class="panel-body">
         <ul>

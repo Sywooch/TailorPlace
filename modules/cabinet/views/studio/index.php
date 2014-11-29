@@ -18,7 +18,7 @@ $this->registerJsFile('@web/js/cabinet-studio-index.js', [
 // var_dump(Yii::$app->request->get());
 // exit();
 ?>
-<h3><?= $studioType ?></h3>
+<h2><?= $studioType ?></h2>
 <div class="over-table">
 	<menu class="<?= $Studio->type ?>">
 		<li>

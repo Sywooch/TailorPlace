@@ -277,7 +277,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             'oldPassword' => 'Старый пароль',
             'newPassword' => 'Новый пароль',
             'email' => 'E-mail',
-            'captcha' => ' Код подтверждение',
+            'captcha' => 'Код подтверждение',
         ];
     }
 

@@ -10,7 +10,7 @@ $this->registerCssFile('@web/css/cabinet-what-create.css', [
 ?>
 
 <main>
-    <h2 class="darker">Что вы хотите зарегистрировать?</h2>
+    <h2>Что вы хотите зарегистрировать?</h2>
     <section class="atelier-section">
         <div class="flag">
             <h3>Ателье</h3>

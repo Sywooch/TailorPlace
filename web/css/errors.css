@@ -1,0 +1,101 @@
+main {
+    width: 430px;
+    margin: auto;
+}
+
+.error-block {
+    width: 248px;
+    height: 248px;
+    margin: 20px auto 30px;
+    background: url('../img/error-circle.png') no-repeat;
+    padding-top: 25px;
+}
+
+.error-block h2 {
+    font-family: pt_serifItalic, serif;
+    font-size: 28px;
+    color: #504C3F;
+    text-align: center;
+    /*line-height: 28px;*/
+}
+
+.code {
+    margin-top: 4px;
+    font-family: RobotoBlack, sans-serif;
+    font-size: 118px;
+    color: #CFBAAD;
+    text-align: center;
+    line-height: 102px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select:none;
+    user-select: none;
+}
+
+.error-description {
+    position: relative;
+    width: 240px;
+    height: 40px;
+    margin: auto;
+    background-color: #FF7F66;
+    font-size: 20px;
+}
+
+.error-description p {
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.error-description::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 0;
+    border-top: solid #FF7F66 10px;
+    border-bottom: solid transparent 10px;
+    border-left: solid transparent 7px;
+    border-right: solid #FF7F66 7px;
+}
+
+.error-description::after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    border-top: solid transparent 10px;
+    border-bottom: solid #FF7F66 10px;
+    border-left: solid transparent 7px;
+    border-right: solid #FF7F66 7px;
+}
+
+.error-description p::before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border-top: solid #FF7F66 10px;
+    border-bottom: solid transparent 10px;
+    border-left: solid #FF7F66 7px;
+    border-right: solid transparent 7px;
+}
+
+.error-description p::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    bottom: 0;
+    border-top: solid transparent 10px;
+    border-bottom: solid #FF7F66 10px;
+    border-left: solid #FF7F66 7px;
+    border-right: solid transparent 7px;
+}
+
+p.description {
+    text-align: center;
+    margin-bottom: 45px;
+    font-size: 15px;
+}

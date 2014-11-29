@@ -6,6 +6,7 @@ use Yii;
 use app\controllers\CommonController;
 use yii\filters\AccessControl;
 use app\modules\users\models\User;
+use app\modules\users\models\RepairPassForm;
 
 class DefaultController extends CommonController
 {
@@ -97,5 +98,12 @@ class DefaultController extends CommonController
 	public function actionLogout(){
 		Yii::$app->getUser()->logout();
 		return $this->goHome();
+	}
+
+	public function actionRepairPassword(){
+        $RepairPassForm = new RepairPassForm;
+		return $this->render('repair-password', [
+            'RepairPassForm' => $RepairPassForm
+        ]);
 	}
 }

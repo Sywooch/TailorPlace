@@ -11,7 +11,8 @@ html, body {
 
 h2 {
     font-family: RobotoMedium, sans-serif;
-    font-size: 32px;
+    font-size: 28px;
+    color: #322C25;
 }
 
 /* Ссылки */
@@ -739,7 +740,6 @@ h3 {
     font-family: RobotoMedium, sans-serif;
     font-size: 26px;
 }
-
 /* Блок "О сайте" который только на главной */
 #about-site section {
     display: inline-block;
@@ -1027,6 +1027,16 @@ ul.breadcrumb a {
     background-position: -89px 0;
 }
 
+.icon-circle.key {
+    background-color: #CFBAAD;
+}
+.icon-circle.key i {
+    width: 11px;
+    height: 22px;
+    margin: 6px 0 0 11px;
+    background-position: -106px 0;
+}
+
 /* Основные иконки */
 .icon {
     display: inline-block;
@@ -1259,6 +1269,7 @@ ul.breadcrumb a {
     padding: 0;
 }
 
+.panel .panel-header h2,
 .panel .panel-header h3 {
     display: inline-block;
     vertical-align: middle;

@@ -22,7 +22,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
     ]);
     ?>
     <div class="panel-header">
-        <div class="icon-circle redact"><i></i></div><h3>Редактирование персональных данных</h3>
+        <div class="icon-circle redact"><i></i></div><h2>Редактирование персональных данных</h2>
     </div>
     <div class="panel-body">
         <ul>

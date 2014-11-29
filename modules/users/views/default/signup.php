@@ -1,7 +1,7 @@
 <?php
 /**
  * Страница регистрации нового пользователя.
- * @var yii\base\View $this
+ * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
  * @var app\modules\users\models\User $model
  */
@@ -29,7 +29,7 @@ $fieldTemplate = '<div class="left-col">{label}</div><div class="center-col">{in
         ]);
         ?>
         <div class="panel-header">
-            <div class="icon-circle person-green"><i></i></div><h3>Регистрации</h3>
+            <div class="icon-circle person-green"><i></i></div><h2>Регистрации</h2>
         </div>
         <div class="panel-body">
             <ul>

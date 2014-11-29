@@ -32,7 +32,7 @@ $requiredFieldTemplate = '<div class="left-col"><i class="icon asterisk"></i>{la
     ]);
     ?>
     <div class="panel-header">
-        <div class="icon-circle redact"><i></i></div><h3>Редактирование данных <?= $studioType ?></h3>
+        <div class="icon-circle redact"><i></i></div><h2>Редактирование данных <?= $studioType ?></h2>
     </div>
     <div class="panel-body">
         <ul>

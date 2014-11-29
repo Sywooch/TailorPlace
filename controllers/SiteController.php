@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\FeedbackForm;
 
 class SiteController extends Controller
 {
@@ -93,5 +94,19 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionFeedback()
+    {
+        $FeedbackForm = new FeedbackForm;
+        $FeedbackForm->email = Yii::$app->user->identity->email;
+        return $this->render('feedback', [
+            'FeedbackForm' => $FeedbackForm,
+        ]);
+    }
+
+    public function action404()
+    {
+        return $this->render('404');
     }
 }

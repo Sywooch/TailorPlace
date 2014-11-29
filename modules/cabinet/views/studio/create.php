@@ -40,9 +40,9 @@ if ($studioForm->getType() === 'atelier') {
         ?>
         <div class="panel-header">
             <?php if ($studioForm->getType() === 'atelier'): ?>
-                <div class="icon-circle atelier"><i></i></div><h3>Регистрация ателье</h3>
+                <div class="icon-circle atelier"><i></i></div><h2>Регистрация ателье</h2>
             <?php else: ?>
-                <div class="icon-circle store"><i></i></div><h3>Регистрация магазина</h3>
+                <div class="icon-circle store"><i></i></div><h2>Регистрация магазина</h2>
             <?php endif ?>
         </div>
         <div class="panel-body">
