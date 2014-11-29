@@ -4,18 +4,16 @@ $(function(){
         $('#photo-settings').modal();
     });
 
-    // Добавление категории
+    // Добавление/удаление категории
+    var categoryCount = 1;
     $('#addCategory').click(function(){
+    	categoryCount++;
     	var baseSelect = $('#goodform-categories');
-    	// 
-    	// 
     	var options = baseSelect.children().clone();
-    	// console.log(options);
     	var newSelect = $('<select name="GoodForm[categories][]">');
     	newSelect.append(options);
-    	// console.log(newSelect);
-    	// baseSelect.parent().append(newSelect);
-    	var li = $('<li>');
+
+    	var li = $('<li class="multyField">');
     	var leftCol = $('<div class="left-col">');
 		var centerCol = $('<div class="center-col">');
 		var selectWrapper = $('<div class="select category">');
@@ -23,11 +21,40 @@ $(function(){
 		centerCol.append(selectWrapper);
 		var selectButton = $('<div class="select-button"><span class="caret"></span></div>');
 		selectWrapper.append(newSelect).append(selectButton);
+
+		li.css('display', 'none');
 		$(this).parents('#add-button-line').before(li);
+		li.fadeIn('slow');
+
 		newSelect.selectmenu();
 		selectButton.click(function(){
 			var parent = $(this).parent();
 			$('select', parent).selectmenu( "open" );
 		});
+
+		var delButton = $('<button type="button" class="deleteButton" id="deleteCategory" data-toggle="tooltip" data-placement="right" title="Убрать категорию">')
+		li.append(delButton);
+
+		var addButton = $(this);
+		delButton.click(function(){
+			li.fadeOut('slow', function(){
+				categoryCount--;
+				$(this).remove();
+				addButtonState(addButton, categoryCount);
+			});
+		});
+		addButtonState(addButton, categoryCount);
     });
+
+	function addButtonState(addButton, count)
+	{
+		console.log(count);
+		if (count >= 4) {
+			addButton.attr('disabled', 'disabled');
+			addButton.css('background', '#EAEAEA');
+		} else {
+			addButton.removeAttr('disabled');
+			addButton.css('background', '#FFFFFF');
+		}
+	}
 });

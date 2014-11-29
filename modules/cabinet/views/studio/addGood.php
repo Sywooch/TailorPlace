@@ -66,7 +66,6 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                         <div class="select-button"><span class="caret"></span></div>
                     </div>
                 </div>
-                <button type="button" class="deleteButton" id="deleteCategory" data-toggle="tooltip" data-placement="right" title="Убрать категорию"></button>
 				 <!-- $form->field($GoodForm, 'categories[]', [
                         'template' => $selectTemplate,
                     ])->dropDownList(
