@@ -43,7 +43,7 @@ $this->registerCssFile('@web/css/good.css', [
             </div>
         </div>
         <div class="additional-params">
-            <ul>
+            <ul class="italic">
                 <li><span>Срок изготовления:</span> 3 недели</li>
                 <li><span>Готовых экземпляров:</span> 4 шт.</li>
             </ul>
@@ -54,14 +54,14 @@ $this->registerCssFile('@web/css/good.css', [
             </div>
             <div class="city italic">Россия, Санкт-Петербург</div>
             <div id="rating" class="icon-line">
-                <i class="green-star"></i> <span>Репутация</span> <span>100%</span>
+                <i class="icon green-star"></i><span>Репутация</span> <span>100%</span>
             </div>
             <div id="order-count" class="icon-line">
-                <i class="green-star"></i> <span>Выполнено заказов</span> <span>100%</span>
+                <i class="icon rouble"></i><span>Выполнено заказов</span> <span>13</span>
             </div>
             <div class="button">
                 <div class="low-layer"></div>
-                <a data-type="button" class="icon-line"><i class="icon rouble-gold"></i><span>Написать мастеру</span></a>
+                <a data-type="button">Написать мастеру</a>
             </div>
         </div>
         <h3 class="description-label">Описание</h3>

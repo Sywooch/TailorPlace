@@ -1153,6 +1153,11 @@ ul.breadcrumb a {
     margin-bottom: 0;
 }
 
+.icon.green-star {
+    background-position: -608px 0;
+    /*margin-bottom: 0;*/
+}
+
 .icon.attention {
     width: 19px;
     background-position: -874px 0;
