@@ -1,0 +1,139 @@
+#photo-col {
+    float: left;
+    width: 380px;
+}
+
+#main-info {
+    float: left;
+    width: 300px;
+    margin-left: 20px;
+}
+
+#additional-info {
+    float: left;
+    width: 220px;
+    margin-left: 40px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Левая колонка с фотографиями */
+#photo-col .thumbnails > div, #main-photo {
+    display: inline-block;
+    box-sizing: content-box;
+    border: solid #D3B9AA 1px;
+}
+
+#photo-col .thumbnails {
+    margin-top: 7px;
+}
+
+#photo-col .thumbnails > div {
+    position: relative;
+    margin: 0 6px 5px 0;
+    cursor: pointer;
+}
+
+#photo-col .thumbnails > div:nth-child(4n) {
+    margin-right: 0;
+    margin-left: 1px;
+}
+
+#photo-col .thumbnails > div:nth-child(4n-2) {
+    margin-right: 7px;
+}
+
+#photo-col .thumbnails > div.active {
+    border-color: #FFB800;
+    cursor: default;
+}
+
+#photo-col .thumbnails > div.active:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: solid #FFB800 2px;
+}
+
+/* Центральная главная колонка */
+h3 {
+    font-size: 18px;
+}
+
+#price-label {
+    margin-bottom: 2px;
+}
+
+#price {
+    display: inline-block;
+    position: relative;
+    height: 60px;
+    width: 175px;
+    background-color: #9FD245;
+    margin-left: -20px;
+    text-align: center;
+    padding: 6px 0 0 5px;
+    vertical-align: top;
+}
+
+#price:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-top: solid #9FD245 15px;
+    border-right: solid transparent 6px;
+    border-bottom: solid transparent 15px;
+    border-left: solid #9FD245 6px;
+}
+
+#price:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    border-top: solid transparent 15px;
+    border-right: solid transparent 6px;
+    border-bottom: solid #9FD245 15px;
+    border-left: solid #9FD245 6px;
+}
+
+#price span:first-child {
+    font-family: RobotoBlack, sans-serif;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+
+#price span:last-child {
+    font-family: RobotoMedium, sans-serif;
+    color: #FFFFFF;
+}
+
+#order-block {
+    display: inline-block;
+    width: 126px;
+    margin-left: 15px;
+    vertical-align: top;
+}
+
+#to-order {
+    width: 126px;
+    margin: 4px 0 -2px 0;
+    height: 36px;
+}
+
+#to-order a {
+    line-height: 35px;
+}
+
+#to-basket {
+    margin-left: 18px;
+    font-family: RobotoMedium, sans-serif;
+}
+
+/* Правая колонка с доп. информацией */

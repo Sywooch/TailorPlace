@@ -60,11 +60,18 @@ a.italic {
     font-size: 15px;
 }
 
+.dashed-underline,
 a.dashed-underline {
     display: inline-block;
     position: relative;
     text-decoration: none;
+    cursor: pointer;
 }
+.dashed-underline:hover,
+a.dashed-underline:hover {
+    color: #FF7F66;
+}
+.dashed-underline::after,
 a.dashed-underline::after {
     content: '';
     display: block;
@@ -75,6 +82,7 @@ a.dashed-underline::after {
     bottom: 0;
     background: url('../img/dashed-bg.png') repeat-x;
 }
+.dashed-underline:hover::after,
 a.dashed-underline:hover::after {
     display: none;
 }
@@ -1090,6 +1098,11 @@ ul.breadcrumb a {
     background-position: -464px 0;
 }
 
+.icon.basket-gold {
+    background-position: -625px 0;
+    margin-right: 4px;
+}
+
 .icon.message {
     background-position: -464px -16px;
 }
@@ -1122,6 +1135,11 @@ ul.breadcrumb a {
 
 .icon.rouble-gold {
     background-position: -608px -16px;
+    margin-bottom: 0;
+}
+
+.icon.rouble-white {
+    background-position: -576px -16px;
     margin-bottom: 0;
 }
 

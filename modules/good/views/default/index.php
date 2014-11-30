@@ -4,18 +4,32 @@
  * @var yii\web\View $this
  */
 
+use app\assets\AppAsset;
+
+$this->registerCssFile('@web/css/good.css', [
+    'depends' => [AppAsset::className()]
+]);
 ?>
 <main>
     <h2>Юбка Колибри из хлопка разноцветная с цветами и птицами</h2>
     <div id="photo-col">
         <img src="/photos/good/1/2.jpg" width="378" height="378" id="main-photo">
-        <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
-        <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88" class="active">
-        <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
-        <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
+        <div class="thumbnails">
+            <div>
+                <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
+            </div><div>
+                <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
+            </div><div class="active">
+                <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
+            </div><div>
+                <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
+            </div><div>
+                <img src="/photos/good/1/2_thumbnail.jpg" width="88" height="88">
+            </div>
+        </div>
     </div>
     <div id="main-info">
-        <h3 class="price-label">Цена:</h3>
+        <h3 id="price-label">Цена:</h3>
         <div>
             <div id="price">
                 <span>333 900</span> <span>руб.</span>
@@ -23,9 +37,9 @@
             <div id="order-block">
                 <div class="button yellow" id="to-order">
                     <div class="low-layer"></div>
-                    <a data-type="button" class="icon-line"><i class="icon rouble-gold"></i><span>Заказать</span></a>
+                    <a data-type="button" class="icon-line"><i class="icon rouble-white"></i><span>Заказать</span></a>
                 </div>
-                <span class="icon-line" id="to-basket"><i></i><span>В корзину</span></span>
+                <span class="icon-line" id="to-basket"><i class="icon basket-gold"></i><span class="dashed-underline">В корзину</span></span>
             </div>
         </div>
         <div class="additional-params">
@@ -82,6 +96,6 @@
     </aside>
     <div class="clean"></div>
     <div id="comments">
-        
+
     </div>
 </main>
