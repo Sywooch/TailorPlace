@@ -33,12 +33,17 @@ class GoodForm extends Model
 	/**
 	 * @var integer Кол-во товара (актуально только для магазина)
 	 */
-	public $quantity;
+	public $quantity = 0;
 
 	/**
 	 * @var string Описание товара
 	 */
 	public $description;
+
+	/**
+	 * @var string Время изготовления
+	 */
+	public $craft_time;
 
 	/**
 	 * @var Studio Модель студии, к которой принадлежит товар
@@ -63,5 +68,24 @@ class GoodForm extends Model
     {
     // TODO сделать получение категорий в соответствии с типом студии
         return GoodCategory::find()->asArray()->all();
+    }
+
+    public function rules()
+    {
+    	return [
+    		['craft_time', 'string', 'max' => 30],
+    	];
+    }
+
+    public function attributeLabels()
+    {
+        $labels = [
+            'name' => 'Название',
+            'price' => 'Цена',
+            'description' => 'Описание',
+            'craft_time' => 'Время изготовления',
+        ];
+        $labels['quantity'] = $this->isStoreGood() ? 'Количество товара' : 'Готовых экземпляров';
+        return $labels;
     }
 }

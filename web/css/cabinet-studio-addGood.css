@@ -29,11 +29,15 @@
     width: 100%;
 }
 
+li.price .center-col {
+    width: 110px;
+}
+
 li#add-button-line {
     margin: 5px 0 15px;
 }
 
-li.quantity input {
+li.quantity .center-col {
     width: 110px;
 }
 

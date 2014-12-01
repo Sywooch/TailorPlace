@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Ноя 02 2014 г., 12:47
+-- Время создания: Дек 01 2014 г., 18:31
 -- Версия сервера: 5.5.37-0ubuntu0.13.10.1
 -- Версия PHP: 5.5.3-1ubuntu2.6
 
@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-('storeOwner', '9', 1414225530);
+('storeOwner', '9', 1414225530),
+('user', '10', 1415385036);
 
 -- --------------------------------------------------------
 
@@ -55377,7 +55378,7 @@ INSERT INTO `country` (`id`, `name_ru`, `name_en`, `code`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `currency` (
-`id` int(10) unsigned NOT NULL,
+`id` tinyint(10) unsigned NOT NULL,
   `code` varchar(3) NOT NULL COMMENT 'Трехзначный код валюты',
   `symbol` varchar(10) NOT NULL COMMENT 'Символ',
   `name_ru` varchar(20) NOT NULL COMMENT 'Русское название',
@@ -55535,15 +55536,17 @@ CREATE TABLE IF NOT EXISTS `studio` (
   `avatar` varchar(100) DEFAULT NULL COMMENT 'Путь к аватарке студии',
   `custom_delivery` varchar(250) DEFAULT NULL COMMENT 'Свой способ доставки',
   `custom_payment` varchar(250) DEFAULT NULL COMMENT 'Свой способ оплаты',
-  `currency_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'Id валюты студии'
+  `currency_id` tinyint(10) unsigned NOT NULL DEFAULT '1' COMMENT 'Id валюты студии',
+  `craft_time` varchar(30) NOT NULL DEFAULT '' COMMENT 'Время изготовления',
+  `quantity` smallint(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Сколько товаров или готовых экземпляров имеется в наличии'
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `studio`
 --
 
-INSERT INTO `studio` (`id`, `user_id`, `type`, `name`, `slogan`, `description`, `create_time`, `update_time`, `avatar`, `custom_delivery`, `custom_payment`, `currency_id`) VALUES
-(11, 9, 'store', 'Магазинчик / < > \\w ~ ^', '', '', '2014-10-25 08:25:29', NULL, NULL, '', '', 1);
+INSERT INTO `studio` (`id`, `user_id`, `type`, `name`, `slogan`, `description`, `create_time`, `update_time`, `avatar`, `custom_delivery`, `custom_payment`, `currency_id`, `craft_time`, `quantity`) VALUES
+(11, 9, 'store', 'Магазинчик / < > \\w ~ ^', '', '', '2014-10-25 08:25:29', NULL, NULL, '', '', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -55751,7 +55754,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=248;
 -- AUTO_INCREMENT для таблицы `currency`
 --
 ALTER TABLE `currency`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` tinyint(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `delivery_list`
 --

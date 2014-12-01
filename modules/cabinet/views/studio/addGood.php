@@ -48,7 +48,7 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                 ])
                 ?>
             </li>
-            <li>
+            <li class="price">
                 <?= $form->field($GoodForm, 'price', [
                     'template' => $requiredFieldTemplate,
                 ])
@@ -83,6 +83,7 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                     echo $form->field($GoodForm, 'quantity');
                 }
                 ?>
+                <div class="right-col">Если 0, то поле будет скрыто</div>
             </li>
             <li class="description">
                 <?= $form->field($GoodForm, 'description')->textArea([
