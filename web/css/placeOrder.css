@@ -1,0 +1,120 @@
+p.page-help {
+    margin-top: 5px;
+}
+
+div.order {
+    margin: 20px 0;
+}
+
+div.order .panel {
+    padding: 5px 0;
+}
+
+div.order .panel-body {
+    padding: 0;
+}
+
+div.order .panel-footer {
+    text-align: left;
+}
+
+div.order .panel-footer:before {
+    margin: 0;
+}
+
+div.order h3 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    margin: 0 0 12px 10px;
+}
+
+div.order .icon-circle {
+    margin-bottom: 12px;
+}
+
+.good-list .img-link,
+.good-list .name-box,
+.good-list .price-box,
+.good-list .counter,
+.good-list .end-price {
+    display: inline-block;
+    box-sizing: content-box;
+    vertical-align: middle;
+}
+
+.good-list li {
+    padding: 14px 16px;
+}
+
+.good-list li:nth-child(2n) {
+    background-color: #F6EDE5;
+}
+
+.good-list .img-link {
+    width: 48px;
+    height: 48px;
+    border: solid #BE957B 1px;
+}
+
+.good-list .name-box {
+    width: 250px;
+    max-height: 46px;
+    margin-left: 12px;
+    overflow: hidden;
+}
+
+.good-list .price-box {
+    width: 96px;
+    margin-left: 5px;
+    text-align: right;
+}
+
+.counter {
+    width: 101px;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.counter span:first-child {
+    font-family: RobotoMedium, sans-serif;
+}
+
+.end-price {
+    width: 112px;
+    text-align: right;
+}
+
+div.order .panel-footer > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.order .panel-footer > div:first-child {
+    margin: 9px 0 0 16px;
+    width: 200px;
+}
+
+.comment-button {
+    width: 208px;
+}
+
+.button-wrapper {
+    margin-top: 13px;
+    width: 265px;
+    text-align: center;
+}
+
+.order-summary {
+    margin: 18px 16px 0 0;
+    width: 200px;
+    text-align: right;
+}
+
+.order-summary span:first-child {
+    font-family: RobotoMedium, sans-serif;
+}
+
+.order-summary .rouble-gold {
+    margin: 0 2px -2px;
+}

@@ -63,6 +63,7 @@ h2 {
 /* Центральная главная колонка */
 h3 {
     font-size: 18px;
+    margin-bottom: 6px;
 }
 
 #price-label {
@@ -151,7 +152,7 @@ h3 {
 }
 
 #studio-block {
-    margin-top: 20px;
+    margin: 20px 0 25px 0;
     background-color: #F4ECE3;
     border-radius: 18px;
     padding: 18px 15px 15px;
@@ -191,4 +192,17 @@ h3 {
     margin: 5px 0 0 30px;
 }
 
+#good-description {
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+}
+
+#complain {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* Правая колонка с доп. информацией */
+#additional-info ul {
+    margin: 10px 0 15px 0;
+}

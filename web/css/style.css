@@ -141,6 +141,11 @@ a.dashed-underline:hover::after {
     font-family: RobotoMedium, sans-serif;
     font-size: 18px;
 }
+
+.price-bigger {
+    font-family: RobotoBold, sans-serif;
+    font-size: 22px;
+}
 /* <Конец> Текстовые стили */
 
 #wrapper {
@@ -961,14 +966,18 @@ ul.breadcrumb a {
 }
 
 /* Иконки персоны */
-.icon-circle.person-green {
-    background-color: #9FD245;
-}
+.icon-circle.person i,
 .icon-circle.person-green i {
     width: 12px;
     height: 16px;
     margin: 8px auto;
     background-position: -37px 0;
+}
+.icon-circle.person {
+    background-color: #CFBAAD;
+}
+.icon-circle.person-green {
+    background-color: #9FD245;
 }
 
 /* Иконка товара */
@@ -1094,6 +1103,11 @@ ul.breadcrumb a {
     background-position: -752px 0;
 }
 
+.icon.order-white {
+    background-position: -640px 0;
+    margin-bottom: 4px;
+}
+
 .icon.basket {
     background-position: -464px 0;
 }
@@ -1161,6 +1175,11 @@ ul.breadcrumb a {
 .icon.attention {
     width: 19px;
     background-position: -874px 0;
+}
+
+.icon.attention-red {
+    width: 19px;
+    background-position: -874px -16px;
 }
 
 .icon.asterisk {
@@ -1274,7 +1293,7 @@ ul.breadcrumb a {
 }
 
 .panel .panel-header,
-.panel .panel-body,
+/*.panel .panel-body,*/
 .panel .panel-footer {
     background-color: #FAF3EB;
 }
@@ -1554,7 +1573,7 @@ li.ui-menu-item.ui-state-focus {
 ul.ui-menu {
     border: solid #CFBAAD 1px;
     border-radius: 0;
-    height: 211px;
+    max-height: 211px;
 }
 /* <Конец> Оформление выпадающего списка (<select>) */
 
@@ -1640,8 +1659,9 @@ ul.ui-menu {
 }
 /* <Конец> Оформление больших цифр репутации */
 
-/* Оформление кнопки удаления поля */
-button.deleteButton {
+/* Оформление кнопки минуса */
+button.deleteButton,
+button.minusButton {
     position: relative;
     border: 0;
     padding: 0;
@@ -1650,7 +1670,7 @@ button.deleteButton {
     background-color: transparent;
     margin: 14px 6px;
 }
-/* <Конец> Оформление кнопки удаления поля */
+/* <Конец> Оформление кнопки минуса */
 
 /* Оформление кнопки добавления поля */
 button.addButton {
@@ -1660,8 +1680,18 @@ button.addButton {
     background-color: #FFFFFF;
     border: solid #DFC8BB 1px;
 }
+button.plusButton {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+    border: none;
+    background: none;
+}
 button.addButton:before,
-button.deleteButton:before {
+button.deleteButton:before,
+button.minusButton:before,
+button.plusButton:before {
     content: '';
     position: absolute;
     top: 0;
@@ -1673,7 +1703,8 @@ button.deleteButton:before {
     height: 4px;
     background-color: #95938D;
 }
-button.addButton:after {
+button.addButton:after,
+button.plusButton:after {
     content: '';
     position: absolute;
     top: 0;
@@ -1686,6 +1717,9 @@ button.addButton:after {
     background-color: #95938D;
 }
 button.deleteButton:hover:before,
+button.minusButton:hover:before,
+button.plusButton:hover:before,
+button.plusButton:hover:after,
 button.addButton:hover:before,
 button.addButton:hover:after {
     background-color: #797979;

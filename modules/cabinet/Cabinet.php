@@ -17,6 +17,7 @@ class Cabinet extends \yii\base\Module
 	{
 	    if (parent::beforeAction($action)) {
 	    	// Запретим доступ неавторизованным пользователям
+//            TODO убрать запрет и сделать нормальные поведения
 	    	if (Yii::$app->getUser()->isGuest) {
 	    		throw new ForbiddenHttpException('У вас нет прав просматривать данную страницу.');
 	    	}

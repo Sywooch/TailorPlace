@@ -1,0 +1,225 @@
+.sum-info {
+    position: relative;
+    margin: 5px 0 12px;
+}
+
+.sum-info > p,
+.sum-info > div{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sum-price {
+    margin: 0 0 6px 75px;
+}
+
+.sum-price i.icon {
+    margin: 0 2px -2px;
+}
+
+.place-all-order {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 225px;
+}
+
+div.order .panel {
+    padding: 5px 0;
+}
+
+div.order .panel-header:after {
+    margin: 0;
+}
+
+div.order .panel-footer:before {
+    margin: 0;
+}
+
+div.order {
+    margin: 30px 0;
+}
+
+div.order h3 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    margin: 0 0 12px 10px;
+}
+
+div.order .icon-circle {
+    margin-bottom: 12px;
+}
+
+div.order .panel-header {
+    text-align: left;
+}
+
+.good-list .img-link,
+.good-list .name-box,
+.good-list .price-box,
+.good-list .counter,
+.good-list .end-price {
+    display: inline-block;
+    box-sizing: content-box;
+    vertical-align: middle;
+}
+
+.good-list li {
+    padding: 14px 16px;
+}
+
+.good-list li:nth-child(2n) {
+    background-color: #F6EDE5;
+}
+
+.good-list .img-link {
+    width: 48px;
+    height: 48px;
+    border: solid #BE957B 1px;
+}
+
+.good-list .name-box {
+    width: 250px;
+    height: 50px;
+    margin-left: 12px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div.order .icon.delete-red {
+    margin: 0 3px -2px 0;
+}
+
+.name-box > div.icon-line {
+    margin-top: 5px;
+}
+
+.name-box > div.icon-line span {
+    padding: 0 2px;
+}
+
+.name-box .shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20px;
+    background: rgba(250, 243, 235,0);
+    background: -moz-linear-gradient(left, rgba(250, 243, 235,0) 0%, rgb(250, 243, 235) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(250, 243, 235,0)), color-stop(100%, rgba(250, 243, 235,1)));
+    background: -webkit-linear-gradient(left, rgba(250, 243, 235,0) 0%, rgba(250, 243, 235,1) 100%);
+    background: -o-linear-gradient(left, rgba(250, 243, 235,0) 0%, rgba(250, 243, 235,1) 100%);
+    background: -ms-linear-gradient(left, rgba(250, 243, 235,0) 0%, rgba(250, 243, 235,1) 100%);
+    background: linear-gradient(to right, rgba(250, 243, 235,0) 0%, rgba(250, 243, 235,1) 100%);
+}
+
+.good-list li:nth-child(2n) .name-box .shadow {
+    background: rgba(246, 237, 229,0);
+    background: -moz-linear-gradient(left, rgba(246, 237, 229,0) 0%, rgb(246, 237, 229) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(246, 237, 229,0)), color-stop(100%, rgba(246, 237, 229,1)));
+    background: -webkit-linear-gradient(left, rgba(246, 237, 229,0) 0%, rgba(246, 237, 229,1) 100%);
+    background: -o-linear-gradient(left, rgba(246, 237, 229,0) 0%, rgba(246, 237, 229,1) 100%);
+    background: -ms-linear-gradient(left, rgba(246, 237, 229,0) 0%, rgba(246, 237, 229,1) 100%);
+    background: linear-gradient(to right, rgba(246, 237, 229,0) 0%, rgba(246, 237, 229,1) 100%);
+
+}
+
+.good-list .price-box {
+    width: 96px;
+    margin-left: 5px;
+    text-align: right;
+}
+
+.good-list .counter .form-control {
+    display: inline-block;
+    width: 54px;
+    text-align: center;
+}
+
+.counter {
+    margin: 0 6px 0 5px;
+}
+
+.counter button,
+.counter input {
+    vertical-align: middle;
+}
+
+.end-price {
+    width: 112px;
+    text-align: right;
+}
+
+div.order .select,
+div.order select {
+    width: 228px;
+}
+
+.payment-type {
+    margin-left: 48px;
+}
+
+.delivery-type,
+.payment-type,
+.delivery-type span,
+.payment-type span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.delivery-type > span,
+.payment-type > span {
+    font-family: RobotoMedium, sans-serif;
+    margin-right: 12px;
+}
+
+div.order .panel-footer {
+    text-align: left;
+}
+
+div.order .panel-footer > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.delete-order,
+.order-summary {
+    width: 200px;
+}
+
+.delete-order {
+    margin: 20px 0 0 16px;
+}
+
+.delete-order span {
+    padding: 0 2px;
+}
+
+.order-summary {
+    text-align: right;
+    margin: 17px 16px 0 0;
+}
+
+.button-wrapper {
+    width: 266px;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.place-order {
+    width: 140px;
+}
+
+.order-summary span:first-child {
+    font-family: RobotoMedium, sans-serif;
+}
+
+.order-summary .rouble-gold {
+    margin: 0 2px -2px;
+}
+
+.dashed + .sum-info {
+    margin: 18px 0 45px;
+}

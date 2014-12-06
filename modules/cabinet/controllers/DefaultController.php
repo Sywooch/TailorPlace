@@ -9,6 +9,12 @@ use yii\filters\AccessControl;
 
 class DefaultController extends CommonController
 {
+    public $breadcrumbItems = [
+        'index' => 'not add',
+        'basket' => 'Корзина',
+        'place-order' => 'Оформление заказа',
+    ];
+
 	public $layout = 'cabinet';
 
 	// public function behaviors()
@@ -39,4 +45,14 @@ class DefaultController extends CommonController
         }
 		return $this->render($action);
 	}
+
+    public function actionBasket()
+    {
+        return $this->render('basket');
+    }
+
+    public function actionPlaceOrder()
+    {
+        return $this->render('placeOrder');
+    }
 }

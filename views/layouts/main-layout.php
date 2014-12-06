@@ -88,7 +88,7 @@ AppAsset::register($this);
                         <menu>
                             <li class="icon-line"><i class="icon person-green"></i><a href="/cabinet/">Личный кабинет</a><a href="/logout/" id="logout"><i class="icon logout" data-toggle="tooltip" data-placement="top" title="Выход"></i></a></li>
                             <li class="icon-line"><i class="icon order"></i><a href="">Заказы</a></li>
-                            <li class="icon-line"><i class="icon basket"></i><a href="">Корзина</a></li>
+                            <li class="icon-line"><i class="icon basket"></i><a href="/cabinet/basket/">Корзина</a></li>
                             <li class="icon-line"><i class="icon message"></i><a href="">Сообщения</a></li>
                         </menu>
                     </div>
