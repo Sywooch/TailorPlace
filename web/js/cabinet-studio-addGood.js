@@ -57,4 +57,18 @@ $(function(){
 			addButton.css('background', '#FFFFFF');
 		}
 	}
+
+	// Выбор фотографий
+	$('#dropbox').click(function(){
+		$('#photo-input').trigger('click');
+	});
+
+	$('#photo-input').click(function(){
+		processFiles(this.files)
+	});
+
+	function processFiles(files) {
+    	var file = files[0];
+    	console.log(files);
+	}
 });

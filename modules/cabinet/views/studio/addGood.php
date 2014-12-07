@@ -95,7 +95,7 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                 <div class="left-col">Фотографии товара</div>
                 <div class="center-col">
                     <div id="photos-to-upload">
-                        <div class="photo-wrapper">
+                        <!-- <div class="photo-wrapper">
                             <img src="/photos/good/test.jpg" width="82" height="82">
                             <div class="icon-circle setting" data-toggle="tooltip" data-placement="right" title="Настроить фотографию"><i></i></div>
                             <div class="icon-circle remove" data-toggle="tooltip" data-placement="right" title="Убрать фотографию"><i></i></div>
@@ -109,14 +109,15 @@ $selectTemplate = '<div class="left-col"><i class="icon asterisk"></i>{label}</d
                             <img src="/photos/good/test.jpg" width="82" height="82">
                             <div class="icon-circle setting" data-toggle="tooltip" data-placement="right" title="Настроить фотографию"><i></i></div>
                             <div class="icon-circle remove" data-toggle="tooltip" data-placement="right" title="Убрать фотографию"><i></i></div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div id="photos">
+                    <div id="dropbox">
                         <!-- Когда нет фотографий -->
-<!--                        <p>Нажмите для выбора файлов<br>или<br>перетащиет файлы сюда</p>-->
+                        <p>Нажмите для выбора файлов<br>или<br>перетащиет файлы сюда</p>
                         <!-- Когда есть фотографии -->
-                        <p>Добавить еще</p>
+                        <!-- <p>Добавить еще</p> -->
                     </div>
+                    <input type="file" multiple id="photo-input">
                     <div class="help-block"></div>
                 </div>
             </li>

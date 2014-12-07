@@ -55,18 +55,18 @@ li.photos .center-col {
     vertical-align: middle;
 }
 
-#photos {
+#dropbox {
     border: dashed #CFBBAE 2px;
     background: #F9F3EC url('../img/photo-diagonal-bg.png');
 }
 
-#photos:hover {
+#dropbox:hover {
     background-color: #E6DAD5;
     border-color: #BEAA9D;
     cursor: pointer;
 }
 
-#photos p {
+#dropbox p {
     text-align: center;
     font-family: RobotoBlack, sans-serif;
     font-size: 15px;
@@ -252,4 +252,8 @@ li.photos .center-col {
 
 #photo-settings-save {
     width: 100px;
+}
+
+#photo-input {
+    display: none;
 }
