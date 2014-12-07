@@ -62,7 +62,6 @@ $this->registerJsFile('@web/js/cabinet-studio-index.js', [
 </div>
 <div class="table-header">
 	<div class="name">
-		<!-- TODO у первого дива сделать нижний отриц. margin, z-index больше, и полосатый bg -->
 		<div><a href="" class="dashed-underline">Название</a></div>
 		<div></div>
 	</div><div class="price">

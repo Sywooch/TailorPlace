@@ -13,6 +13,7 @@ class DefaultController extends CommonController
         'index' => 'not add',
         'basket' => 'Корзина',
         'place-order' => 'Оформление заказа',
+        'orders' => 'Заказы',
     ];
 
 	public $layout = 'cabinet';
@@ -54,5 +55,10 @@ class DefaultController extends CommonController
     public function actionPlaceOrder()
     {
         return $this->render('placeOrder');
+    }
+
+    public function actionOrders()
+    {
+        return $this->render('orders');
     }
 }

@@ -78,7 +78,7 @@ $config = [
                 'good' => 'good/default/index',
             // Личный кабинет
                 'cabinet' => 'cabinet/default/index/',
-                'cabinet/<_a:(basket|place-order)>' => 'cabinet/default/<_a>',
+                'cabinet/<_a:(basket|place-order|orders)>' => 'cabinet/default/<_a>',
                 'cabinet/studio/<section:(all|vitrine|sale)>/' => 'cabinet/studio/index/',
                 'cabinet/studio/<order:\w+>/' => 'cabinet/studio/index/',
                 'cabinet/studio/<section:(all|vitrine|sale)>/<order:\w+>/' => 'cabinet/studio/index/',

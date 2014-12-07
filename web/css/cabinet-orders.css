@@ -1,0 +1,33 @@
+menu.over-table {
+    margin-top: 13px;
+}
+
+menu.over-table li {
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.over-table .dashed-underline {
+    font-size: 16px;
+    padding-bottom: 3px;
+    vertical-align: top;
+}
+
+.table-header {
+    margin-top: 18px;
+}
+
+.table-header > div {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.table-header > div > div:first-child {
+    height: 45px;
+    background: #EFE5DC url('../img/diagonal-bg.png');
+}
+
+.table-header > div > div:last-child {
+    height: 3px;
+    background: #EBDFD5 url('../img/diagonal-bg.png');
+}

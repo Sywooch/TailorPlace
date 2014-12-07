@@ -3,7 +3,7 @@ p.page-help {
 }
 
 div.order {
-    margin: 20px 0;
+    margin: 20px 0 30px;
 }
 
 div.order .panel {
@@ -85,12 +85,12 @@ div.order .icon-circle {
     text-align: right;
 }
 
-div.order .panel-footer > div {
+.footer-info > div {
     display: inline-block;
     vertical-align: top;
 }
 
-div.order .panel-footer > div:first-child {
+.footer-info > div:first-child {
     margin: 9px 0 0 16px;
     width: 200px;
 }
@@ -100,7 +100,7 @@ div.order .panel-footer > div:first-child {
 }
 
 .button-wrapper {
-    margin-top: 13px;
+    margin-top: 14px;
     width: 265px;
     text-align: center;
 }
@@ -115,6 +115,52 @@ div.order .panel-footer > div:first-child {
     font-family: RobotoMedium, sans-serif;
 }
 
-.order-summary .rouble-gold {
+.order-summary .rouble-gold,
+.sum-info .rouble-gold {
     margin: 0 2px -2px;
+}
+
+.footer-comment textarea {
+    box-sizing: content-box;
+    width: 654px;
+    margin: 8px 16px;
+    padding: 5px;
+}
+
+.sum-info {
+    margin-top: 19px;
+}
+.sum-info > p {
+    display: inline-block;
+    width: 50%;
+}
+.sum-info > p:last-child {
+    text-align: right;
+}
+
+#contacts {
+    margin: 30px 0 10px;
+}
+
+#contacts .panel-header {
+    padding-top: 12px;
+}
+
+#contacts .left-col {
+    width: 177px;
+    text-align: right;
+}
+
+#contacts textarea {
+    width: 432px;
+}
+
+#place-orders {
+    width: 225px;
+    margin-top: 18px;
+}
+
+#back-to-basket {
+    text-align: center;
+    margin-bottom: 45px;
 }

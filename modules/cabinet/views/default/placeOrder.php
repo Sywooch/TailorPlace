@@ -44,20 +44,74 @@ $this->registerCssFile('@web/css/placeOrder.css', [
             </ul>
         </div>
         <div class="panel-footer">
-            <div>
-                <div class="delivery icon-line">
-                    <i class="icon express-delivery"></i> <span>Курьерская доставка</span>
+            <div class="footer-info">
+                <div>
+                    <div class="delivery icon-line">
+                        <i class="icon express-delivery"></i> <span>Курьерская доставка</span>
+                    </div>
+                    <div class="payment icon-line">
+                        <i class="icon by-cash-when-meeting"></i> <span>Наличными при встрече</span>
+                    </div>
+                </div><div class="button-wrapper">
+                    <div class="button comment-button">
+                        <div class="low-layer"></div>
+                        <button>Добавить комментарий</button>
+                    </div>
+                </div><div class="order-summary">
+                    <span>Итого:</span> <i class="icon rouble-gold"></i> <span class="price-normal">3 210</span> <span>руб.</span>
                 </div>
-                <div class="payment icon-line">
-                    <i class="icon by-cash-when-meeting"></i> <span>Наличными при встрече</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="order">
+    <div class="icon-circle store"><i></i></div><h3 class="order-studio">Заказ у <a href="" target="_blank" class="big-red-medium">Brasletiki-spb</a></h3>
+    <div class="panel width-panel">
+        <div class="panel-body">
+            <ul class="good-list">
+                <li>
+                    <a href="" target="_blank" class="img-link"><img src="/photos/good/1/1_small.jpeg" width="48" height="48"></a><div class="name-box">
+                        <a href="" target="_blank" class="bigger">Платье “Осень, Зима, Весна”</a>
+                    </div><div class="price-box">
+                        <span class="price-normal">3 210</span> руб.
+                    </div><div class="counter">
+                        <span>Кол-во:</span> <span class="price-normal">3 999</span>
+                    </div><div class="end-price">
+                        <span class="price-bigger">3 210</span> руб.
+                </li>
+                <li>
+                    <a href="" target="_blank" class="img-link"><img src="/photos/good/1/1_small.jpeg" width="48" height="48"></a><div class="name-box">
+                        <a href="" target="_blank" class="bigger">Платье “Осень, Зима, Весна”</a>
+                    </div><div class="price-box">
+                        <span class="price-normal">3 210</span> руб.
+                    </div><div class="counter">
+                        <span>Кол-во:</span> <span class="price-normal">3 999</span>
+                    </div><div class="end-price">
+                        <span class="price-bigger">3 210</span> руб.
+                </li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <div class="footer-info">
+                <div>
+                    <div class="delivery icon-line">
+                        <i class="icon express-delivery"></i> <span>Курьерская доставка</span>
+                    </div>
+                    <div class="payment icon-line">
+                        <i class="icon by-cash-when-meeting"></i> <span>Наличными при встрече</span>
+                    </div>
+                </div><div class="button-wrapper">
+                    <div class="button comment-button">
+                        <div class="low-layer"></div>
+                        <button>Удалить комментарий</button>
+                    </div>
+                </div><div class="order-summary">
+                    <span>Итого:</span> <i class="icon rouble-gold"></i> <span class="price-normal">3 210</span> <span>руб.</span>
                 </div>
-            </div><div class="button-wrapper">
-                <div class="button comment-button">
-                    <div class="low-layer"></div>
-                    <button>Добавить комментарий</button>
-                </div>
-            </div><div class="order-summary">
-                <span>Итого:</span> <i class="icon rouble-gold"></i> <span class="price-normal">3 210</span> <span>руб.</span>
+            </div>
+            <div class="footer-comment">
+                <textarea></textarea>
             </div>
         </div>
     </div>
@@ -65,8 +119,7 @@ $this->registerCssFile('@web/css/placeOrder.css', [
 
 <div class="dashed scissor-left"></div>
 <div class="sum-info">
-    <p class="bigger italic">У Вас 2 заказа</p>
-    <p class="sum-price">Общая сумма: <i class="icon rouble-gold"></i> <span class="price-bigger">9 630</span> руб.</p>
+    <p class="bigger italic">У Вас 2 заказа</p><p class="sum-price">Общая сумма: <i class="icon rouble-gold"></i> <span class="price-bigger">9 630</span> руб.</p>
 </div>
 
 <div class="panel width-panel" id="contacts">
@@ -113,13 +166,13 @@ $this->registerCssFile('@web/css/placeOrder.css', [
             </ul>
         </div>
         <div class="panel-footer">
-            <div class="button yellow" id="add-action">
+            <div class="button yellow" id="place-orders">
                 <div class="low-layer"></div>
-                <button type="submit">Оформить заказы</button>
+                <button type="submit" class="icon-line"><i class="icon order-white"></i><span>Оформить заказы</span></button>
             </div>
         </div>
     </form>
 </div>
-<div>
+<div id="back-to-basket">
     <a href="/cabinet/basket/">Вернуться в корзину</a>
 </div>
