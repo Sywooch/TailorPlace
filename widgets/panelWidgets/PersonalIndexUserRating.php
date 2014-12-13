@@ -18,9 +18,9 @@ class PersonalIndexUserRating extends PanelWidget
         $this->startBody();
 
         echo Html::beginTag('div', ['class' => 'header icon-line']);
-            echo Html::tag('i', '', ['class' => 'icon little-star']);
+            echo Html::tag('i', '', ['class' => 'icon little-star-light']);
             echo Html::tag('span', 'Заказчик');
-            echo Html::tag('i', '', ['class' => 'icon little-star']);
+            echo Html::tag('i', '', ['class' => 'icon little-star-light']);
         echo Html::endTag('div');
 
         echo RatingBlock::widget();

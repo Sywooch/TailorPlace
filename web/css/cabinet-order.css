@@ -1,0 +1,16 @@
+.order-header {
+    margin: 20px 0 30px;
+}
+
+.order-header h3,
+.comment-header,
+.contact-header {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.order-header {
+    margin-bottom: 10px;
+}

@@ -31,3 +31,121 @@ menu.over-table li {
     height: 3px;
     background: #EBDFD5 url('../img/diagonal-bg.png');
 }
+
+.table-header .number-header {
+    width: 310px;
+}
+
+.table-header .status-header {
+    width: 174px;
+}
+
+.table-header .price-header {
+    width: 128px;
+}
+
+.table-header .date-header {
+    width: 80px;
+}
+
+.table-header a {
+    font-family: RobotoMedium, sans-serif;
+    margin: 12px 0 0 14px;
+}
+
+.order-list {
+    margin-bottom: 45px;
+}
+
+.order-list .order-number,
+.order-list .photo-wrapper,
+.order-list .statis-box,
+.order-list .price-box,
+.order-list .date-box {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.order-list > li:nth-child(2n) {
+    background-color: #F8F0E8;
+}
+
+.order-list .order-number {
+    /*margin: 16px 0 0 15px;*/
+    margin-left: 16px;
+    width: 297px;
+}
+
+.order-list .studio-name {
+    width: 176px;
+}
+
+.order-list .studio-name span {
+    display: inline-block;
+    width: 140px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.order-list .statis-box {
+    /*margin: 20px 0 0 6px;*/
+    margin-left: 6px;
+    width: 171px;
+}
+
+.order-list .icon.delete-red {
+    margin-bottom: -2px;
+}
+
+.order-list .icon.edit {
+    margin-bottom: -3px;
+}
+
+.order-list .statis-box .icon-line {
+    margin-top: 3px;
+}
+
+.order-list .statis-box .evaluation {
+    margin-top: 15px;
+}
+
+.order-list .evaluation .little-star,
+.order-list .evaluation .little-star-empty {
+    margin: 0 -1px;
+}
+
+.order-list .price-box {
+    width: 130px;
+    /*margin-top: 16px;*/
+    padding: 0 2px 0 5px;
+    text-align: center;
+}
+
+.order-list .date-box {
+    width: 80px;
+    margin-top: 7px;
+    text-align: center;
+}
+
+.order-list .main-info {
+    border-bottom: solid #EAE6DE 1px;
+    padding: 16px 0 14px 0;
+}
+
+.order-list .sub-info {
+    padding: 14px 0;
+}
+
+.order-list .sub-info > div {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+.order-list .sub-info > div:nth-child(2) {
+    margin-left: 70px;
+}
+
+.order-list .sub-info > div:last-child {
+    float: right;
+    margin-right: 16px;
+}

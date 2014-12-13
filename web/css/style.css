@@ -1166,8 +1166,18 @@ ul.breadcrumb a {
     margin-bottom: 0;
 }
 
-.icon.little-star {
+.icon.little-star-light {
     background-position: -784px 0;
+    margin: 0 3px;
+}
+
+.icon.little-star {
+    background-position: -704px -16px;
+    margin: 0 3px;
+}
+
+.icon.little-star-empty {
+    background-position: -704px 0;
     margin: 0 3px;
 }
 
@@ -1804,3 +1814,47 @@ button.addButton:hover:after {
     margin-left: 11px;
 }
 /* <Конец> Пагинатор */
+
+/* Оформление статусов заказов */
+.order-status {
+    width: 150px;
+}
+.order-status span {
+    display: inline-block;
+    width: 128px;
+    margin-left: 8px;
+    vertical-align: top;
+    font-family: pt_serifItalic, sans-serif;
+    font-size: 15px;
+}
+.order-status:before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #CCCCCC;
+    border-radius: 50%;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.order-status.wait:before {
+    background-color: #FF7F66;
+}
+
+.order-status.in-work:before {
+    background-color: #FFB800;
+}
+
+.order-status.waiting-sent:before {
+    background-color: #43A3FF;
+}
+
+.order-status.sent:before {
+    background-color: #9FD245;
+}
+
+.order-status.complited:before {
+    background-color: #CFBAAD;
+}
+/* <Конец> Оформление статусов заказов */
