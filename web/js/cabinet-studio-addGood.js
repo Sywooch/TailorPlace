@@ -89,7 +89,40 @@ $(function(){
 	});
 
 	function processFiles(files) {
-    	var file = files[0];
-    	console.log(files);
+		var mainWrapper = $('#photos-to-upload');
+		var findImg = false;
+		for (var i = 0, f; f = files[i]; i++) {
+
+			// Only process image files.
+			if (!f.type.match('image.*')) {
+				continue;
+			}
+
+			if (!findImg) {
+				$('p', dropBox).text('Добавить еще');
+				findImg = true;
+			}
+
+			var reader = new FileReader();
+
+			// Closure to capture the file information.
+			reader.onload = (function(theFile) {
+				console.log('qwe');
+				return function(e) {
+					// Render thumbnail.
+					var Img = new Image();
+					Img.src = e.target.result;
+					$(Img).attr('height', '82');
+					$(Img).attr('width', '82');
+					// console.log(mainWrapper);
+					var thumbnail = $('<div class="photo-wrapper"><div class="icon-circle setting" data-toggle="tooltip" data-placement="right" title="Настроить фотографию"><i></i></div><div class="icon-circle remove" data-toggle="tooltip" data-placement="right" title="Убрать фотографию"><i></i></div></div>');
+					
+					mainWrapper.append(Img);
+				};
+			})(f);
+
+			// Read in the image file as a data URL.
+			reader.readAsDataURL(f);
+		}
 	}
 });
