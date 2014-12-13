@@ -1063,6 +1063,16 @@ ul.breadcrumb a {
     background-position: -106px 0;
 }
 
+.icon-circle.comment {
+    background-color: #CFBAAD;
+}
+.icon-circle.comment i {
+    width: 16px;
+    height: 15px;
+    margin: 11px 0 0 9px;
+    background-position: -49px 0;
+}
+
 /* Основные иконки */
 .icon {
     display: inline-block;

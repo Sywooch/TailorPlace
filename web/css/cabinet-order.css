@@ -1,10 +1,10 @@
 .order-header {
-    margin: 20px 0 30px;
+    margin: 10px 0;
 }
 
 .order-header h3,
-.comment-header,
-.contact-header {
+.comment-header h3,
+.contact-header h3 {
     display: inline-block;
     vertical-align: middle;
     font-size: 18px;
@@ -13,4 +13,150 @@
 
 .order-header {
     margin-bottom: 10px;
+}
+
+.order-header h3 {
+    width: 500px;
+}
+
+.statis-box {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.panel {
+    padding: 5px 0;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+.panel .panel-footer {
+    text-align: left;
+}
+
+.panel .panel-footer:before {
+    margin: 0;
+}
+
+.good-list .img-link,
+.good-list .name-box,
+.good-list .price-box,
+.good-list .counter,
+.good-list .end-price {
+    display: inline-block;
+    box-sizing: content-box;
+    vertical-align: middle;
+}
+
+.good-list li {
+    padding: 14px 16px;
+}
+
+.good-list li:nth-child(2n) {
+    background-color: #F6EDE5;
+}
+
+.good-list .img-link {
+    width: 48px;
+    height: 48px;
+    border: solid #BE957B 1px;
+}
+
+.good-list .name-box {
+    width: 250px;
+    max-height: 46px;
+    margin-left: 12px;
+    overflow: hidden;
+}
+
+.good-list .price-box {
+    width: 96px;
+    margin-left: 5px;
+    text-align: right;
+}
+
+.counter {
+    width: 101px;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.counter span:first-child {
+    font-family: RobotoMedium, sans-serif;
+}
+
+.end-price {
+    width: 112px;
+    text-align: right;
+}
+
+.panel-footer > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.panel-footer > div:first-child {
+    margin: 8px 0 0 16px;
+    width: 450px;
+}
+
+.order-summary {
+    margin: 15px 16px 0 0;
+    width: 200px;
+    text-align: right;
+}
+
+.order-summary span:first-child {
+    font-family: RobotoMedium, sans-serif;
+}
+
+.order-summary .rouble-gold,
+.sum-info .rouble-gold {
+    margin: 0 2px -2px;
+}
+
+.order-date {
+    margin-bottom: 25px;
+}
+
+.order-date span {
+    font-family: RobotoMedium, sans-serif;
+    margin-left: 3px;
+}
+
+.comment-header {
+    margin: 25px 0 10px;
+}
+
+.comment-panel {
+    padding: 20px 25px;
+}
+
+.contact-header {
+    margin: 30px 0 15px;
+}
+
+.contact-info {
+    margin-bottom: 50px;
+}
+
+.contact-info li {
+    padding: 6px 25px;
+}
+
+.contact-info li:nth-child(2n) {
+    background-color: #F6EDE5;
+}
+
+.contact-info .left-col,
+.contact-info .right-col {
+    display: inline-block;
+    font-size: 15px;
+}
+
+.contact-info .left-col {
+    width: 225px;
+    font-family: RobotoMedium, sans-serif;
 }

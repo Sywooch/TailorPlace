@@ -53,35 +53,34 @@ $this->registerCssFile('@web/css/cabinet-order.css', [
         </ul>
     </div>
     <div class="panel-footer">
-        <div class="footer-info">
-            <div>
-                <div class="delivery icon-line">
-                    <i class="icon express-delivery"></i> <span>Курьерская доставка</span>
-                </div>
-                <div class="payment icon-line">
-                    <i class="icon by-cash-when-meeting"></i> <span>Наличными при встрече</span>
-                </div>
-            </div><div class="button-wrapper">
-                <div class="button comment-button">
-                    <div class="low-layer"></div>
-                    <button>Добавить комментарий</button>
-                </div>
-            </div><div class="order-summary">
-                <span>Итого:</span> <i class="icon rouble-gold"></i> <span class="price-normal">3 210</span> <span>руб.</span>
+        <div>
+            <div class="delivery icon-line">
+                <i class="icon express-delivery"></i> <span>Курьерская доставка</span>
             </div>
+            <div class="payment icon-line">
+                <i class="icon by-cash-when-meeting"></i> <span>Наличными при встрече</span>
+            </div>
+        </div><div class="order-summary">
+            <span>Итого:</span> <i class="icon rouble-gold"></i> <span class="price-normal">3 210</span> <span>руб.</span>
         </div>
     </div>
 </div>
-
+<p class="order-date">
+    Дата заказа: <span>20.08.14</span>
+</p>
 <div class="dashed scissor-left"></div>
 
-<div class="icon-circle comment"><i></i></div><h3 class="comment-header">Комментарий</h3>
+<div class="comment-header">
+    <div class="icon-circle comment"><i></i></div><h3>Комментарий</h3>
+</div>
 
-<p class="panel width-panel">
+<p class="panel width-panel comment-panel">
     Фетровые шляпы, летние легкие шляпы, шляпы цилиндры, шляпы котелки, шляпки таблетки с вуалью, коктейльные шляпки – вуалетки, широкополые пляжные шляпы, свадебные - торжественные шляпки, шляпы на каждый день...
 </p>
 
-<div class="icon-circle person"><i></i></div><h3 class="contact-header">Контактная информация</h3>
+<div class="contact-header">
+    <div class="icon-circle person"><i></i></div><h3>Контактная информация</h3>
+</div>
 
 <ul class="contact-info">
     <li>
