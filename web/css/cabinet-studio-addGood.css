@@ -74,6 +74,10 @@ li.photos .center-col {
     padding: 15px 0;
 }
 
+#dropbox.ondrag {
+    background-color: #E6DAD5;
+}
+
 #photos-to-upload .photo-wrapper {
     position: relative;
     display: inline-block;

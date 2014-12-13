@@ -59,8 +59,29 @@ $(function(){
 	}
 
 	// Выбор фотографий
-	$('#dropbox').click(function(){
+	var dropBox = $('#dropbox');
+	dropBox.click(function(){
 		$('#photo-input').trigger('click');
+	});
+
+	dropBox.on('dragenter', function (e)
+	{
+		e.stopPropagation();
+		e.preventDefault();
+		$(this).addClass('ondrag');
+	});
+	dropBox.on('dragover', function (e)
+	{
+		$(this).removeClass('ondrag');
+		e.stopPropagation();
+		e.preventDefault();
+	});
+	dropBox.on('drop', function (e)
+	{
+		$(this).removeClass('ondrag');
+		e.preventDefault();
+		var files = e.originalEvent.dataTransfer.files;
+		processFiles(files);
 	});
 
 	$('#photo-input').click(function(){
