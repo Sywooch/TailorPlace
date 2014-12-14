@@ -989,6 +989,13 @@ ul.breadcrumb a {
     background-color: #9FD245;
 }
 
+.icon-circle.person-green.small i {
+    width: 10px;
+    height: 13px;
+    margin: 5px 0 0 7px;
+    background-position: -27px -18px;
+}
+
 /* Иконка товара */
 .icon-circle.good {
     background-color: #CFBAAD;

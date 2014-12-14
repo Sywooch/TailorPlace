@@ -1,0 +1,71 @@
+.opponent {
+    width: 200px;
+    margin-right: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.opponent .photo,
+.opponent .info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.opponent .photo {
+    position: relative;
+    margin-right: 10px;
+}
+.opponent .photo img {
+    box-sizing: content-box;
+    border: solid #D3B9AA 1px;
+}
+.opponent .photo div {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+}
+
+.opponent .info .name {
+    width: 136px;
+}
+
+.opponent .info time {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+#messages .message {
+    display: inline-block;
+    vertical-align: middle;
+    width: 474px;
+    background-color: #FAF3EB;
+    border: solid #E6DDD2 1px;
+    border-radius: 16px;
+    padding: 20px 25px;
+    max-height: 82px;
+    text-decoration: none;
+}
+#messages .message p {
+    overflow: hidden;
+    height: 40px;
+}
+
+#messages .message:hover {
+    border-color: #D3B9AA;
+    color: inherit;
+    cursor: pointer;
+}
+
+#messages .message.new {
+    background-color: #EAF0CE;
+    border-color: #EAF0CE;
+}
+
+#messages .message.new:hover {
+    border-color: #9FD245;
+}
+
+#messages li {
+    margin-bottom: 15px;
+}

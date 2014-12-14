@@ -281,7 +281,7 @@ $this->registerCssFile('@web/css/index.css', [
     <section class="widget news">
         <h3>Новости</h3>
         <div class="flag-link">
-            <a href="" class="white">Все</a>
+            <a href="/news/" class="white">Все</a>
         </div>
         <ul>
             <li>

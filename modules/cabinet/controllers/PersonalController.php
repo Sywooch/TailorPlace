@@ -25,6 +25,11 @@ class PersonalController extends CommonController
 		'user-redact' => [
             ['label' => 'Персональные данные', 'url' => '/cabinet/personal/']
         ],
+        'messages' => 'Сообщения',
+        'dialog' => [
+            ['label' => 'Сообщения', 'url' => '/cabinet/messages/'],
+            ['label' => 'Диалог']
+        ],
 	];
 	// public function behaviors()
 	// {
@@ -110,5 +115,15 @@ class PersonalController extends CommonController
         return $this->render('userRedact', [
             'User' => $User,
         ]);
+    }
+
+    public function actionMessages()
+    {
+        return $this->render('messages');
+    }
+
+    public function actionDialog()
+    {
+        return $this->render('dialog');
     }
 }

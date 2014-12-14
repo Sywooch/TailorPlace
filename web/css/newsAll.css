@@ -1,0 +1,39 @@
+h2 {
+    margin-bottom: 15px;
+}
+
+main section {
+    display: inline-block;
+    width: 292px;
+    margin: 0 0 35px 42px;
+    vertical-align: top;
+}
+
+main section:nth-child(3n-1) {
+    margin-left: 0;
+}
+
+main h3 {
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+
+main h3 a {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 18px;
+}
+
+main p {
+    margin-top: 10px;
+}
+
+main section img {
+    box-sizing: content-box;
+    border: solid #D3B9AA 1px;
+    float: left;
+    margin-right: 10px;
+}
+
+#footer-buffer {
+    height: 10px;
+}

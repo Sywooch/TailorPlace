@@ -1,0 +1,62 @@
+h2 {
+    margin-bottom: 5px;
+}
+
+#news-wrapper {
+    margin: 15px 0 45px;
+}
+
+#news-wrapper img {
+    float: left;
+    margin: 0 22px 10px 0;
+}
+
+#news-wrapper p {
+    margin-bottom: 15px;
+}
+#news-wrapper p:last-child {
+    margin-bottom: 0;
+}
+
+/* Правая колонка с новостями */
+h3, .flag-link {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+h3 {
+    text-transform: uppercase;;
+}
+
+.flag-link {
+    position: relative;
+    padding: 5px 10px;
+    margin: 0 0 0 15px;
+    background: #FFB800;
+}
+
+.flag-link a {
+    font-size: 16px;
+}
+
+.flag-link::before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border-top: solid #FFB800 8px;
+    border-bottom: solid transparent 8px;
+    border-left: solid #FFB800 5px;
+    border-right: solid transparent 5px;
+}
+
+.flag-link::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    bottom: 0;
+    border-top: solid transparent 8px;
+    border-bottom: solid #FFB800 8px;
+    border-left: solid #FFB800 5px;
+    border-right: solid transparent 5px;
+}

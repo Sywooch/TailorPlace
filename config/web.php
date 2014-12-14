@@ -70,6 +70,8 @@ $config = [
             // Общее
                 'captcha' => 'common/captcha',
                 'feedback' => 'site/feedback',
+                'news/<id:\d+>' => 'site/news-instance',
+                'news' => 'site/news-all',
                 '404' => 'site/404',
                 '403' => 'site/403',
             // Модуль [[Users]]
@@ -79,6 +81,9 @@ $config = [
             // Личный кабинет
                 'cabinet' => 'cabinet/default/index/',
                 'cabinet/<_a:(basket|place-order|orders|order)>' => 'cabinet/default/<_a>',
+                'cabinet/<_a:(messages)>' => 'cabinet/personal/<_a>',
+                'cabinet/dialog/<user:\d+>' => 'cabinet/personal/dialog/',
+                'cabinet/dialog' => 'site/404',
                 'cabinet/studio/<section:(all|vitrine|sale)>/' => 'cabinet/studio/index/',
                 'cabinet/studio/<order:\w+>/' => 'cabinet/studio/index/',
                 'cabinet/studio/<section:(all|vitrine|sale)>/<order:\w+>/' => 'cabinet/studio/index/',
