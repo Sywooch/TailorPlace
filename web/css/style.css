@@ -1007,6 +1007,16 @@ ul.breadcrumb a {
     background-position: -75px 0;
 }
 
+.icon-circle.good-green {
+    background-color: #9FD245;
+}
+.icon-circle.good-green i {
+    width: 14px;
+    height: 14px;
+    margin: 9px auto;
+    background-position: -75px 0;
+}
+
 /* Иконки настройки фотографий */
 .icon-circle.setting {
     background-color: #CFBAAD;
@@ -1078,6 +1088,16 @@ ul.breadcrumb a {
     height: 15px;
     margin: 11px 0 0 9px;
     background-position: -49px 0;
+}
+
+.icon-circle.up {
+    background-color: #FFB800;
+}
+.icon-circle.up i {
+    width: 10px;
+    height: 14px;
+    margin: 10px 0 0 12px;
+    background-position: -65px 0;
 }
 
 /* Основные иконки */

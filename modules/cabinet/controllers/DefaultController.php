@@ -15,6 +15,7 @@ class DefaultController extends CommonController
         'place-order' => 'Оформление заказа',
         'orders' => 'Заказы',
         'order' => 'not add',
+        'paid-services' => 'Дополнительные услуги',
     ];
 
 	public $layout = 'cabinet';
@@ -67,5 +68,10 @@ class DefaultController extends CommonController
     {
         $this->addBreadcrumbsItem(['label' => 'Заказ №356']);
         return $this->render('order');
+    }
+
+    public function actionPaidServices()
+    {
+        return $this->render('paidServices');
     }
 }

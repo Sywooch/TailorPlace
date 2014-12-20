@@ -77,10 +77,11 @@ $config = [
             // Модуль [[Users]]
                 '<_a:(login|logout|signup|activation|recovery|index|repair-password)>' => 'users/default/<_a>',
             // Модуль [[good]]
-                'good' => 'good/default/index',
+                'goods/<goodId:\d+>' => 'good/default/good',
+                'goods' => 'good/default/index',
             // Личный кабинет
                 'cabinet' => 'cabinet/default/index/',
-                'cabinet/<_a:(basket|place-order|orders|order)>' => 'cabinet/default/<_a>',
+                'cabinet/<_a:(basket|place-order|orders|order|paid-services)>' => 'cabinet/default/<_a>',
                 'cabinet/<_a:(messages)>' => 'cabinet/personal/<_a>',
                 'cabinet/dialog/<user:\d+>' => 'cabinet/personal/dialog/',
                 'cabinet/dialog' => 'site/404',

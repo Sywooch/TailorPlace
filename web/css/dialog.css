@@ -1,0 +1,154 @@
+.sloping-line {
+    height: 14px;
+    background: url('../img/sloping-line-bg.png') repeat-x;
+}
+
+h2 + .sloping-line {
+    margin-top: 10px;
+}
+
+#dialog-wrapper {
+    position: relative;
+    height: 550px;
+    overflow-y: auto;
+    padding-left: 8px;
+}
+
+#dialog-wrapper li {
+    margin: 18px 0;
+}
+
+.not-messages {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 500px;
+    height: 150px;
+    font-family: RobotoBlack, sans-serif;
+    font-size: 28px;
+    color: #95938E;
+    text-align: center;
+}
+
+.you .user,
+.opponent .user {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.you .user {
+    width: 173px;
+    margin-left: 28px;
+}
+
+.opponent .user {
+    margin-right: 22px;
+    width: 200px;
+}
+
+.you .photo,
+.you .info,
+.opponent .photo,
+.opponent .info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.you .photo,
+.opponent .photo {
+    position: relative;
+    margin-right: 10px;
+}
+.you .photo img,
+.opponent .photo img {
+    box-sizing: content-box;
+    border: solid #D3B9AA 1px;
+}
+.you .photo div,
+.opponent .photo div {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+}
+
+.opponent .info .name {
+    width: 136px;
+}
+
+.you .info .name {
+    font-family: RobotoMedium, sans-serif;
+    margin-bottom: -1px;
+}
+
+.you .info time,
+.opponent .info time {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+#dialog-wrapper .message {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    border-radius: 16px;
+    padding: 19px 24px;
+}
+
+#dialog-wrapper .opponent .message {
+    background-color: #EFE5DC;
+    max-width: 449px;
+}
+
+#dialog-wrapper .you .message {
+    background-color: #FFFFFF;
+    max-width: 470px;
+}
+
+#dialog-wrapper .message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 0;
+    width: 0;
+    margin: auto;
+    border-top: solid transparent 8px;
+    border-bottom: solid transparent 8px;
+}
+
+#dialog-wrapper .opponent .message::before {
+    left: -28px;
+    border-right: solid #EFE5DC 14px;
+    border-left: solid transparent 14px;
+}
+
+#dialog-wrapper .you .message::before {
+    right: -28px;
+    border-right: solid transparent 14px;
+    border-left: solid #FFFFFF 14px;
+}
+
+.you-wrapper {
+    float: right;
+}
+
+main form {
+    margin-top: 25px;
+}
+
+main form textarea {
+    box-sizing: content-box;
+    display: block;
+    width: 680px;
+    margin: 0 8px;
+}
+
+#send-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto 45px;
+}

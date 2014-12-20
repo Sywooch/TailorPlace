@@ -1,0 +1,40 @@
+#main-col {
+    width: 460px;
+    float: left;
+}
+
+#right-col {
+    width: 240px;
+    float: right;
+}
+
+.service-body {
+    display: inline-block;
+    vertical-align: top;
+    width: 407px;
+    margin-left: 15px;
+}
+
+.service-body h3 a {
+    font-family: RobotoMedium, sans-serif;
+    font-size: 18px;
+}
+
+#services-wrapper ul .icon-circle {
+    margin-top: 5px;
+}
+
+#services-wrapper ul li {
+    margin-top: 15px;
+}
+
+#purse {
+    margin: auto;
+}
+
+#fill-up-button {
+    display: block;
+    width: 126px;
+
+    margin: 15px auto;
+}

@@ -34,4 +34,9 @@ class DefaultController extends CommonController
 	{
 		return $this->render('index');
 	}
+
+    public function actionGood()
+    {
+        return $this->render('good');
+    }
 }
